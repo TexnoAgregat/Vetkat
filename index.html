@@ -379,35 +379,14 @@
             line-height: 1.7;
         }
 
-        .service-card--highlight {
-            background: linear-gradient(white, white) padding-box,
-                        linear-gradient(135deg, var(--primary), var(--primary-light)) border-box;
-            border: 2px solid transparent;
-        }
-
-        .service-card--highlight .service-card__badge {
-            background: var(--primary);
-            color: white;
-            font-weight: 600;
-            padding: 6px 12px;
-            border-radius: 30px;
-            font-size: 12px;
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            box-shadow: 0 5px 15px rgba(54, 178, 176, 0.3);
-            z-index: 3;
-        }
-
-        /* Специальный класс для карточки рентгена с полноразмерным фоном */
         .service-card--xray {
-            background: none; /* убираем стандартный фон */
-            padding: 0; /* убираем внутренние отступы */
-            border: none; /* убираем границу, оставим её через псевдоэлемент */
+            background: none;
+            padding: 0;
+            border: none;
             position: relative;
-            min-height: 300px; /* задаём минимальную высоту */
+            min-height: 300px;
             display: flex;
-            align-items: flex-end; /* контент прижимаем к низу */
+            align-items: flex-end;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -432,7 +411,6 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
-        /* Если захотим добавить текст поверх, можно добавить классы, но пока оставляем только бейдж */
         .service-card--xray .service-card__content {
             position: relative;
             z-index: 2;
@@ -803,19 +781,10 @@
             <h2 class="section-title">Услуги</h2>
             <p class="section-subtitle">Полный спектр ветеринарных услуг</p>
             <div class="services__grid">
-                <!-- 1. Рентген – карточка с фоновым изображением на всю ширину -->
-                <div class="service-card service-card--xray" style="background-image: url('Ren.PNG');">
-                    <span class="service-card__badge">уникально</span>
-                    <!-- Если захотим добавить текст позже, можно вставить сюда -->
-                </div>
-                <!-- 2. Терапия -->
-                <div class="service-card">
-                    <div class="service-card__icon">
-                        <i class="fas fa-stethoscope"></i>
-                    </div>
-                    <h3 class="service-card__title">Терапия</h3>
-                    <p class="service-card__text">Лечение терапевтических патологий с использованием современной аппаратуры и проверенных препаратов</p>
-                </div>
+                <!-- 1. Рентген – карточка с фоновым изображением, без бейджа -->
+                <div class="service-card service-card--xray" style="background-image: url('Ren.PNG');"></div>
+                <!-- 2. Терапия – карточка с фоновым изображением -->
+                <div class="service-card service-card--xray" style="background-image: url('Ter.PNG');"></div>
                 <!-- 3. Хирургия -->
                 <div class="service-card">
                     <div class="service-card__icon">
