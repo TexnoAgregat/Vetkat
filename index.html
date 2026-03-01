@@ -399,6 +399,48 @@
             z-index: 3;
         }
 
+        /* Специальный класс для карточки рентгена с полноразмерным фоном */
+        .service-card--xray {
+            background: none; /* убираем стандартный фон */
+            padding: 0; /* убираем внутренние отступы */
+            border: none; /* убираем границу, оставим её через псевдоэлемент */
+            position: relative;
+            min-height: 300px; /* задаём минимальную высоту */
+            display: flex;
+            align-items: flex-end; /* контент прижимаем к низу */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .service-card--xray::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 50%);
+            z-index: 1;
+        }
+
+        .service-card--xray .service-card__badge {
+            top: 15px;
+            right: 15px;
+            z-index: 3;
+            background: var(--primary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Если захотим добавить текст поверх, можно добавить классы, но пока оставляем только бейдж */
+        .service-card--xray .service-card__content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            padding: 20px;
+            width: 100%;
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -761,12 +803,10 @@
             <h2 class="section-title">Услуги</h2>
             <p class="section-subtitle">Полный спектр ветеринарных услуг</p>
             <div class="services__grid">
-                <!-- 1. Рентген – только картинка и бейдж, без текста -->
-                <div class="service-card service-card--highlight">
+                <!-- 1. Рентген – карточка с фоновым изображением на всю ширину -->
+                <div class="service-card service-card--xray" style="background-image: url('Ren.PNG');">
                     <span class="service-card__badge">уникально</span>
-                    <div class="service-card__icon">
-                        <img src="Ren.PNG" alt="Рентген-кабинет">
-                    </div>
+                    <!-- Если захотим добавить текст позже, можно вставить сюда -->
                 </div>
                 <!-- 2. Терапия -->
                 <div class="service-card">
