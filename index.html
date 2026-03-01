@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ВетКэт - Ветеринарная клиника</title>
+    <!-- Подключение шрифтов и иконок -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -27,6 +33,7 @@
         :root {
             --primary: #36B2B0;
             --primary-dark: #2A8B89;
+            --primary-light: #64CFCD;
             --black: #1A1A1A;
             --gray: #6c757d;
             --light-gray: #f8f9fa;
@@ -127,17 +134,16 @@
             height: 100vh;
             background: white;
             box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-            padding: 100px 20px 30px; /* увеличенный верхний отступ */
+            padding: 100px 20px 30px;
             transition: left 0.3s ease;
             z-index: 1000;
-            overflow-y: auto; /* прокрутка, если контент не влезает */
+            overflow-y: auto;
         }
 
         .mobile-menu.active {
             left: 0;
         }
 
-        /* Затемнение фона */
         .mobile-menu-overlay {
             position: fixed;
             top: 0;
@@ -198,7 +204,7 @@
             text-decoration: none;
         }
 
-        /* Hero */
+        /* Hero секция */
         .hero {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
@@ -208,6 +214,7 @@
 
         .hero__title {
             font-size: 42px;
+            font-weight: 800;
             margin-bottom: 20px;
         }
 
@@ -215,6 +222,7 @@
             font-size: 18px;
             max-width: 600px;
             margin: 0 auto 30px;
+            opacity: 0.95;
         }
 
         .hero__info {
@@ -233,6 +241,7 @@
             border-radius: 40px;
         }
 
+        /* Секции */
         section {
             padding: 80px 0;
         }
@@ -289,49 +298,126 @@
         .service-card {
             background: white;
             padding: 30px 25px;
-            border-radius: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border: 1px solid #eee;
-            text-align: center;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            transition: transform 0.4s, box-shadow 0.4s;
+            border: 1px solid rgba(0,0,0,0.03);
             position: relative;
-            transition: 0.2s;
+            overflow: hidden;
+            z-index: 1;
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            z-index: 2;
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 25px 45px rgba(54, 178, 176, 0.15);
         }
 
-        .service-card--highlight {
-            border: 2px solid var(--primary);
-        }
-
-        .service-card__badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: var(--primary);
-            color: white;
-            font-size: 12px;
-            padding: 4px 8px;
-            border-radius: 20px;
+        .service-card:hover::before {
+            transform: scaleX(1);
         }
 
         .service-card__icon {
-            font-size: 48px;
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 20px;
+            background: rgba(54, 178, 176, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
             color: var(--primary);
-            margin-bottom: 20px;
+            transition: all 0.4s;
+            overflow: hidden;
+        }
+
+        .service-card:hover .service-card__icon {
+            background: var(--primary);
+            color: white;
+            transform: rotate(5deg) scale(1.1);
+            box-shadow: 0 10px 20px rgba(54, 178, 176, 0.3);
+        }
+
+        .service-card__icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
         }
 
         .service-card__title {
             font-size: 20px;
             margin-bottom: 10px;
+            font-weight: 700;
+            color: var(--black);
+            transition: color 0.3s;
+        }
+
+        .service-card:hover .service-card__title {
+            color: var(--primary);
         }
 
         .service-card__text {
             color: var(--gray);
             font-size: 14px;
+            line-height: 1.7;
         }
+
+        .service-card--highlight {
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(135deg, var(--primary), var(--primary-light)) border-box;
+            border: 2px solid transparent;
+        }
+
+        .service-card--highlight .service-card__badge {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 30px;
+            font-size: 12px;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            box-shadow: 0 5px 15px rgba(54, 178, 176, 0.3);
+            z-index: 3;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; }
+        .service-card:nth-child(6) { animation-delay: 0.6s; }
+        .service-card:nth-child(7) { animation-delay: 0.7s; }
+        .service-card:nth-child(8) { animation-delay: 0.8s; }
 
         /* Отзывы */
         .reviews__header {
@@ -546,7 +632,7 @@
             }
         }
 
-        /* Иконки */
+        /* Иконки-заглушки */
         .icon-phone:before { content: "📞"; }
         .icon-clock:before { content: "⏰"; }
         .icon-location:before { content: "📍"; }
@@ -555,14 +641,6 @@
         .icon-hospital:before { content: "🏥"; }
         .icon-doctor:before { content: "👨‍⚕️"; }
         .icon-checklist:before { content: "📋"; }
-        .icon-stethoscope:before { content: "🩺"; }
-        .icon-surgery:before { content: "🔪"; }
-        .icon-hospital-bed:before { content: "🛏️"; }
-        .icon-lab:before { content: "🔬"; }
-        .icon-ultrasound:before { content: "📊"; }
-        .icon-pharmacy:before { content: "💊"; }
-        .icon-home:before { content: "🏠"; }
-        .icon-xray:before { content: "📡"; }
     </style>
 </head>
 <body>
@@ -574,7 +652,7 @@
                     <span></span><span></span><span></span>
                 </div>
 
-                <!-- Логотип: файл LogoCat.png должен лежать в той же папке -->
+                <!-- Логотип PNG -->
                 <div class="logo">
                     <img src="LogoCat.png" alt="ВетКэт">
                 </div>
@@ -627,7 +705,7 @@
         </div>
     </div>
 
-    <!-- Hero -->
+    <!-- Hero секция -->
     <section class="hero">
         <div class="container">
             <h1 class="hero__title">Ветеринарная клиника ВетКэт</h1>
@@ -683,52 +761,68 @@
             <h2 class="section-title">Услуги</h2>
             <p class="section-subtitle">Полный спектр ветеринарных услуг</p>
             <div class="services__grid">
-                <!-- 1. Рентген -->
+                <!-- 1. Рентген (с фото из файла Ren.PNG) -->
                 <div class="service-card service-card--highlight">
                     <span class="service-card__badge">уникально</span>
-                    <div class="service-card__icon icon-xray"></div>
+                    <div class="service-card__icon">
+                        <img src="Ren.PNG" alt="Рентген-кабинет">
+                    </div>
                     <h3 class="service-card__title">Цифровой рентген-кабинет</h3>
                     <p class="service-card__text">Единственный в городе! Современное оборудование для точной диагностики</p>
                 </div>
                 <!-- 2. Терапия -->
                 <div class="service-card">
-                    <div class="service-card__icon icon-stethoscope"></div>
+                    <div class="service-card__icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
                     <h3 class="service-card__title">Терапия</h3>
                     <p class="service-card__text">Лечение терапевтических патологий с использованием современной аппаратуры и проверенных препаратов</p>
                 </div>
                 <!-- 3. Хирургия -->
                 <div class="service-card">
-                    <div class="service-card__icon icon-surgery"></div>
+                    <div class="service-card__icon">
+                        <i class="fas fa-scalpel"></i>
+                    </div>
                     <h3 class="service-card__title">Хирургия</h3>
                     <p class="service-card__text">Проведение большого количества хирургических операций</p>
                 </div>
                 <!-- 4. Анестезия -->
                 <div class="service-card">
-                    <div class="service-card__icon icon-hospital-bed"></div>
+                    <div class="service-card__icon">
+                        <i class="fas fa-syringe"></i>
+                    </div>
                     <h3 class="service-card__title">Анестезия</h3>
                     <p class="service-card__text">Качественная анестезия на современном ингаляционном наркозном аппарате</p>
                 </div>
                 <!-- 5. Экспресс-анализы -->
                 <div class="service-card">
-                    <div class="service-card__icon icon-lab"></div>
+                    <div class="service-card__icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
                     <h3 class="service-card__title">Экспресс-анализы</h3>
                     <p class="service-card__text">Расширенная биохимия, ОКА, гормоны, диагностика кровепаразитарных заболеваний – результат за 15 минут</p>
                 </div>
                 <!-- 6. УЗИ -->
                 <div class="service-card">
-                    <div class="service-card__icon icon-ultrasound"></div>
+                    <div class="service-card__icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
                     <h3 class="service-card__title">УЗИ-диагностика</h3>
                     <p class="service-card__text">В клинике и на дому</p>
                 </div>
                 <!-- 7. Аптека -->
                 <div class="service-card">
-                    <div class="service-card__icon icon-pharmacy"></div>
+                    <div class="service-card__icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
                     <h3 class="service-card__title">Ветеринарная аптека</h3>
                     <p class="service-card__text">Широкий выбор препаратов</p>
                 </div>
                 <!-- 8. Выезд на дом -->
                 <div class="service-card">
-                    <div class="service-card__icon icon-home"></div>
+                    <div class="service-card__icon">
+                        <i class="fas fa-home"></i>
+                    </div>
                     <h3 class="service-card__title">Выезд на дом</h3>
                     <p class="service-card__text">При невозможности привезти питомца – вызов врача на дом</p>
                 </div>
@@ -883,12 +977,10 @@
 
         overlay.addEventListener('click', closeMenu);
 
-        // Закрытие при клике на ссылки в меню
         document.querySelectorAll('.mobile-menu__link').forEach(link => {
             link.addEventListener('click', closeMenu);
         });
 
-        // Закрытие при нажатии Escape
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
                 closeMenu();
