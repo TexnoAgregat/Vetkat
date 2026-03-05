@@ -395,15 +395,21 @@
             position: relative;
             z-index: 2;
             color: var(--black);
-            background: rgba(255, 255, 255, 0.6); /* более прозрачный фон */
-            backdrop-filter: blur(5px);           /* лёгкое размытие */
-            padding: 20px;
+            background: rgba(255, 255, 255, 0.4); /* прозрачнее */
+            backdrop-filter: blur(8px);           /* сильнее размытие */
+            padding: 10px 20px;                    /* уменьшенный вертикальный padding */
             width: 100%;
             border-radius: 0 0 30px 30px;
             transform: translateY(20px);
             opacity: 0;
             animation: slideUpContent 0.5s ease forwards;
             animation-delay: 0.2s;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card--xray:hover .service-card__content {
+            background: rgba(255, 255, 255, 0.8); /* менее прозрачный при наведении */
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
         }
 
         @keyframes slideUpContent {
@@ -415,22 +421,34 @@
 
         .service-card--xray .service-card__title {
             color: var(--black);
-            margin-bottom: 8px;
+            margin-bottom: 5px; /* уменьшен отступ */
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.1rem;  /* чуть меньше */
         }
 
         .service-card--xray .service-card__text {
             color: var(--black);
             font-weight: 500;
-            font-size: 0.9rem;
-            line-height: 1.5;
+            font-size: 0.85rem;  /* чуть меньше */
+            line-height: 1.4;
         }
 
-        /* Выделение ключевых фраз */
+        /* Выделение ключевых фраз – черный цвет с анимацией пульсации */
         .highlight {
-            color: var(--primary);
-            font-weight: 700;
+            color: #000;                      /* черный цвет */
+            font-weight: 800;                  /* жирнее */
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .service-card--xray:hover .highlight {
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); text-shadow: 0 0 5px rgba(0,0,0,0.2); }
+            100% { transform: scale(1); }
         }
 
         @keyframes fadeInUp {
@@ -795,8 +813,8 @@
             <h2 class="section-title">Услуги</h2>
             <p class="section-subtitle">Полный спектр ветеринарных услуг</p>
             <div class="services__grid">
-                <!-- 1. Рентген -->
-                <div class="service-card service-card--xray" style="background-image: url('Ren.PNG');">
+                <!-- 1. Рентген (теперь Ren.png) -->
+                <div class="service-card service-card--xray" style="background-image: url('Ren.png');">
                     <div class="service-card__content">
                         <h3 class="service-card__title">Цифровой рентген-кабинет</h3>
                         <p class="service-card__text"><span class="highlight">Единственный в городе!</span> Современное оборудование для точной диагностики</p>
@@ -837,7 +855,7 @@
                         <p class="service-card__text">Высокоточное ультразвуковое исследование</p>
                     </div>
                 </div>
-                <!-- 7. Офтальмология (новая) -->
+                <!-- 7. Офтальмология -->
                 <div class="service-card service-card--xray" style="background-image: url('Oft.png');">
                     <div class="service-card__content">
                         <h3 class="service-card__title">Офтальмология</h3>
