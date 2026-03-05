@@ -385,7 +385,8 @@
             position: relative;
             min-height: 300px;
             display: flex;
-            align-items: flex-end;
+            flex-direction: column;
+            justify-content: flex-end;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -395,9 +396,9 @@
             position: relative;
             z-index: 2;
             color: var(--black);
-            background: rgba(255, 255, 255, 0.4); /* прозрачнее */
-            backdrop-filter: blur(8px);           /* сильнее размытие */
-            padding: 10px 20px;                    /* уменьшенный вертикальный padding */
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+            padding: 10px 20px;
             width: 100%;
             border-radius: 0 0 30px 30px;
             transform: translateY(20px);
@@ -405,10 +406,11 @@
             animation: slideUpContent 0.5s ease forwards;
             animation-delay: 0.2s;
             transition: background 0.3s, box-shadow 0.3s;
+            cursor: pointer;
         }
 
         .service-card--xray:hover .service-card__content {
-            background: rgba(255, 255, 255, 0.8); /* менее прозрачный при наведении */
+            background: rgba(255, 255, 255, 0.8);
             box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
         }
 
@@ -421,22 +423,94 @@
 
         .service-card--xray .service-card__title {
             color: var(--black);
-            margin-bottom: 5px; /* уменьшен отступ */
+            margin-bottom: 5px;
             font-weight: 700;
-            font-size: 1.1rem;  /* чуть меньше */
+            font-size: 1.1rem;
         }
 
         .service-card--xray .service-card__text {
             color: var(--black);
             font-weight: 500;
-            font-size: 0.85rem;  /* чуть меньше */
+            font-size: 0.85rem;
             line-height: 1.4;
         }
 
-        /* Выделение ключевых фраз – черный цвет с анимацией пульсации */
+        /* Аккордеон для хирургии */
+        .accordion-checkbox {
+            display: none;
+        }
+
+        .accordion-checkbox:checked ~ .accordion-content {
+            max-height: 200px;
+            opacity: 1;
+            margin-top: 10px;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(4px);
+            border-radius: 0 0 30px 30px;
+            padding: 0 20px;
+            color: var(--black);
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        .accordion-content ul {
+            list-style: none;
+            padding: 10px 0;
+        }
+
+        .accordion-content li {
+            margin: 5px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .accordion-content li::before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Индикатор аккордеона */
+        .accordion-hint {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            background: rgba(255,255,255,0.5);
+            padding: 5px 12px;
+            border-radius: 30px;
+            transition: background 0.3s;
+            white-space: nowrap;
+        }
+
+        .service-card--xray:hover .accordion-hint {
+            background: rgba(255,255,255,0.9);
+        }
+
+        .accordion-arrow {
+            transition: transform 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .accordion-checkbox:checked + label .accordion-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Выделение ключевых фраз */
         .highlight {
-            color: #000;                      /* черный цвет */
-            font-weight: 800;                  /* жирнее */
+            color: #000;
+            font-weight: 800;
             display: inline-block;
             transition: transform 0.3s;
         }
@@ -813,8 +887,8 @@
             <h2 class="section-title">Услуги</h2>
             <p class="section-subtitle">Полный спектр ветеринарных услуг</p>
             <div class="services__grid">
-                <!-- 1. Рентген (теперь Ren.png) -->
-                <div class="service-card service-card--xray" style="background-image: url('Ren.png');">
+                <!-- 1. Рентген -->
+                <div class="service-card service-card--xray" style="background-image: url('Ren.webp');">
                     <div class="service-card__content">
                         <h3 class="service-card__title">Цифровой рентген-кабинет</h3>
                         <p class="service-card__text"><span class="highlight">Единственный в городе!</span> Современное оборудование для точной диагностики</p>
@@ -827,11 +901,28 @@
                         <p class="service-card__text">Лечение терапевтических патологий с использованием современной аппаратуры и проверенных препаратов</p>
                     </div>
                 </div>
-                <!-- 3. Хирургия -->
+                <!-- 3. Хирургия (аккордеон с индикатором) -->
                 <div class="service-card service-card--xray" style="background-image: url('Hir.png');">
-                    <div class="service-card__content">
-                        <h3 class="service-card__title">Хирургия</h3>
-                        <p class="service-card__text">Проведение большого количества хирургических операций</p>
+                    <input type="checkbox" id="surgery-accordion" class="accordion-checkbox">
+                    <label for="surgery-accordion" class="service-card__content">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <div>
+                                <h3 class="service-card__title">Хирургия</h3>
+                                <p class="service-card__text">Проведение большого количества хирургических операций</p>
+                            </div>
+                            <div class="accordion-hint">
+                                <span class="accordion-hint-text">Все услуги</span>
+                                <i class="fas fa-chevron-down accordion-arrow"></i>
+                            </div>
+                        </div>
+                    </label>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>Хирургические операции</li>
+                            <li>Удаление новообразований</li>
+                            <li>Обработка ран</li>
+                            <li>Травматология</li>
+                        </ul>
                     </div>
                 </div>
                 <!-- 4. Анестезия -->
