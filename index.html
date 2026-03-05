@@ -395,11 +395,22 @@
             position: relative;
             z-index: 2;
             color: var(--black);
-            background: rgba(255,255,255,0.9);
+            background: rgba(255, 255, 255, 0.6); /* более прозрачный фон */
+            backdrop-filter: blur(5px);           /* лёгкое размытие */
             padding: 20px;
             width: 100%;
             border-radius: 0 0 30px 30px;
-            backdrop-filter: blur(2px);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUpContent 0.5s ease forwards;
+            animation-delay: 0.2s;
+        }
+
+        @keyframes slideUpContent {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .service-card--xray .service-card__title {
