@@ -377,7 +377,7 @@
             line-height: 1.7;
         }
 
-        /* Стили для карточек с фоновым изображением (без иконок) */
+        /* Стили для карточек с фоновым изображением */
         .service-card--xray {
             background: none;
             padding: 0;
@@ -391,7 +391,6 @@
             background-repeat: no-repeat;
         }
 
-        /* Белый полупрозрачный фон для текста поверх изображения */
         .service-card--xray .service-card__content {
             position: relative;
             z-index: 2;
@@ -417,6 +416,12 @@
             line-height: 1.5;
         }
 
+        /* Выделение ключевых фраз */
+        .highlight {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -436,6 +441,7 @@
         .service-card:nth-child(6) { animation-delay: 0.6s; }
         .service-card:nth-child(7) { animation-delay: 0.7s; }
         .service-card:nth-child(8) { animation-delay: 0.8s; }
+        .service-card:nth-child(9) { animation-delay: 0.9s; }
 
         /* Отзывы */
         .reviews__header {
@@ -650,7 +656,7 @@
             }
         }
 
-        /* Иконки-заглушки (если шрифты не подгрузятся) */
+        /* Иконки-заглушки */
         .icon-phone:before { content: "📞"; }
         .icon-clock:before { content: "⏰"; }
         .icon-location:before { content: "📍"; }
@@ -782,46 +788,64 @@
                 <div class="service-card service-card--xray" style="background-image: url('Ren.PNG');">
                     <div class="service-card__content">
                         <h3 class="service-card__title">Цифровой рентген-кабинет</h3>
-                        <p class="service-card__text">Единственный в городе! Современное оборудование для точной диагностики</p>
+                        <p class="service-card__text"><span class="highlight">Единственный в городе!</span> Современное оборудование для точной диагностики</p>
                     </div>
                 </div>
                 <!-- 2. Терапия -->
-                <div class="service-card service-card--xray" style="background-image: url('Ter.png');"></div>
+                <div class="service-card service-card--xray" style="background-image: url('Ter.png');">
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">Терапия</h3>
+                        <p class="service-card__text">Лечение терапевтических патологий с использованием современной аппаратуры и проверенных препаратов</p>
+                    </div>
+                </div>
                 <!-- 3. Хирургия -->
-                <div class="service-card service-card--xray" style="background-image: url('Hir.png');"></div>
+                <div class="service-card service-card--xray" style="background-image: url('Hir.png');">
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">Хирургия</h3>
+                        <p class="service-card__text">Проведение большого количества хирургических операций</p>
+                    </div>
+                </div>
                 <!-- 4. Анестезия -->
-                <div class="service-card service-card--xray" style="background-image: url('An.png');"></div>
-                <!-- 5. Экспресс-анализы (остаётся обычной карточкой) -->
-                <div class="service-card">
-                    <div class="service-card__icon">
-                        <i class="fas fa-flask"></i>
+                <div class="service-card service-card--xray" style="background-image: url('An.png');">
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">Анестезия</h3>
+                        <p class="service-card__text">Качественная анестезия на современном ингаляционном наркозном аппарате</p>
                     </div>
-                    <h3 class="service-card__title">Экспресс-анализы</h3>
-                    <p class="service-card__text">Расширенная биохимия, ОКА, гормоны, диагностика кровепаразитарных заболеваний – результат за 15 минут</p>
                 </div>
-                <!-- 6. УЗИ -->
-                <div class="service-card">
-                    <div class="service-card__icon">
-                        <i class="fas fa-microscope"></i>
+                <!-- 5. Экспресс-анализы -->
+                <div class="service-card service-card--xray" style="background-image: url('Analiz.png');">
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">Экспресс-анализы</h3>
+                        <p class="service-card__text">Расширенная биохимия, ОКА, гормоны, диагностика кровепаразитарных заболеваний – <span class="highlight">результат за 15 минут</span></p>
                     </div>
-                    <h3 class="service-card__title">УЗИ-диагностика</h3>
-                    <p class="service-card__text">В клинике и на дому</p>
                 </div>
-                <!-- 7. Аптека -->
-                <div class="service-card">
-                    <div class="service-card__icon">
-                        <i class="fas fa-pills"></i>
+                <!-- 6. УЗИ-диагностика -->
+                <div class="service-card service-card--xray" style="background-image: url('Uzi.png');">
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">УЗИ-диагностика</h3>
+                        <p class="service-card__text">Высокоточное ультразвуковое исследование</p>
                     </div>
-                    <h3 class="service-card__title">Ветеринарная аптека</h3>
-                    <p class="service-card__text">Широкий выбор препаратов</p>
                 </div>
-                <!-- 8. Выезд на дом -->
-                <div class="service-card">
-                    <div class="service-card__icon">
-                        <i class="fas fa-home"></i>
+                <!-- 7. Офтальмология (новая) -->
+                <div class="service-card service-card--xray" style="background-image: url('Oft.png');">
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">Офтальмология</h3>
+                        <p class="service-card__text">Диагностика и лечение глазных заболеваний</p>
                     </div>
-                    <h3 class="service-card__title">Выезд на дом</h3>
-                    <p class="service-card__text">При невозможности привезти питомца – вызов врача на дом</p>
+                </div>
+                <!-- 8. Ветеринарная аптека -->
+                <div class="service-card service-card--xray" style="background-image: url('Apteka.png');">
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">Ветеринарная аптека</h3>
+                        <p class="service-card__text">Широкий выбор препаратов</p>
+                    </div>
+                </div>
+                <!-- 9. Выезд на дом -->
+                <div class="service-card service-card--xray" style="background-image: url('Vyezd.png');">
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">Выезд на дом</h3>
+                        <p class="service-card__text">При невозможности привезти питомца – вызов врача на дом</p>
+                    </div>
                 </div>
             </div>
         </div>
