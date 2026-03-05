@@ -435,17 +435,7 @@
             line-height: 1.4;
         }
 
-        /* Аккордеон для хирургии */
-        .accordion-checkbox {
-            display: none;
-        }
-
-        .accordion-checkbox:checked ~ .accordion-content {
-            max-height: 200px;
-            opacity: 1;
-            margin-top: 10px;
-        }
-
+        /* Аккордеон (JS-версия) */
         .accordion-content {
             max-height: 0;
             opacity: 0;
@@ -492,6 +482,7 @@
             border-radius: 30px;
             transition: background 0.3s;
             white-space: nowrap;
+            cursor: pointer;
         }
 
         .service-card--xray:hover .accordion-hint {
@@ -501,10 +492,6 @@
         .accordion-arrow {
             transition: transform 0.3s ease;
             font-size: 1rem;
-        }
-
-        .accordion-checkbox:checked + label .accordion-arrow {
-            transform: rotate(180deg);
         }
 
         /* Выделение ключевых фраз */
@@ -903,20 +890,19 @@
                 </div>
                 <!-- 3. Хирургия (аккордеон с индикатором) -->
                 <div class="service-card service-card--xray" style="background-image: url('Hir.png');">
-                    <input type="checkbox" id="surgery-accordion" class="accordion-checkbox">
-                    <label for="surgery-accordion" class="service-card__content">
+                    <div class="service-card__content" id="surgery-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                             <div>
                                 <h3 class="service-card__title">Хирургия</h3>
                                 <p class="service-card__text">Проведение большого количества хирургических операций</p>
                             </div>
-                            <div class="accordion-hint">
+                            <div class="accordion-hint" id="surgery-trigger">
                                 <span class="accordion-hint-text">Все услуги</span>
-                                <i class="fas fa-chevron-down accordion-arrow"></i>
+                                <i class="fas fa-chevron-down accordion-arrow" id="surgery-arrow"></i>
                             </div>
                         </div>
-                    </label>
-                    <div class="accordion-content">
+                    </div>
+                    <div class="accordion-content" id="surgery-content">
                         <ul>
                             <li>Хирургические операции</li>
                             <li>Удаление новообразований</li>
@@ -1137,6 +1123,38 @@
                 }
             });
         });
+
+        // Аккордеон для хирургии (JS-версия)
+        (function() {
+            const header = document.getElementById('surgery-header');
+            const content = document.getElementById('surgery-content');
+            const arrow = document.getElementById('surgery-arrow');
+            const trigger = document.getElementById('surgery-trigger');
+            
+            if (!header || !content || !arrow || !trigger) return;
+
+            let isOpen = false;
+
+            function toggleAccordion(e) {
+                e.stopPropagation(); // предотвращаем всплытие
+                isOpen = !isOpen;
+                if (isOpen) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    content.style.opacity = '1';
+                    content.style.marginTop = '10px';
+                    arrow.style.transform = 'rotate(180deg)';
+                } else {
+                    content.style.maxHeight = '0';
+                    content.style.opacity = '0';
+                    content.style.marginTop = '0';
+                    arrow.style.transform = 'rotate(0deg)';
+                }
+            }
+
+            // Клик по заголовку или по подсказке открывает/закрывает
+            header.addEventListener('click', toggleAccordion);
+            trigger.addEventListener('click', toggleAccordion);
+        })();
     </script>
 </body>
 </html>
