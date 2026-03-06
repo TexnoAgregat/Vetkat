@@ -532,6 +532,7 @@
         .service-card:nth-child(7) { animation-delay: 0.7s; }
         .service-card:nth-child(8) { animation-delay: 0.8s; }
         .service-card:nth-child(9) { animation-delay: 0.9s; }
+        .service-card:nth-child(10) { animation-delay: 1.0s; }
 
         /* Отзывы */
         .reviews__header {
@@ -881,14 +882,32 @@
                         <p class="service-card__text"><span class="highlight">Единственный в городе!</span> Современное оборудование для точной диагностики</p>
                     </div>
                 </div>
-                <!-- 2. Терапия -->
+
+                <!-- 2. Терапия (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Ter.png');">
-                    <div class="service-card__content">
-                        <h3 class="service-card__title">Терапия</h3>
-                        <p class="service-card__text">Лечение терапевтических патологий с использованием современной аппаратуры и проверенных препаратов</p>
+                    <div class="service-card__content" id="therapy-header">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <div>
+                                <h3 class="service-card__title">Терапия</h3>
+                                <p class="service-card__text">Лечение внутренних заболеваний у животных.</p>
+                            </div>
+                            <div class="accordion-hint" id="therapy-trigger">
+                                <span class="accordion-hint-text">Все услуги</span>
+                                <i class="fas fa-chevron-down accordion-arrow" id="therapy-arrow"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="therapy-content">
+                        <ul>
+                            <li>осмотр врача</li>
+                            <li>постановка диагноза</li>
+                            <li>назначение лечения</li>
+                            <li>инфузионная терапия (капельницы)</li>
+                        </ul>
                     </div>
                 </div>
-                <!-- 3. Хирургия (аккордеон с индикатором) -->
+
+                <!-- 3. Хирургия (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Hir.png');">
                     <div class="service-card__content" id="surgery-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -908,45 +927,139 @@
                             <li>Удаление новообразований</li>
                             <li>Обработка ран</li>
                             <li>Травматология</li>
+                            <li>Анестезия на современном ингаляционном наркозном аппарате</li>
                         </ul>
                     </div>
                 </div>
-                <!-- 4. Анестезия -->
-                <div class="service-card service-card--xray" style="background-image: url('An.png');">
-                    <div class="service-card__content">
-                        <h3 class="service-card__title">Анестезия</h3>
-                        <p class="service-card__text">Качественная анестезия на современном ингаляционном наркозном аппарате</p>
+
+                <!-- 4. Репродуктивная хирургия (аккордеон) -->
+                <div class="service-card service-card--xray" style="background-image: url('Repro.png');">
+                    <div class="service-card__content" id="repro-header">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <div>
+                                <h3 class="service-card__title">Репродуктивная хирургия</h3>
+                                <p class="service-card__text">Плановые операции.</p>
+                            </div>
+                            <div class="accordion-hint" id="repro-trigger">
+                                <span class="accordion-hint-text">Все услуги</span>
+                                <i class="fas fa-chevron-down accordion-arrow" id="repro-arrow"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="repro-content">
+                        <ul>
+                            <li>стерилизация кошек</li>
+                            <li>кастрация котов</li>
+                            <li>стерилизация собак</li>
+                            <li>кастрация собак</li>
+                        </ul>
                     </div>
                 </div>
-                <!-- 5. Экспресс-анализы -->
+
+                <!-- 5. Профилактика (аккордеон) -->
+                <div class="service-card service-card--xray" style="background-image: url('Prof.png');">
+                    <div class="service-card__content" id="prevent-header">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <div>
+                                <h3 class="service-card__title">Профилактика</h3>
+                                <p class="service-card__text">Поддержание здоровья животных.</p>
+                            </div>
+                            <div class="accordion-hint" id="prevent-trigger">
+                                <span class="accordion-hint-text">Все услуги</span>
+                                <i class="fas fa-chevron-down accordion-arrow" id="prevent-arrow"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="prevent-content">
+                        <ul>
+                            <li>вакцинация</li>
+                            <li>чипирование</li>
+                            <li>обработка от паразитов</li>
+                            <li>профилактические осмотры</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 6. Экспресс-анализы (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Analiz.png');">
-                    <div class="service-card__content">
-                        <h3 class="service-card__title">Экспресс-анализы</h3>
-                        <p class="service-card__text">Расширенная биохимия, ОКА, гормоны, диагностика кровепаразитарных заболеваний – <span class="highlight">результат за 15 минут</span></p>
+                    <div class="service-card__content" id="analiz-header">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <div>
+                                <h3 class="service-card__title">Экспресс-анализы</h3>
+                                <p class="service-card__text"><span class="highlight">результат за 15 минут!</span></p>
+                            </div>
+                            <div class="accordion-hint" id="analiz-trigger">
+                                <span class="accordion-hint-text">Подробнее</span>
+                                <i class="fas fa-chevron-down accordion-arrow" id="analiz-arrow"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="analiz-content">
+                        <ul>
+                            <li>Расширенная биохимия</li>
+                            <li>ОКА крови</li>
+                            <li>Гормоны</li>
+                            <li>Диагностика кровепаразитарных заболеваний</li>
+                        </ul>
                     </div>
                 </div>
-                <!-- 6. УЗИ-диагностика -->
+
+                <!-- 7. УЗИ-диагностика -->
                 <div class="service-card service-card--xray" style="background-image: url('Uzi.png');">
                     <div class="service-card__content">
                         <h3 class="service-card__title">УЗИ-диагностика</h3>
                         <p class="service-card__text">Высокоточное ультразвуковое исследование</p>
                     </div>
                 </div>
-                <!-- 7. Офтальмология -->
-                <div class="service-card service-card--xray" style="background-image: url('Oft.png');">
-                    <div class="service-card__content">
-                        <h3 class="service-card__title">Офтальмология</h3>
-                        <p class="service-card__text">Диагностика и лечение глазных заболеваний</p>
+
+                <!-- 8. Специализированная помощь (аккордеон) -->
+                <div class="service-card service-card--xray" style="background-image: url('Spec.png');">
+                    <div class="service-card__content" id="special-header">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <div>
+                                <h3 class="service-card__title">Специализированная помощь</h3>
+                                <p class="service-card__text">Отдельные направления.</p>
+                            </div>
+                            <div class="accordion-hint" id="special-trigger">
+                                <span class="accordion-hint-text">Все услуги</span>
+                                <i class="fas fa-chevron-down accordion-arrow" id="special-arrow"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="special-content">
+                        <ul>
+                            <li>офтальмология</li>
+                            <li>дерматология</li>
+                            <li>стоматология</li>
+                        </ul>
                     </div>
                 </div>
-                <!-- 8. Ветеринарная аптека -->
+
+                <!-- 9. Ветеринарная аптека / корма (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Apteka.png');">
-                    <div class="service-card__content">
-                        <h3 class="service-card__title">Ветеринарная аптека</h3>
-                        <p class="service-card__text">Широкий выбор препаратов</p>
+                    <div class="service-card__content" id="pharmacy-header">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <div>
+                                <h3 class="service-card__title">Ветеринарная аптека / корма</h3>
+                                <p class="service-card__text">Широкий выбор препаратов, кормов и аксессуаров</p>
+                            </div>
+                            <div class="accordion-hint" id="pharmacy-trigger">
+                                <span class="accordion-hint-text">Все услуги</span>
+                                <i class="fas fa-chevron-down accordion-arrow" id="pharmacy-arrow"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="pharmacy-content">
+                        <ul>
+                            <li>продажа ветеринарных препаратов</li>
+                            <li>лечебных кормов</li>
+                            <li>продажа аксессуаров</li>
+                            <li>средств по уходу</li>
+                        </ul>
                     </div>
                 </div>
-                <!-- 9. Выезд на дом -->
+
+                <!-- 10. Выезд на дом -->
                 <div class="service-card service-card--xray" style="background-image: url('Vyezd.png');">
                     <div class="service-card__content">
                         <h3 class="service-card__title">Выезд на дом</h3>
@@ -1124,19 +1237,17 @@
             });
         });
 
-        // Аккордеон для хирургии (JS-версия)
-        (function() {
-            const header = document.getElementById('surgery-header');
-            const content = document.getElementById('surgery-content');
-            const arrow = document.getElementById('surgery-arrow');
-            const trigger = document.getElementById('surgery-trigger');
-            
+        // Универсальная функция для аккордеона
+        function initAccordion(headerId, contentId, arrowId, triggerId) {
+            const header = document.getElementById(headerId);
+            const content = document.getElementById(contentId);
+            const arrow = document.getElementById(arrowId);
+            const trigger = document.getElementById(triggerId);
             if (!header || !content || !arrow || !trigger) return;
 
             let isOpen = false;
-
-            function toggleAccordion(e) {
-                e.stopPropagation(); // предотвращаем всплытие
+            function toggle(e) {
+                e.stopPropagation();
                 isOpen = !isOpen;
                 if (isOpen) {
                     content.style.maxHeight = content.scrollHeight + 'px';
@@ -1150,11 +1261,18 @@
                     arrow.style.transform = 'rotate(0deg)';
                 }
             }
+            header.addEventListener('click', toggle);
+            trigger.addEventListener('click', toggle);
+        }
 
-            // Клик по заголовку или по подсказке открывает/закрывает
-            header.addEventListener('click', toggleAccordion);
-            trigger.addEventListener('click', toggleAccordion);
-        })();
+        // Инициализация всех аккордеонов
+        initAccordion('surgery-header', 'surgery-content', 'surgery-arrow', 'surgery-trigger');
+        initAccordion('therapy-header', 'therapy-content', 'therapy-arrow', 'therapy-trigger');
+        initAccordion('repro-header', 'repro-content', 'repro-arrow', 'repro-trigger');
+        initAccordion('prevent-header', 'prevent-content', 'prevent-arrow', 'prevent-trigger');
+        initAccordion('analiz-header', 'analiz-content', 'analiz-arrow', 'analiz-trigger');
+        initAccordion('special-header', 'special-content', 'special-arrow', 'special-trigger');
+        initAccordion('pharmacy-header', 'pharmacy-content', 'pharmacy-arrow', 'pharmacy-trigger');
     </script>
 </body>
 </html>
