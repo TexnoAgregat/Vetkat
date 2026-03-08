@@ -45,16 +45,14 @@
             --shadow-hover: 0 25px 45px rgba(54, 178, 176, 0.2);
         }
 
-        /* Паттерн в hero (анимация удалена) */
+        /* Hero секция с фоновым изображением WebP */
         .hero {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark)), 
-                        url('data:image/svg+xml;utf8,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" opacity="0.1"><path d="M20 20 L30 10 L40 20 L40 40 L20 40 Z" fill="white"/><circle cx="25" cy="30" r="3" fill="white"/><circle cx="35" cy="30" r="3" fill="white"/></svg>');
-            background-blend-mode: overlay;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('hero-bg.webp') center/cover no-repeat;
             color: white;
             padding: 100px 0 80px;
             text-align: center;
             position: relative;
-            /* animation удалена */
         }
 
         .hero__title {
@@ -62,7 +60,6 @@
             font-weight: 800;
             margin-bottom: 20px;
             text-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            /* animation удалена */
         }
 
         .hero__info {
@@ -974,7 +971,7 @@
         </div>
     </div>
 
-    <!-- Плавающее меню (обновлённое) -->
+    <!-- Плавающее меню -->
     <div class="float-menu" id="floatMenu">
         <div class="float-trigger" id="floatTrigger">
             <i class="fas fa-paw"></i>
@@ -985,7 +982,7 @@
         </div>
     </div>
 
-    <!-- Hero секция с паттерном (анимация убрана) -->
+    <!-- Hero секция с фоновым изображением WebP -->
     <section class="hero">
         <div class="container">
             <h1 class="hero__title">Ветеринарная клиника ВетКэт</h1>
@@ -1342,7 +1339,7 @@
         </div>
     </section>
 
-    <!-- Отзывы (обычные, не карусель) -->
+    <!-- Отзывы -->
     <section class="reviews reveal" id="reviews">
         <div class="container">
             <div class="reviews__header">
@@ -1391,7 +1388,7 @@
         </div>
     </section>
 
-    <!-- Контакты (без дополнительной кнопки) -->
+    <!-- Контакты -->
     <section class="contacts reveal" id="contacts">
         <div class="container">
             <h2 class="section-title">Контакты</h2>
@@ -1558,7 +1555,7 @@
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         document.querySelectorAll('.service-card').forEach(el => observer.observe(el));
 
-        // Устанавливаем класс loaded для body, чтобы убрать начальную прозрачность
+        // Устанавливаем класс loaded для body
         window.addEventListener('load', () => {
             document.body.classList.add('loaded');
         });
