@@ -45,7 +45,7 @@
             --shadow-hover: 0 25px 45px rgba(54, 178, 176, 0.2);
         }
 
-        /* Паттерн в hero */
+        /* Паттерн в hero (анимация удалена) */
         .hero {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark)), 
                         url('data:image/svg+xml;utf8,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" opacity="0.1"><path d="M20 20 L30 10 L40 20 L40 40 L20 40 Z" fill="white"/><circle cx="25" cy="30" r="3" fill="white"/><circle cx="35" cy="30" r="3" fill="white"/></svg>');
@@ -54,13 +54,7 @@
             padding: 100px 0 80px;
             text-align: center;
             position: relative;
-            animation: gradientShift 10s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            /* animation удалена */
         }
 
         .hero__title {
@@ -68,12 +62,7 @@
             font-weight: 800;
             margin-bottom: 20px;
             text-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            animation: glow 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 10px rgba(255,255,255,0.3); }
-            to { text-shadow: 0 0 20px rgba(255,255,255,0.8); }
+            /* animation удалена */
         }
 
         .hero__info {
@@ -746,75 +735,112 @@
             margin-top: 5px;
         }
 
-        /* Плавающее меню (звонок/ВК) */
+        /* ===== ПЛАВАЮЩЕЕ МЕНЮ ===== */
         .float-menu {
             position: fixed;
             bottom: 30px;
             right: 30px;
             z-index: 99;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
+            height: 70px;
         }
 
         .float-trigger {
-            width: 60px;
-            height: 60px;
-            background: var(--primary);
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(145deg, var(--primary), var(--primary-dark));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 28px;
+            font-size: 32px;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(54,178,176,0.3);
-            transition: transform 0.3s;
+            box-shadow: 0 8px 20px rgba(54,178,176,0.4);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            z-index: 2;
+            border: 2px solid rgba(255,255,255,0.2);
         }
 
         .float-trigger:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 25px rgba(54,178,176,0.6);
+        }
+
+        .float-trigger i {
+            transition: transform 0.4s ease;
+        }
+
+        .float-trigger.active i {
+            transform: rotate(180deg);
+        }
+
+        /* Пульсация */
+        .float-trigger::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--primary);
+            opacity: 0.6;
+            z-index: -1;
+            animation: pulse-ring 2s infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 0.6; }
+            70% { transform: scale(1.3); opacity: 0; }
+            100% { transform: scale(1); opacity: 0; }
         }
 
         .float-buttons {
+            position: absolute;
+            right: 100%;
+            top: 50%;
+            transform: translateY(-50%) translateX(20px);
             display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
+            gap: 15px;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            margin-right: 15px;
+            z-index: 1;
         }
 
         .float-buttons.show {
             opacity: 1;
             visibility: visible;
+            transform: translateY(-50%) translateX(0);
         }
 
         .float-btn {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 22px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            font-size: 28px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid rgba(255,255,255,0.2);
         }
 
         .float-btn.phone {
-            background: #25D366;
+            background: linear-gradient(145deg, #25D366, #20b859);
             color: white;
         }
 
         .float-btn.vk {
-            background: #0077FF;
+            background: linear-gradient(145deg, #0077FF, #0066dd);
             color: white;
         }
 
         .float-btn:hover {
-            transform: scale(1.1);
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
         }
 
         /* Адаптив */
@@ -872,16 +898,17 @@
             .float-menu {
                 bottom: 20px;
                 right: 20px;
+                height: 60px;
             }
             .float-trigger {
+                width: 60px;
+                height: 60px;
+                font-size: 28px;
+            }
+            .float-btn {
                 width: 50px;
                 height: 50px;
                 font-size: 24px;
-            }
-            .float-btn {
-                width: 45px;
-                height: 45px;
-                font-size: 20px;
             }
         }
     </style>
@@ -947,10 +974,10 @@
         </div>
     </div>
 
-    <!-- Плавающее меню (звонок/ВК) -->
+    <!-- Плавающее меню (обновлённое) -->
     <div class="float-menu" id="floatMenu">
         <div class="float-trigger" id="floatTrigger">
-            <i class="fas fa-ellipsis-h"></i>
+            <i class="fas fa-paw"></i>
         </div>
         <div class="float-buttons" id="floatButtons">
             <a href="tel:89203405775" class="float-btn phone"><i class="fas fa-phone-alt"></i></a>
@@ -958,7 +985,7 @@
         </div>
     </div>
 
-    <!-- Hero секция с паттерном -->
+    <!-- Hero секция с паттерном (анимация убрана) -->
     <section class="hero">
         <div class="container">
             <h1 class="hero__title">Ветеринарная клиника ВетКэт</h1>
@@ -1536,21 +1563,29 @@
             document.body.classList.add('loaded');
         });
 
-        // Плавающая кнопка (звонок/ВК)
+        // Плавающая кнопка
         const floatMenu = document.getElementById('floatMenu');
         const floatTrigger = document.getElementById('floatTrigger');
         const floatButtons = document.getElementById('floatButtons');
+        const floatIcon = floatTrigger.querySelector('i');
 
         if (floatTrigger && floatButtons && floatMenu) {
             floatTrigger.addEventListener('click', (e) => {
                 e.stopPropagation();
                 floatButtons.classList.toggle('show');
+                floatTrigger.classList.toggle('active');
+                if (floatButtons.classList.contains('show')) {
+                    floatIcon.className = 'fas fa-times';
+                } else {
+                    floatIcon.className = 'fas fa-paw';
+                }
             });
 
-            // Закрыть при клике вне плавающего меню
             document.addEventListener('click', (e) => {
                 if (!floatMenu.contains(e.target)) {
                     floatButtons.classList.remove('show');
+                    floatTrigger.classList.remove('active');
+                    floatIcon.className = 'fas fa-paw';
                 }
             });
         }
