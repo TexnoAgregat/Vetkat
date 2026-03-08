@@ -877,11 +877,28 @@
             <h2 class="section-title">Услуги</h2>
             <p class="section-subtitle">Полный спектр ветеринарных услуг</p>
             <div class="services__grid">
-                <!-- 1. Рентген -->
+                <!-- 1. Рентген (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Ren.webp');">
-                    <div class="service-card__content">
-                        <h3 class="service-card__title">Цифровой рентген-кабинет</h3>
-                        <p class="service-card__text"><span class="highlight">Единственный в городе!</span> Современное оборудование для точной диагностики</p>
+                    <div class="service-card__content" id="xray-header">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <div>
+                                <h3 class="service-card__title">Цифровой рентген-кабинет</h3>
+                                <p class="service-card__text"><span class="highlight">Единственный в городе!</span> Современное оборудование для точной диагностики</p>
+                            </div>
+                            <div class="accordion-hint" id="xray-trigger">
+                                <span class="accordion-hint-text">Все услуги</span>
+                                <i class="fas fa-chevron-down accordion-arrow" id="xray-arrow"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="xray-content">
+                        <ul>
+                            <li>Рентген костей и суставов</li>
+                            <li>Рентген грудной клетки</li>
+                            <li>Рентген брюшной полости</li>
+                            <li>Рентген при травмах</li>
+                            <li>Контрольный рентген</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -1006,11 +1023,28 @@
                     </div>
                 </div>
 
-                <!-- 7. УЗИ-диагностика -->
+                <!-- 7. УЗИ-диагностика (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Uzi.webp');">
-                    <div class="service-card__content">
-                        <h3 class="service-card__title">УЗИ-диагностика</h3>
-                        <p class="service-card__text">Высокоточное ультразвуковое исследование</p>
+                    <div class="service-card__content" id="uzi-header">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <div>
+                                <h3 class="service-card__title">УЗИ-диагностика</h3>
+                                <p class="service-card__text">Высокоточное ультразвуковое исследование</p>
+                            </div>
+                            <div class="accordion-hint" id="uzi-trigger">
+                                <span class="accordion-hint-text">Все услуги</span>
+                                <i class="fas fa-chevron-down accordion-arrow" id="uzi-arrow"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="uzi-content">
+                        <ul>
+                            <li>УЗИ брюшной полости</li>
+                            <li>УЗИ сердца</li>
+                            <li>УЗИ мочеполовой системы</li>
+                            <li>УЗИ при беременности</li>
+                            <li>Контрольное УЗИ</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -1317,12 +1351,14 @@
             trigger.addEventListener('click', toggle);
         }
 
-        // Инициализация всех аккордеонов (добавлены груминг и стационар)
+        // Инициализация всех аккордеонов (добавлен xray)
+        initAccordion('xray-header', 'xray-content', 'xray-arrow', 'xray-trigger');
         initAccordion('surgery-header', 'surgery-content', 'surgery-arrow', 'surgery-trigger');
         initAccordion('therapy-header', 'therapy-content', 'therapy-arrow', 'therapy-trigger');
         initAccordion('repro-header', 'repro-content', 'repro-arrow', 'repro-trigger');
         initAccordion('prevent-header', 'prevent-content', 'prevent-arrow', 'prevent-trigger');
         initAccordion('analiz-header', 'analiz-content', 'analiz-arrow', 'analiz-trigger');
+        initAccordion('uzi-header', 'uzi-content', 'uzi-arrow', 'uzi-trigger');
         initAccordion('special-header', 'special-content', 'special-arrow', 'special-trigger');
         initAccordion('pharmacy-header', 'pharmacy-content', 'pharmacy-arrow', 'pharmacy-trigger');
         initAccordion('grooming-header', 'grooming-content', 'grooming-arrow', 'grooming-trigger');
