@@ -533,6 +533,8 @@
         .service-card:nth-child(8) { animation-delay: 0.8s; }
         .service-card:nth-child(9) { animation-delay: 0.9s; }
         .service-card:nth-child(10) { animation-delay: 1.0s; }
+        .service-card:nth-child(11) { animation-delay: 1.1s; }
+        .service-card:nth-child(12) { animation-delay: 1.2s; }
 
         /* Отзывы */
         .reviews__header {
@@ -1035,7 +1037,7 @@
                     </div>
                 </div>
 
-                <!-- 9. Ветеринарная аптека / корма (аккордеон, без подписи) -->
+                <!-- 9. Ветеринарная аптека / корма (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Apteka.webp');">
                     <div class="service-card__content" id="pharmacy-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1064,6 +1066,56 @@
                     <div class="service-card__content">
                         <h3 class="service-card__title">Выезд на дом</h3>
                         <p class="service-card__text">При невозможности привезти питомца – вызов врача на дом</p>
+                    </div>
+                </div>
+
+                <!-- 11. Груминг (аккордеон) -->
+                <div class="service-card service-card--xray" style="background-image: url('Groom.webp');">
+                    <div class="service-card__content" id="grooming-header">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <div>
+                                <h3 class="service-card__title">Груминг</h3>
+                                <p class="service-card__text">Профессиональный уход за внешностью питомцев</p>
+                            </div>
+                            <div class="accordion-hint" id="grooming-trigger">
+                                <span class="accordion-hint-text">Все услуги</span>
+                                <i class="fas fa-chevron-down accordion-arrow" id="grooming-arrow"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="grooming-content">
+                        <ul>
+                            <li>Стрижка кошек и собак</li>
+                            <li>Модельная стрижка</li>
+                            <li>Подстригание когтей</li>
+                            <li>Вычесывание колтунов</li>
+                            <li>Купание и сушка</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 12. Стационар (аккордеон) -->
+                <div class="service-card service-card--xray" style="background-image: url('Stat.webp');">
+                    <div class="service-card__content" id="station-header">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <div>
+                                <h3 class="service-card__title">Стационар</h3>
+                                <p class="service-card__text">Круглосуточное наблюдение и уход</p>
+                            </div>
+                            <div class="accordion-hint" id="station-trigger">
+                                <span class="accordion-hint-text">Все услуги</span>
+                                <i class="fas fa-chevron-down accordion-arrow" id="station-arrow"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="station-content">
+                        <ul>
+                            <li>Послеоперационный стационар</li>
+                            <li>Терапевтический стационар</li>
+                            <li>Интенсивная терапия</li>
+                            <li>Дневной стационар</li>
+                            <li>Уход за животными</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -1265,7 +1317,7 @@
             trigger.addEventListener('click', toggle);
         }
 
-        // Инициализация всех аккордеонов
+        // Инициализация всех аккордеонов (добавлены груминг и стационар)
         initAccordion('surgery-header', 'surgery-content', 'surgery-arrow', 'surgery-trigger');
         initAccordion('therapy-header', 'therapy-content', 'therapy-arrow', 'therapy-trigger');
         initAccordion('repro-header', 'repro-content', 'repro-arrow', 'repro-trigger');
@@ -1273,6 +1325,8 @@
         initAccordion('analiz-header', 'analiz-content', 'analiz-arrow', 'analiz-trigger');
         initAccordion('special-header', 'special-content', 'special-arrow', 'special-trigger');
         initAccordion('pharmacy-header', 'pharmacy-content', 'pharmacy-arrow', 'pharmacy-trigger');
+        initAccordion('grooming-header', 'grooming-content', 'grooming-arrow', 'grooming-trigger');
+        initAccordion('station-header', 'station-content', 'station-arrow', 'station-trigger');
     </script>
 </body>
 </html>
