@@ -20,6 +20,12 @@
             line-height: 1.6;
             color: #1a1a1a;
             background: #ffffff;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        body.loaded {
+            opacity: 1;
         }
 
         .container {
@@ -35,6 +41,67 @@
             --black: #1A1A1A;
             --gray: #6c757d;
             --light-gray: #f8f9fa;
+            --shadow-sm: 0 15px 35px rgba(0,0,0,0.05);
+            --shadow-hover: 0 25px 45px rgba(54, 178, 176, 0.2);
+        }
+
+        /* Паттерн в hero */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark)), 
+                        url('data:image/svg+xml;utf8,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" opacity="0.1"><path d="M20 20 L30 10 L40 20 L40 40 L20 40 Z" fill="white"/><circle cx="25" cy="30" r="3" fill="white"/><circle cx="35" cy="30" r="3" fill="white"/></svg>');
+            background-blend-mode: overlay;
+            color: white;
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+            animation: gradientShift 10s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero__title {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+            to { text-shadow: 0 0 20px rgba(255,255,255,0.8); }
+        }
+
+        .hero__info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .hero__info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 40px;
+        }
+
+        /* Анимации при скролле */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Шапка */
@@ -106,6 +173,13 @@
 
         .btn--primary:hover {
             background: var(--primary-dark);
+        }
+
+        .btn--small {
+            font-size: 0.9rem;
+            padding: 6px 16px;
+            margin-top: 8px;
+            display: inline-block;
         }
 
         /* Бургер */
@@ -202,43 +276,6 @@
             text-decoration: none;
         }
 
-        /* Hero секция */
-        .hero {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 100px 0 80px;
-            text-align: center;
-        }
-
-        .hero__title {
-            font-size: 42px;
-            font-weight: 800;
-            margin-bottom: 20px;
-        }
-
-        .hero__text {
-            font-size: 18px;
-            max-width: 600px;
-            margin: 0 auto 30px;
-            opacity: 0.95;
-        }
-
-        .hero__info {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .hero__info-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255,255,255,0.1);
-            padding: 10px 20px;
-            border-radius: 40px;
-        }
-
         /* Секции */
         section {
             padding: 80px 0;
@@ -249,12 +286,40 @@
             font-size: 36px;
             margin-bottom: 20px;
             color: var(--black);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
         }
 
         .section-subtitle {
             text-align: center;
             color: var(--gray);
             margin-bottom: 50px;
+            font-size: 1.2rem;
+        }
+
+        .group-title {
+            font-size: 28px;
+            color: var(--primary-dark);
+            margin: 40px 0 20px;
+            position: relative;
+            padding-left: 15px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .group-title:first-of-type {
+            margin-top: 0;
         }
 
         /* О клинике */
@@ -289,15 +354,14 @@
         /* Услуги */
         .services__grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
         .service-card {
             background: white;
-            padding: 30px 25px;
             border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            box-shadow: var(--shadow-sm);
             transition: transform 0.4s, box-shadow 0.4s;
             border: 1px solid rgba(0,0,0,0.03);
             position: relative;
@@ -322,62 +386,13 @@
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 25px 45px rgba(54, 178, 176, 0.15);
+            box-shadow: var(--shadow-hover);
         }
 
         .service-card:hover::before {
             transform: scaleX(1);
         }
 
-        .service-card__icon {
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 20px;
-            background: rgba(54, 178, 176, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 42px;
-            color: var(--primary);
-            transition: all 0.4s;
-            overflow: hidden;
-        }
-
-        .service-card:hover .service-card__icon {
-            background: var(--primary);
-            color: white;
-            transform: rotate(5deg) scale(1.1);
-            box-shadow: 0 10px 20px rgba(54, 178, 176, 0.3);
-        }
-
-        .service-card__icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            display: block;
-        }
-
-        .service-card__title {
-            font-size: 20px;
-            margin-bottom: 10px;
-            font-weight: 700;
-            color: var(--black);
-            transition: color 0.3s;
-        }
-
-        .service-card:hover .service-card__title {
-            color: var(--primary);
-        }
-
-        .service-card__text {
-            color: var(--gray);
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        /* Стили для карточек с фоновым изображением */
         .service-card--xray {
             background: none;
             padding: 0;
@@ -398,7 +413,7 @@
             color: var(--black);
             background: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(8px);
-            padding: 10px 20px;
+            padding: 15px 20px;
             width: 100%;
             border-radius: 0 0 30px 30px;
             transform: translateY(20px);
@@ -469,6 +484,11 @@
             left: 0;
         }
 
+        .accordion-content li i {
+            margin-right: 8px;
+            color: var(--primary);
+        }
+
         /* Индикатор аккордеона */
         .accordion-hint {
             display: flex;
@@ -480,7 +500,7 @@
             background: rgba(255,255,255,0.5);
             padding: 5px 12px;
             border-radius: 30px;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.3s;
             white-space: nowrap;
             cursor: pointer;
         }
@@ -523,19 +543,6 @@
             }
         }
 
-        .service-card:nth-child(1) { animation-delay: 0.1s; }
-        .service-card:nth-child(2) { animation-delay: 0.2s; }
-        .service-card:nth-child(3) { animation-delay: 0.3s; }
-        .service-card:nth-child(4) { animation-delay: 0.4s; }
-        .service-card:nth-child(5) { animation-delay: 0.5s; }
-        .service-card:nth-child(6) { animation-delay: 0.6s; }
-        .service-card:nth-child(7) { animation-delay: 0.7s; }
-        .service-card:nth-child(8) { animation-delay: 0.8s; }
-        .service-card:nth-child(9) { animation-delay: 0.9s; }
-        .service-card:nth-child(10) { animation-delay: 1.0s; }
-        .service-card:nth-child(11) { animation-delay: 1.1s; }
-        .service-card:nth-child(12) { animation-delay: 1.2s; }
-
         /* Отзывы */
         .reviews__header {
             display: flex;
@@ -576,6 +583,11 @@
             background: var(--light-gray);
             padding: 20px;
             border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
         }
 
         .review-card__header {
@@ -638,6 +650,14 @@
             display: flex;
             align-items: center;
             gap: 20px;
+            background: var(--light-gray);
+            padding: 20px;
+            border-radius: 20px;
+            transition: transform 0.3s;
+        }
+
+        .contacts__item:hover {
+            transform: translateX(10px);
         }
 
         .contacts__icon {
@@ -747,6 +767,9 @@
             .logo img {
                 max-width: 120px;
             }
+            .group-title {
+                font-size: 24px;
+            }
         }
 
         /* Иконки-заглушки */
@@ -821,7 +844,7 @@
         </div>
     </div>
 
-    <!-- Hero секция -->
+    <!-- Hero секция с паттерном -->
     <section class="hero">
         <div class="container">
             <h1 class="hero__title">Ветеринарная клиника ВетКэт</h1>
@@ -840,7 +863,7 @@
     </section>
 
     <!-- О клинике -->
-    <section class="about" id="about">
+    <section class="about reveal" id="about">
         <div class="container">
             <h2 class="section-title">О клинике</h2>
             <div class="about__content">
@@ -871,11 +894,13 @@
         </div>
     </section>
 
-    <!-- Услуги -->
-    <section class="services" id="services">
+    <!-- Услуги с группировкой -->
+    <section class="services reveal" id="services">
         <div class="container">
             <h2 class="section-title">Услуги</h2>
-            <p class="section-subtitle">Полный спектр ветеринарных услуг</p>
+            <p class="section-subtitle">Полный спектр ветеринарных услуг для ваших питомцев</p>
+
+            <h3 class="group-title">Диагностика</h3>
             <div class="services__grid">
                 <!-- 1. Рентген (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Ren.webp');">
@@ -883,10 +908,10 @@
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                             <div>
                                 <h3 class="service-card__title">Цифровой рентген-кабинет</h3>
-                                <p class="service-card__text"><span class="highlight">Единственный в городе!</span> Современное оборудование для точной диагностики</p>
+                                <p class="service-card__text"><span class="highlight">Единственный в городе!</span> Современное оборудование</p>
                             </div>
                             <div class="accordion-hint" id="xray-trigger">
-                                <span class="accordion-hint-text">Все услуги</span>
+                                <span class="accordion-hint-text">Подробнее</span>
                                 <i class="fas fa-chevron-down accordion-arrow" id="xray-arrow"></i>
                             </div>
                         </div>
@@ -898,108 +923,38 @@
                             <li>Рентген брюшной полости</li>
                             <li>Рентген при травмах</li>
                             <li>Контрольный рентген</li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:89203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- 2. Терапия (аккордеон) -->
-                <div class="service-card service-card--xray" style="background-image: url('Ter.webp');">
-                    <div class="service-card__content" id="therapy-header">
+                <!-- 2. УЗИ-диагностика (аккордеон) -->
+                <div class="service-card service-card--xray" style="background-image: url('Uzi.webp');">
+                    <div class="service-card__content" id="uzi-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                             <div>
-                                <h3 class="service-card__title">Терапия</h3>
-                                <p class="service-card__text">Лечение внутренних заболеваний у животных.</p>
+                                <h3 class="service-card__title">УЗИ-диагностика</h3>
+                                <p class="service-card__text">Высокоточное ультразвуковое исследование</p>
                             </div>
-                            <div class="accordion-hint" id="therapy-trigger">
-                                <span class="accordion-hint-text">Все услуги</span>
-                                <i class="fas fa-chevron-down accordion-arrow" id="therapy-arrow"></i>
+                            <div class="accordion-hint" id="uzi-trigger">
+                                <span class="accordion-hint-text">Подробнее</span>
+                                <i class="fas fa-chevron-down accordion-arrow" id="uzi-arrow"></i>
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-content" id="therapy-content">
+                    <div class="accordion-content" id="uzi-content">
                         <ul>
-                            <li>осмотр врача</li>
-                            <li>постановка диагноза</li>
-                            <li>назначение лечения</li>
-                            <li>инфузионная терапия (капельницы)</li>
+                            <li>УЗИ брюшной полости</li>
+                            <li>УЗИ сердца</li>
+                            <li>УЗИ мочеполовой системы</li>
+                            <li>УЗИ при беременности</li>
+                            <li>Контрольное УЗИ</li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:89203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- 3. Хирургия (аккордеон) -->
-                <div class="service-card service-card--xray" style="background-image: url('Hir.webp');">
-                    <div class="service-card__content" id="surgery-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <div>
-                                <h3 class="service-card__title">Хирургия</h3>
-                                <p class="service-card__text">Проведение большого количества хирургических операций</p>
-                            </div>
-                            <div class="accordion-hint" id="surgery-trigger">
-                                <span class="accordion-hint-text">Все услуги</span>
-                                <i class="fas fa-chevron-down accordion-arrow" id="surgery-arrow"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-content" id="surgery-content">
-                        <ul>
-                            <li>Хирургические операции</li>
-                            <li>Удаление новообразований</li>
-                            <li>Обработка ран</li>
-                            <li>Травматология</li>
-                            <li>Анестезия на современном ингаляционном наркозном аппарате</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 4. Репродуктивная хирургия (аккордеон) -->
-                <div class="service-card service-card--xray" style="background-image: url('Repro.webp');">
-                    <div class="service-card__content" id="repro-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <div>
-                                <h3 class="service-card__title">Репродуктивная хирургия</h3>
-                                <p class="service-card__text">Плановые операции.</p>
-                            </div>
-                            <div class="accordion-hint" id="repro-trigger">
-                                <span class="accordion-hint-text">Все услуги</span>
-                                <i class="fas fa-chevron-down accordion-arrow" id="repro-arrow"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-content" id="repro-content">
-                        <ul>
-                            <li>стерилизация кошек</li>
-                            <li>кастрация котов</li>
-                            <li>стерилизация собак</li>
-                            <li>кастрация собак</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 5. Профилактика (аккордеон) -->
-                <div class="service-card service-card--xray" style="background-image: url('Prof.webp');">
-                    <div class="service-card__content" id="prevent-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <div>
-                                <h3 class="service-card__title">Профилактика</h3>
-                                <p class="service-card__text">Поддержание здоровья животных.</p>
-                            </div>
-                            <div class="accordion-hint" id="prevent-trigger">
-                                <span class="accordion-hint-text">Все услуги</span>
-                                <i class="fas fa-chevron-down accordion-arrow" id="prevent-arrow"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-content" id="prevent-content">
-                        <ul>
-                            <li>вакцинация</li>
-                            <li>чипирование</li>
-                            <li>обработка от паразитов</li>
-                            <li>профилактические осмотры</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 6. Экспресс-анализы (аккордеон) -->
+                <!-- 3. Экспресс-анализы (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Analiz.webp');">
                     <div class="service-card__content" id="analiz-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1019,125 +974,124 @@
                             <li>ОКА крови</li>
                             <li>Гормоны</li>
                             <li>Диагностика кровепаразитарных заболеваний</li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:89203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
                         </ul>
                     </div>
                 </div>
+            </div>
 
-                <!-- 7. УЗИ-диагностика (аккордеон) -->
-                <div class="service-card service-card--xray" style="background-image: url('Uzi.webp');">
-                    <div class="service-card__content" id="uzi-header">
+            <h3 class="group-title">Лечение и хирургия</h3>
+            <div class="services__grid">
+                <!-- 4. Терапия (аккордеон) -->
+                <div class="service-card service-card--xray" style="background-image: url('Ter.webp');">
+                    <div class="service-card__content" id="therapy-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                             <div>
-                                <h3 class="service-card__title">УЗИ-диагностика</h3>
-                                <p class="service-card__text">Высокоточное ультразвуковое исследование</p>
+                                <h3 class="service-card__title">Терапия</h3>
+                                <p class="service-card__text">Лечение внутренних заболеваний</p>
                             </div>
-                            <div class="accordion-hint" id="uzi-trigger">
-                                <span class="accordion-hint-text">Все услуги</span>
-                                <i class="fas fa-chevron-down accordion-arrow" id="uzi-arrow"></i>
+                            <div class="accordion-hint" id="therapy-trigger">
+                                <span class="accordion-hint-text">Подробнее</span>
+                                <i class="fas fa-chevron-down accordion-arrow" id="therapy-arrow"></i>
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-content" id="uzi-content">
+                    <div class="accordion-content" id="therapy-content">
                         <ul>
-                            <li>УЗИ брюшной полости</li>
-                            <li>УЗИ сердца</li>
-                            <li>УЗИ мочеполовой системы</li>
-                            <li>УЗИ при беременности</li>
-                            <li>Контрольное УЗИ</li>
+                            <li>Осмотр врача</li>
+                            <li>Постановка диагноза</li>
+                            <li>Назначение лечения</li>
+                            <li>Инфузионная терапия (капельницы)</li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:89203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- 8. Специализированная помощь (аккордеон) -->
+                <!-- 5. Хирургия (аккордеон) -->
+                <div class="service-card service-card--xray" style="background-image: url('Hir.webp');">
+                    <div class="service-card__content" id="surgery-header">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <div>
+                                <h3 class="service-card__title">Хирургия</h3>
+                                <p class="service-card__text">Проведение хирургических операций</p>
+                            </div>
+                            <div class="accordion-hint" id="surgery-trigger">
+                                <span class="accordion-hint-text">Подробнее</span>
+                                <i class="fas fa-chevron-down accordion-arrow" id="surgery-arrow"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="surgery-content">
+                        <ul>
+                            <li>Хирургические операции</li>
+                            <li>Удаление новообразований</li>
+                            <li>Обработка ран</li>
+                            <li>Травматология</li>
+                            <li>Анестезия на современном наркозном аппарате</li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:89203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 6. Репродуктивная хирургия (аккордеон) -->
+                <div class="service-card service-card--xray" style="background-image: url('Repro.webp');">
+                    <div class="service-card__content" id="repro-header">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <div>
+                                <h3 class="service-card__title">Репродуктивная хирургия</h3>
+                                <p class="service-card__text">Плановые операции</p>
+                            </div>
+                            <div class="accordion-hint" id="repro-trigger">
+                                <span class="accordion-hint-text">Подробнее</span>
+                                <i class="fas fa-chevron-down accordion-arrow" id="repro-arrow"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="repro-content">
+                        <ul>
+                            <li>Стерилизация кошек</li>
+                            <li>Кастрация котов</li>
+                            <li>Стерилизация собак</li>
+                            <li>Кастрация собак</li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:89203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 7. Специализированная помощь (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Spec.webp');">
                     <div class="service-card__content" id="special-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                             <div>
                                 <h3 class="service-card__title">Специализированная помощь</h3>
-                                <p class="service-card__text">Отдельные направления.</p>
+                                <p class="service-card__text">Отдельные направления</p>
                             </div>
                             <div class="accordion-hint" id="special-trigger">
-                                <span class="accordion-hint-text">Все услуги</span>
+                                <span class="accordion-hint-text">Подробнее</span>
                                 <i class="fas fa-chevron-down accordion-arrow" id="special-arrow"></i>
                             </div>
                         </div>
                     </div>
                     <div class="accordion-content" id="special-content">
                         <ul>
-                            <li>офтальмология</li>
-                            <li>дерматология</li>
-                            <li>стоматология</li>
+                            <li>Офтальмология</li>
+                            <li>Дерматология</li>
+                            <li>Стоматология</li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:89203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- 9. Ветеринарная аптека / корма (аккордеон) -->
-                <div class="service-card service-card--xray" style="background-image: url('Apteka.webp');">
-                    <div class="service-card__content" id="pharmacy-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <div>
-                                <h3 class="service-card__title">Ветеринарная аптека / корма</h3>
-                                <!-- подпись удалена по требованию пользователя -->
-                            </div>
-                            <div class="accordion-hint" id="pharmacy-trigger">
-                                <span class="accordion-hint-text">Все услуги</span>
-                                <i class="fas fa-chevron-down accordion-arrow" id="pharmacy-arrow"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-content" id="pharmacy-content">
-                        <ul>
-                            <li>продажа ветеринарных препаратов</li>
-                            <li>лечебных кормов</li>
-                            <li>продажа аксессуаров</li>
-                            <li>средств по уходу</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 10. Выезд на дом -->
-                <div class="service-card service-card--xray" style="background-image: url('Vyezd.webp');">
-                    <div class="service-card__content">
-                        <h3 class="service-card__title">Выезд на дом</h3>
-                        <p class="service-card__text">При невозможности привезти питомца – вызов врача на дом</p>
-                    </div>
-                </div>
-
-                <!-- 11. Груминг (аккордеон) -->
-                <div class="service-card service-card--xray" style="background-image: url('Groom.webp');">
-                    <div class="service-card__content" id="grooming-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <div>
-                                <h3 class="service-card__title">Груминг</h3>
-                                <p class="service-card__text">Профессиональный уход за внешностью питомцев</p>
-                            </div>
-                            <div class="accordion-hint" id="grooming-trigger">
-                                <span class="accordion-hint-text">Все услуги</span>
-                                <i class="fas fa-chevron-down accordion-arrow" id="grooming-arrow"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-content" id="grooming-content">
-                        <ul>
-                            <li>Стрижка кошек и собак</li>
-                            <li>Модельная стрижка</li>
-                            <li>Подстригание когтей</li>
-                            <li>Вычесывание колтунов</li>
-                            <li>Купание и сушка</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 12. Стационар (аккордеон) -->
+                <!-- 8. Стационар (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Stat.webp');">
                     <div class="service-card__content" id="station-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                             <div>
                                 <h3 class="service-card__title">Стационар</h3>
-                                <p class="service-card__text">Круглосуточное наблюдение и уход</p>
+                                <p class="service-card__text">Круглосуточное наблюдение</p>
                             </div>
                             <div class="accordion-hint" id="station-trigger">
-                                <span class="accordion-hint-text">Все услуги</span>
+                                <span class="accordion-hint-text">Подробнее</span>
                                 <i class="fas fa-chevron-down accordion-arrow" id="station-arrow"></i>
                             </div>
                         </div>
@@ -1149,7 +1103,98 @@
                             <li>Интенсивная терапия</li>
                             <li>Дневной стационар</li>
                             <li>Уход за животными</li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:89203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="group-title">Уход и сервис</h3>
+            <div class="services__grid">
+                <!-- 9. Профилактика (аккордеон) -->
+                <div class="service-card service-card--xray" style="background-image: url('Prof.webp');">
+                    <div class="service-card__content" id="prevent-header">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <div>
+                                <h3 class="service-card__title">Профилактика</h3>
+                                <p class="service-card__text">Поддержание здоровья</p>
+                            </div>
+                            <div class="accordion-hint" id="prevent-trigger">
+                                <span class="accordion-hint-text">Подробнее</span>
+                                <i class="fas fa-chevron-down accordion-arrow" id="prevent-arrow"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="prevent-content">
+                        <ul>
+                            <li>Вакцинация</li>
+                            <li>Чипирование</li>
+                            <li>Обработка от паразитов</li>
+                            <li>Профилактические осмотры</li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:89203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 10. Ветеринарная аптека / корма (аккордеон) -->
+                <div class="service-card service-card--xray" style="background-image: url('Apteka.webp');">
+                    <div class="service-card__content" id="pharmacy-header">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <div>
+                                <h3 class="service-card__title">Ветеринарная аптека / корма</h3>
+                                <p class="service-card__text"></p>
+                            </div>
+                            <div class="accordion-hint" id="pharmacy-trigger">
+                                <span class="accordion-hint-text">Подробнее</span>
+                                <i class="fas fa-chevron-down accordion-arrow" id="pharmacy-arrow"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="pharmacy-content">
+                        <ul>
+                            <li>Продажа ветеринарных препаратов</li>
+                            <li>Лечебные корма</li>
+                            <li>Продажа аксессуаров</li>
+                            <li>Средства по уходу</li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:89203405775" style="color: inherit; text-decoration: none;">Консультация</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 11. Груминг (аккордеон) -->
+                <div class="service-card service-card--xray" style="background-image: url('Groom.webp');">
+                    <div class="service-card__content" id="grooming-header">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <div>
+                                <h3 class="service-card__title">Груминг</h3>
+                                <p class="service-card__text">Профессиональный уход</p>
+                            </div>
+                            <div class="accordion-hint" id="grooming-trigger">
+                                <span class="accordion-hint-text">Подробнее</span>
+                                <i class="fas fa-chevron-down accordion-arrow" id="grooming-arrow"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="grooming-content">
+                        <ul>
+                            <li>Стрижка кошек и собак</li>
+                            <li>Модельная стрижка</li>
+                            <li>Подстригание когтей</li>
+                            <li>Вычесывание колтунов</li>
+                            <li>Купание и сушка</li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:89203405775" style="color: inherit; text-decoration: none;">Записаться</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 12. Экстренная помощь / Выезд на дом (переименовано) -->
+                <div class="service-card service-card--xray" style="background-image: url('Vyezd.webp');">
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">Экстренная помощь / Выезд на дом</h3>
+                        <p class="service-card__text">Выезд врача на дом. При невозможности привезти питомца.</p>
+                        <div style="margin-top: 10px;">
+                            <a href="tel:89203405775" class="btn btn--primary btn--small"><i class="fas fa-phone-alt"></i> Позвонить</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1157,7 +1202,7 @@
     </section>
 
     <!-- Отзывы -->
-    <section class="reviews" id="reviews">
+    <section class="reviews reveal" id="reviews">
         <div class="container">
             <div class="reviews__header">
                 <div class="reviews__rating">
@@ -1202,17 +1247,13 @@
                     <p class="review-card__text">Хорошая клиника, удобное расположение. Персонал приветливый.</p>
                 </div>
             </div>
-            <div class="reviews__more">
-                <a href="https://yandex.ru/maps/org/vetket/1781348007/reviews/" target="_blank" class="btn btn--primary">Все 24 отзыва на Яндекс Картах</a>
-            </div>
         </div>
     </section>
 
     <!-- Контакты -->
-    <section class="contacts" id="contacts">
+    <section class="contacts reveal" id="contacts">
         <div class="container">
             <h2 class="section-title">Контакты</h2>
-            <p class="section-subtitle">Как нас найти и связаться</p>
             <div class="contacts__grid">
                 <div class="contacts__info">
                     <div class="contacts__item">
@@ -1351,18 +1392,35 @@
             trigger.addEventListener('click', toggle);
         }
 
-        // Инициализация всех аккордеонов (добавлен xray)
+        // Инициализация всех аккордеонов
         initAccordion('xray-header', 'xray-content', 'xray-arrow', 'xray-trigger');
-        initAccordion('surgery-header', 'surgery-content', 'surgery-arrow', 'surgery-trigger');
-        initAccordion('therapy-header', 'therapy-content', 'therapy-arrow', 'therapy-trigger');
-        initAccordion('repro-header', 'repro-content', 'repro-arrow', 'repro-trigger');
-        initAccordion('prevent-header', 'prevent-content', 'prevent-arrow', 'prevent-trigger');
-        initAccordion('analiz-header', 'analiz-content', 'analiz-arrow', 'analiz-trigger');
         initAccordion('uzi-header', 'uzi-content', 'uzi-arrow', 'uzi-trigger');
+        initAccordion('analiz-header', 'analiz-content', 'analiz-arrow', 'analiz-trigger');
+        initAccordion('therapy-header', 'therapy-content', 'therapy-arrow', 'therapy-trigger');
+        initAccordion('surgery-header', 'surgery-content', 'surgery-arrow', 'surgery-trigger');
+        initAccordion('repro-header', 'repro-content', 'repro-arrow', 'repro-trigger');
         initAccordion('special-header', 'special-content', 'special-arrow', 'special-trigger');
+        initAccordion('station-header', 'station-content', 'station-arrow', 'station-trigger');
+        initAccordion('prevent-header', 'prevent-content', 'prevent-arrow', 'prevent-trigger');
         initAccordion('pharmacy-header', 'pharmacy-content', 'pharmacy-arrow', 'pharmacy-trigger');
         initAccordion('grooming-header', 'grooming-content', 'grooming-arrow', 'grooming-trigger');
-        initAccordion('station-header', 'station-content', 'station-arrow', 'station-trigger');
+
+        // Intersection Observer для плавного появления
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.service-card').forEach(el => observer.observe(el));
+
+        // Устанавливаем класс loaded для body, чтобы убрать начальную прозрачность
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
     </script>
 </body>
 </html>
