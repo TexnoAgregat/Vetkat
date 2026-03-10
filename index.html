@@ -192,7 +192,7 @@
             height: 100vh;
             background: white;
             box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-            padding: 100px 20px 30px;
+            padding: 20px; /* изменено: был padding: 100px 20px 30px; */
             transition: left 0.3s ease;
             z-index: 1000;
             overflow-y: auto;
@@ -200,6 +200,17 @@
 
         .mobile-menu.active {
             left: 0;
+        }
+
+        /* Логотип в мобильном меню */
+        .mobile-menu__logo {
+            margin-bottom: 30px;
+        }
+
+        .mobile-menu__logo img {
+            max-width: 120px;
+            height: auto;
+            display: block;
         }
 
         .mobile-menu-overlay {
@@ -943,8 +954,12 @@
     <!-- Затемнение фона для мобильного меню -->
     <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
 
-    <!-- Мобильное меню -->
+    <!-- Мобильное меню с логотипом -->
     <div class="mobile-menu" id="mobileMenu">
+        <!-- Логотип добавлен сверху -->
+        <div class="mobile-menu__logo">
+            <img src="LogoCat.png" alt="ВетКэт">
+        </div>
         <ul class="mobile-menu__list">
             <li class="mobile-menu__item"><a href="#about" class="mobile-menu__link">О клинике</a></li>
             <li class="mobile-menu__item"><a href="#services" class="mobile-menu__link">Услуги</a></li>
