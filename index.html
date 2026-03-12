@@ -62,11 +62,20 @@
             text-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
+        .hero__text {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.5;
+            opacity: 0.95;
+        }
+
         .hero__info {
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
         }
 
         .hero__info-item {
@@ -74,8 +83,9 @@
             align-items: center;
             gap: 8px;
             background: rgba(255,255,255,0.1);
-            padding: 10px 20px;
+            padding: 8px 20px;
             border-radius: 40px;
+            font-size: 0.95rem;
         }
 
         /* Анимации при скролле */
@@ -139,6 +149,11 @@
             text-decoration: none;
             color: var(--black);
             font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .phone:hover {
+            color: var(--primary);
         }
 
         .btn {
@@ -192,7 +207,7 @@
             height: 100vh;
             background: white;
             box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-            padding: 20px; /* изменено: был padding: 100px 20px 30px; */
+            padding: 20px;
             transition: left 0.3s ease;
             z-index: 1000;
             overflow-y: auto;
@@ -202,7 +217,6 @@
             left: 0;
         }
 
-        /* Логотип в мобильном меню */
         .mobile-menu__logo {
             margin-bottom: 30px;
         }
@@ -692,11 +706,22 @@
             margin-bottom: 5px;
         }
 
+        .contacts__text p {
+            color: var(--black);
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
         .contacts__text a {
             text-decoration: none;
             color: var(--black);
             font-size: 18px;
             font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .contacts__text a:hover {
+            color: var(--primary);
         }
 
         .contacts__map {
@@ -735,6 +760,11 @@
             text-decoration: none;
             font-size: 20px;
             font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .footer__phone:hover {
+            color: var(--primary);
         }
 
         .footer__address {
@@ -851,6 +881,17 @@
             box-shadow: 0 12px 25px rgba(0,0,0,0.2);
         }
 
+        /* Увеличение номера телефона для ПК */
+        @media (min-width: 993px) {
+            .phone {
+                font-size: 20px;
+                font-weight: 700;
+            }
+            .contacts__text a {
+                font-size: 20px;
+            }
+        }
+
         /* Адаптив */
         @media (max-width: 992px) {
             .nav {
@@ -882,9 +923,9 @@
             .hero__title {
                 font-size: 32px;
             }
-            .hero__info {
-                flex-direction: column;
-                align-items: center;
+            .hero__info-item {
+                font-size: 0.85rem;
+                padding: 6px 12px;
             }
             .services__grid {
                 grid-template-columns: 1fr;
@@ -944,8 +985,8 @@
                 </nav>
 
                 <div class="header__contacts">
-                    <a href="tel:89203405775" class="phone">8-920-340-57-75</a>
-                    <a href="tel:89203405775" class="btn btn--primary">Позвонить</a>
+                    <a href="tel:+79203405775" class="phone">+7-920-340-57-75</a>
+                    <a href="tel:+79203405775" class="btn btn--primary">Позвонить</a>
                 </div>
             </div>
         </div>
@@ -956,7 +997,6 @@
 
     <!-- Мобильное меню с логотипом -->
     <div class="mobile-menu" id="mobileMenu">
-        <!-- Логотип добавлен сверху -->
         <div class="mobile-menu__logo">
             <img src="LogoCat.png" alt="ВетКэт">
         </div>
@@ -973,11 +1013,15 @@
             </div>
             <div class="mobile-menu__info-item">
                 <i class="fas fa-clock mobile-menu__info-icon"></i>
-                <span>Будни 10-19, Сб-Вс 10-15</span>
+                <span>Клиника: Пн–Пт 10–19 | Сб–Вс 10–15</span>
+            </div>
+            <div class="mobile-menu__info-item">
+                <i class="fas fa-clock mobile-menu__info-icon"></i>
+                <span>Приём врача: Вт–Сб | Вс, Пн — выходной</span>
             </div>
             <div class="mobile-menu__info-item">
                 <i class="fas fa-phone-alt mobile-menu__info-icon"></i>
-                <a href="tel:89203405775">8-920-340-57-75</a>
+                <a href="tel:+79203405775">+7-920-340-57-75</a>
             </div>
             <div class="mobile-menu__info-item">
                 <i class="fas fa-envelope mobile-menu__info-icon"></i>
@@ -992,12 +1036,12 @@
             <i class="fas fa-paw"></i>
         </div>
         <div class="float-buttons" id="floatButtons">
-            <a href="tel:89203405775" class="float-btn phone"><i class="fas fa-phone-alt"></i></a>
+            <a href="tel:+79203405775" class="float-btn phone"><i class="fas fa-phone-alt"></i></a>
             <a href="https://vk.com/id389405064" target="_blank" class="float-btn vk"><i class="fab fa-vk"></i></a>
         </div>
     </div>
 
-    <!-- Hero секция с фоновым изображением WebP -->
+    <!-- Hero секция -->
     <section class="hero">
         <div class="container">
             <h1 class="hero__title">Ветеринарная клиника ВетКэт</h1>
@@ -1005,7 +1049,11 @@
             <div class="hero__info">
                 <div class="hero__info-item">
                     <i class="fas fa-clock"></i>
-                    <span>Будни 10-19 | Сб-Вс 10-15</span>
+                    <span>Клиника: Пн–Пт 10–19 | Сб–Вс 10–15</span>
+                </div>
+                <div class="hero__info-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Приём врача: Вт–Сб | Вс, Пн — выходной</span>
                 </div>
                 <div class="hero__info-item">
                     <i class="fas fa-map-marker-alt"></i>
@@ -1071,12 +1119,12 @@
                     </div>
                     <div class="accordion-content" id="xray-content">
                         <ul>
-                            <li>Рентген костей и суставов</li>
+                            <li>Рентген опорно-двигательного аппарата</li>
                             <li>Рентген грудной клетки</li>
                             <li>Рентген брюшной полости</li>
                             <li>Рентген при травмах</li>
                             <li>Контрольный рентген</li>
-                            <li><i class="fas fa-phone-alt"></i> <a href="tel:89203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:+79203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1098,11 +1146,10 @@
                     <div class="accordion-content" id="uzi-content">
                         <ul>
                             <li>УЗИ брюшной полости</li>
-                            <li>УЗИ сердца</li>
                             <li>УЗИ мочеполовой системы</li>
                             <li>УЗИ при беременности</li>
                             <li>Контрольное УЗИ</li>
-                            <li><i class="fas fa-phone-alt"></i> <a href="tel:89203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:+79203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1127,7 +1174,7 @@
                             <li>ОКА крови</li>
                             <li>Гормоны</li>
                             <li>Диагностика кровепаразитарных заболеваний</li>
-                            <li><i class="fas fa-phone-alt"></i> <a href="tel:89203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:+79203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1155,7 +1202,7 @@
                             <li>Постановка диагноза</li>
                             <li>Назначение лечения</li>
                             <li>Инфузионная терапия (капельницы)</li>
-                            <li><i class="fas fa-phone-alt"></i> <a href="tel:89203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:+79203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1181,7 +1228,7 @@
                             <li>Обработка ран</li>
                             <li>Травматология</li>
                             <li>Анестезия на современном наркозном аппарате</li>
-                            <li><i class="fas fa-phone-alt"></i> <a href="tel:89203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:+79203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1200,13 +1247,14 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Обновлённый список для репродуктивной хирургии -->
                     <div class="accordion-content" id="repro-content">
                         <ul>
-                            <li>Стерилизация кошек</li>
-                            <li>Кастрация котов</li>
-                            <li>Стерилизация собак</li>
-                            <li>Кастрация собак</li>
-                            <li><i class="fas fa-phone-alt"></i> <a href="tel:89203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
+                            <li>Стерилизация кошек и котов</li>
+                            <li>Стерилизация и кастрация собак и щенков</li>
+                            <li>Стерилизация/кастрация кроликов, грызунов, морских свинок, шиншилл, хорьков и других мелких питомцев</li>
+                            <li>Удаление новообразований</li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:+79203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1230,7 +1278,8 @@
                             <li>Офтальмология</li>
                             <li>Дерматология</li>
                             <li>Стоматология</li>
-                            <li><i class="fas fa-phone-alt"></i> <a href="tel:89203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
+                            <li>Хирургия</li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:+79203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1241,7 +1290,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                             <div>
                                 <h3 class="service-card__title">Стационар</h3>
-                                <p class="service-card__text">Круглосуточное наблюдение</p>
+                                <p class="service-card__text">Только для кошек и котов</p>
                             </div>
                             <div class="accordion-hint" id="station-trigger">
                                 <span class="accordion-hint-text">Подробнее</span>
@@ -1256,7 +1305,7 @@
                             <li>Интенсивная терапия</li>
                             <li>Дневной стационар</li>
                             <li>Уход за животными</li>
-                            <li><i class="fas fa-phone-alt"></i> <a href="tel:89203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:+79203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1284,7 +1333,7 @@
                             <li>Чипирование</li>
                             <li>Обработка от паразитов</li>
                             <li>Профилактические осмотры</li>
-                            <li><i class="fas fa-phone-alt"></i> <a href="tel:89203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:+79203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1307,9 +1356,8 @@
                         <ul>
                             <li>Продажа ветеринарных препаратов</li>
                             <li>Лечебные корма</li>
-                            <li>Продажа аксессуаров</li>
                             <li>Средства по уходу</li>
-                            <li><i class="fas fa-phone-alt"></i> <a href="tel:89203405775" style="color: inherit; text-decoration: none;">Консультация</a></li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:+79203405775" style="color: inherit; text-decoration: none;">Консультация</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1333,9 +1381,7 @@
                             <li>Стрижка кошек и собак</li>
                             <li>Модельная стрижка</li>
                             <li>Подстригание когтей</li>
-                            <li>Вычесывание колтунов</li>
-                            <li>Купание и сушка</li>
-                            <li><i class="fas fa-phone-alt"></i> <a href="tel:89203405775" style="color: inherit; text-decoration: none;">Записаться</a></li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:+79203405775" style="color: inherit; text-decoration: none;">Записаться</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1346,7 +1392,7 @@
                         <h3 class="service-card__title">Экстренная помощь / Выезд на дом</h3>
                         <p class="service-card__text">Выезд врача на дом. При невозможности привезти питомца.</p>
                         <div style="margin-top: 10px;">
-                            <a href="tel:89203405775" class="btn btn--primary btn--small"><i class="fas fa-phone-alt"></i> Позвонить</a>
+                            <a href="tel:+79203405775" class="btn btn--primary btn--small"><i class="fas fa-phone-alt"></i> Позвонить</a>
                         </div>
                     </div>
                 </div>
@@ -1413,14 +1459,21 @@
                         <div class="contacts__icon"><i class="fas fa-phone-alt"></i></div>
                         <div class="contacts__text">
                             <h3>Телефон</h3>
-                            <a href="tel:89203405775">8-920-340-57-75</a>
+                            <a href="tel:+79203405775">+7-920-340-57-75</a>
                         </div>
                     </div>
                     <div class="contacts__item">
                         <div class="contacts__icon"><i class="fas fa-clock"></i></div>
                         <div class="contacts__text">
-                            <h3>Режим работы</h3>
-                            <p>Будни: 10:00 – 19:00<br>Сб, Вс: 10:00 – 15:00</p>
+                            <h3>Режим работы клиники</h3>
+                            <p>Пн–Пт 10:00–19:00 | Сб–Вс 10:00–15:00</p>
+                        </div>
+                    </div>
+                    <div class="contacts__item">
+                        <div class="contacts__icon"><i class="fas fa-clock"></i></div>
+                        <div class="contacts__text">
+                            <h3>Приём врача</h3>
+                            <p>Вт–Сб | Вс, Пн — выходной</p>
                         </div>
                     </div>
                     <div class="contacts__item">
@@ -1458,7 +1511,7 @@
             <div class="footer__inner">
                 <div class="footer__logo">ВетКэт</div>
                 <div>
-                    <a href="tel:89203405775" class="footer__phone">8-920-340-57-75</a>
+                    <a href="tel:+79203405775" class="footer__phone">+7-920-340-57-75</a>
                     <div class="footer__address">Тейково, площадь Ленина, 3</div>
                 </div>
             </div>
