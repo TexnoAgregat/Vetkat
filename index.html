@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Все стили остаются без изменений (те же, что и в последней версии) */
+        /* Все стили остаются без изменений (те же, что в предыдущей версии) */
         * {
             margin: 0;
             padding: 0;
@@ -583,6 +583,7 @@
             text-decoration: none;
             color: inherit;
             display: block;
+            cursor: pointer;
         }
         .info-link-card:hover {
             transform: translateY(-5px);
@@ -1524,41 +1525,42 @@
         </div>
     </section>
 
+    <!-- НОВЫЙ БЛОК С КАРТОЧКАМИ, ОТКРЫВАЮЩИМИ МОДАЛЬНЫЕ ОКНА -->
     <section class="info-links reveal">
         <div class="container">
             <div class="info-links__grid">
-                <a href="narcosis.html" target="_blank" class="info-link-card">
+                <div class="info-link-card" id="infoNarcosisLink">
                     <i class="fas fa-syringe"></i>
                     <h3>Как подготовиться к наркозу</h3>
                     <p>Памятка для владельцев: что нужно знать перед операцией</p>
-                </a>
-                <a href="station-rules.html" target="_blank" class="info-link-card">
+                </div>
+                <div class="info-link-card" id="infoRulesLink">
                     <i class="fas fa-file-alt"></i>
                     <h3>Правила посещения стационара</h3>
                     <p>Режим работы, допуск, важные правила для посетителей</p>
-                </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Модальное окно для правил стационара (контент загружается динамически) -->
+    <!-- Модальное окно для правил стационара -->
     <div class="modal-overlay" id="rulesModal">
         <div class="modal">
             <div class="modal__close" id="closeRulesModal">&times;</div>
             <div class="modal__title">Правила посещения стационара</div>
             <div class="modal__content" id="rulesModalContent">
-                <!-- Сюда будет подгружаться содержимое из station-rules.html -->
+                <!-- Контент загружается динамически -->
             </div>
         </div>
     </div>
 
-    <!-- Модальное окно для подготовки к наркозу (контент загружается динамически) -->
+    <!-- Модальное окно для подготовки к наркозу -->
     <div class="modal-overlay" id="narcosisModal">
         <div class="modal">
             <div class="modal__close" id="closeNarcosisModal">&times;</div>
             <div class="modal__title">Как подготовиться к наркозу</div>
             <div class="modal__content" id="narcosisModalContent">
-                <!-- Сюда будет подгружаться содержимое из narcosis.html -->
+                <!-- Контент загружается динамически -->
             </div>
         </div>
     </div>
@@ -1679,7 +1681,7 @@
     </footer>
 
     <script>
-        // Все предыдущие скрипты остаются, добавляем функции загрузки контента
+        // Бургер-меню
         const burger = document.getElementById('burger');
         const mobileMenu = document.getElementById('mobileMenu');
         const overlay = document.getElementById('mobileMenuOverlay');
@@ -1719,6 +1721,7 @@
             }
         });
 
+        // Плавная прокрутка для якорей
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1729,6 +1732,7 @@
             });
         });
 
+        // Универсальная функция для аккордеона
         function initAccordion(headerId, contentId, arrowId, triggerId) {
             const header = document.getElementById(headerId);
             const content = document.getElementById(contentId);
@@ -1756,6 +1760,7 @@
             trigger.addEventListener('click', toggle);
         }
 
+        // Инициализация всех аккордеонов
         initAccordion('xray-header', 'xray-content', 'xray-arrow', 'xray-trigger');
         initAccordion('uzi-header', 'uzi-content', 'uzi-arrow', 'uzi-trigger');
         initAccordion('analiz-header', 'analiz-content', 'analiz-arrow', 'analiz-trigger');
@@ -1768,6 +1773,7 @@
         initAccordion('pharmacy-header', 'pharmacy-content', 'pharmacy-arrow', 'pharmacy-trigger');
         initAccordion('grooming-header', 'grooming-content', 'grooming-arrow', 'grooming-trigger');
 
+        // Intersection Observer для плавного появления
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1779,10 +1785,12 @@
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         document.querySelectorAll('.service-card').forEach(el => observer.observe(el));
 
+        // Устанавливаем класс loaded для body
         window.addEventListener('load', () => {
             document.body.classList.add('loaded');
         });
 
+        // Плавающая кнопка
         const floatMenu = document.getElementById('floatMenu');
         const floatTrigger = document.getElementById('floatTrigger');
         const floatButtons = document.getElementById('floatButtons');
@@ -1812,23 +1820,30 @@
         // Функция загрузки контента для модальных окон
         async function loadModalContent(url, targetElement) {
             try {
+                console.log('Загружаем:', url);
                 const response = await fetch(url);
-                if (!response.ok) throw new Error('Ошибка загрузки');
+                if (!response.ok) {
+                    throw new Error(`HTTP ошибка ${response.status}`);
+                }
                 const html = await response.text();
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(html, 'text/html');
+                // Ищем блок с контентом — в файлах он обёрнут в <div class="modal-content">
                 const contentBlock = doc.querySelector('.modal-content');
                 if (contentBlock) {
                     targetElement.innerHTML = contentBlock.innerHTML;
                 } else {
-                    targetElement.innerHTML = '<p>Контент не найден.</p>';
+                    // Если класс не найден, используем всё содержимое body (запасной вариант)
+                    console.warn('Класс .modal-content не найден, используется body');
+                    targetElement.innerHTML = doc.body.innerHTML;
                 }
             } catch (error) {
-                targetElement.innerHTML = '<p>Не удалось загрузить информацию. Попробуйте позже.</p>';
+                console.error('Ошибка загрузки:', error);
+                targetElement.innerHTML = `<p>Не удалось загрузить информацию. Проверьте наличие файла ${url}.</p>`;
             }
         }
 
-        // Модальное окно правил стационара
+        // Модальное окно правил стационара (из аккордеона)
         const rulesLink = document.getElementById('rulesLink');
         const rulesModal = document.getElementById('rulesModal');
         const rulesModalContent = document.getElementById('rulesModalContent');
@@ -1844,8 +1859,7 @@
             function closeRulesModalHandler() {
                 rulesModal.classList.remove('active');
                 document.body.style.overflow = '';
-                // Очищаем контент при закрытии, чтобы при следующем открытии не видеть старый текст
-                rulesModalContent.innerHTML = '';
+                rulesModalContent.innerHTML = ''; // очищаем при закрытии
             }
 
             closeRulesModal.addEventListener('click', closeRulesModalHandler);
@@ -1863,7 +1877,7 @@
             });
         }
 
-        // Модальное окно подготовки к наркозу
+        // Модальное окно подготовки к наркозу (из аккордеона)
         const narcosisLink = document.getElementById('narcosisLink');
         const narcosisModal = document.getElementById('narcosisModal');
         const narcosisModalContent = document.getElementById('narcosisModalContent');
@@ -1894,6 +1908,26 @@
                 if (e.key === 'Escape' && narcosisModal.classList.contains('active')) {
                     closeNarcosisModalHandler();
                 }
+            });
+        }
+
+        // Карточки в блоке после услуг (info-links)
+        const infoNarcosisLink = document.getElementById('infoNarcosisLink');
+        const infoRulesLink = document.getElementById('infoRulesLink');
+
+        if (infoNarcosisLink) {
+            infoNarcosisLink.addEventListener('click', () => {
+                loadModalContent('narcosis.html', narcosisModalContent);
+                narcosisModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        if (infoRulesLink) {
+            infoRulesLink.addEventListener('click', () => {
+                loadModalContent('station-rules.html', rulesModalContent);
+                rulesModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
             });
         }
     </script>
