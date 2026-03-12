@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* Все стили остаются без изменений (те же, что и в последней версии) */
         * {
             margin: 0;
             padding: 0;
@@ -45,7 +46,6 @@
             --shadow-hover: 0 25px 45px rgba(54, 178, 176, 0.2);
         }
 
-        /* Hero секция с фоновым изображением WebP */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
                         url('hero-bg.webp') center/cover no-repeat;
@@ -88,7 +88,6 @@
             font-size: 0.95rem;
         }
 
-        /* Анимации при скролле */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -100,7 +99,6 @@
             transform: translateY(0);
         }
 
-        /* Шапка */
         .header {
             background: white;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -183,7 +181,6 @@
             display: inline-block;
         }
 
-        /* Бургер */
         .burger {
             display: none;
             flex-direction: column;
@@ -198,7 +195,6 @@
             transition: 0.3s;
         }
 
-        /* Мобильное меню */
         .mobile-menu {
             position: fixed;
             top: 0;
@@ -287,7 +283,6 @@
             text-decoration: none;
         }
 
-        /* Секции */
         section {
             padding: 80px 0;
         }
@@ -333,7 +328,6 @@
             margin-top: 0;
         }
 
-        /* О клинике */
         .about__content {
             max-width: 800px;
             margin: 0 auto;
@@ -369,7 +363,6 @@
             filter: drop-shadow(0 8px 15px rgba(54, 178, 176, 0.4));
         }
 
-        /* Услуги */
         .services__grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -468,7 +461,6 @@
             line-height: 1.4;
         }
 
-        /* Аккордеон (JS-версия) */
         .accordion-content {
             max-height: 0;
             opacity: 0;
@@ -507,7 +499,6 @@
             color: var(--primary);
         }
 
-        /* Стиль для ссылок, открывающих модальные окна */
         .modal-link {
             color: var(--primary-dark);
             text-decoration: underline;
@@ -519,7 +510,6 @@
             color: var(--primary);
         }
 
-        /* Индикатор аккордеона */
         .accordion-hint {
             display: flex;
             align-items: center;
@@ -544,7 +534,6 @@
             font-size: 1rem;
         }
 
-        /* Выделение ключевых фраз */
         .highlight {
             color: #000;
             font-weight: 800;
@@ -573,7 +562,48 @@
             }
         }
 
-        /* Отзывы (обычные, не карусель) */
+        .info-links {
+            background-color: var(--light-gray);
+            padding: 60px 0;
+        }
+        .info-links__grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .info-link-card {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .info-link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        .info-link-card i {
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        .info-link-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--black);
+        }
+        .info-link-card p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
         .reviews__header {
             display: flex;
             justify-content: space-between;
@@ -663,7 +693,6 @@
             margin-top: 40px;
         }
 
-        /* Контакты */
         .contacts__grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -748,7 +777,6 @@
             border: none;
         }
 
-        /* Футер */
         .footer {
             background: #1a1a1a;
             color: white;
@@ -785,7 +813,6 @@
             margin-top: 5px;
         }
 
-        /* ===== ПЛАВАЮЩЕЕ МЕНЮ ===== */
         .float-menu {
             position: fixed;
             bottom: 30px;
@@ -825,7 +852,6 @@
             transform: rotate(180deg);
         }
 
-        /* Пульсация */
         .float-trigger::after {
             content: '';
             position: absolute;
@@ -893,7 +919,6 @@
             box-shadow: 0 12px 25px rgba(0,0,0,0.2);
         }
 
-        /* Модальное окно (общие стили) */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -976,7 +1001,6 @@
             text-decoration: underline;
         }
 
-        /* Увеличение номера телефона для ПК */
         @media (min-width: 993px) {
             .phone {
                 font-size: 20px;
@@ -987,7 +1011,6 @@
             }
         }
 
-        /* Адаптив */
         @media (max-width: 992px) {
             .nav {
                 display: none;
@@ -1060,11 +1083,13 @@
             .modal__title {
                 font-size: 20px;
             }
+            .info-links__grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Шапка -->
     <header class="header">
         <div class="container">
             <div class="header__inner">
@@ -1093,10 +1118,8 @@
         </div>
     </header>
 
-    <!-- Затемнение фона для мобильного меню -->
     <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
 
-    <!-- Мобильное меню с логотипом -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu__logo">
             <img src="LogoCat.png" alt="ВетКэт">
@@ -1105,6 +1128,8 @@
             <li class="mobile-menu__item"><a href="#about" class="mobile-menu__link">О клинике</a></li>
             <li class="mobile-menu__item"><a href="#services" class="mobile-menu__link">Услуги</a></li>
             <li class="mobile-menu__item"><a href="#reviews" class="mobile-menu__link">Отзывы</a></li>
+            <li class="mobile-menu__item"><a href="narcosis.html" target="_blank" class="mobile-menu__link">Как подготовиться к наркозу</a></li>
+            <li class="mobile-menu__item"><a href="station-rules.html" target="_blank" class="mobile-menu__link">Правила посещения стационара</a></li>
             <li class="mobile-menu__item"><a href="#contacts" class="mobile-menu__link">Контакты</a></li>
         </ul>
         <div class="mobile-menu__info">
@@ -1131,7 +1156,6 @@
         </div>
     </div>
 
-    <!-- Плавающее меню -->
     <div class="float-menu" id="floatMenu">
         <div class="float-trigger" id="floatTrigger">
             <i class="fas fa-paw"></i>
@@ -1142,7 +1166,6 @@
         </div>
     </div>
 
-    <!-- Hero секция -->
     <section class="hero">
         <div class="container">
             <h1 class="hero__title">Ветеринарная клиника ВетКэт</h1>
@@ -1164,7 +1187,6 @@
         </div>
     </section>
 
-    <!-- О клинике -->
     <section class="about reveal" id="about">
         <div class="container">
             <h2 class="section-title">О клинике</h2>
@@ -1196,7 +1218,6 @@
         </div>
     </section>
 
-    <!-- Услуги с группировкой -->
     <section class="services reveal" id="services">
         <div class="container">
             <h2 class="section-title">Услуги</h2>
@@ -1204,7 +1225,7 @@
 
             <h3 class="group-title">Диагностика</h3>
             <div class="services__grid">
-                <!-- 1. Рентген (аккордеон) -->
+                <!-- Рентген -->
                 <div class="service-card service-card--xray" style="background-image: url('Ren.webp');">
                     <div class="service-card__content" id="xray-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1230,7 +1251,7 @@
                     </div>
                 </div>
 
-                <!-- 2. УЗИ-диагностика (аккордеон) -->
+                <!-- УЗИ -->
                 <div class="service-card service-card--xray" style="background-image: url('Uzi.webp');">
                     <div class="service-card__content" id="uzi-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1255,7 +1276,7 @@
                     </div>
                 </div>
 
-                <!-- 3. Экспресс-анализы (аккордеон) -->
+                <!-- Анализы -->
                 <div class="service-card service-card--xray" style="background-image: url('Analiz.webp');">
                     <div class="service-card__content" id="analiz-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1283,7 +1304,7 @@
 
             <h3 class="group-title">Лечение и хирургия</h3>
             <div class="services__grid">
-                <!-- 4. Терапия (аккордеон) -->
+                <!-- Терапия -->
                 <div class="service-card service-card--xray" style="background-image: url('Ter.webp');">
                     <div class="service-card__content" id="therapy-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1308,7 +1329,7 @@
                     </div>
                 </div>
 
-                <!-- 5. Хирургия (аккордеон) -->
+                <!-- Хирургия -->
                 <div class="service-card service-card--xray" style="background-image: url('Hir.webp');">
                     <div class="service-card__content" id="surgery-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1335,7 +1356,7 @@
                     </div>
                 </div>
 
-                <!-- 6. Репродуктивная хирургия (аккордеон) -->
+                <!-- Репродуктивная хирургия -->
                 <div class="service-card service-card--xray" style="background-image: url('Repro.webp');">
                     <div class="service-card__content" id="repro-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1360,7 +1381,7 @@
                     </div>
                 </div>
 
-                <!-- 7. Специализированная помощь (аккордеон) -->
+                <!-- Специализированная помощь -->
                 <div class="service-card service-card--xray" style="background-image: url('Spec.webp');">
                     <div class="service-card__content" id="special-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1385,7 +1406,7 @@
                     </div>
                 </div>
 
-                <!-- 8. Стационар (аккордеон) -->
+                <!-- Стационар -->
                 <div class="service-card service-card--xray" style="background-image: url('Stat.webp');">
                     <div class="service-card__content" id="station-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1415,7 +1436,7 @@
 
             <h3 class="group-title">Уход и сервис</h3>
             <div class="services__grid">
-                <!-- 9. Профилактика (аккордеон) -->
+                <!-- Профилактика -->
                 <div class="service-card service-card--xray" style="background-image: url('Prof.webp');">
                     <div class="service-card__content" id="prevent-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1440,7 +1461,7 @@
                     </div>
                 </div>
 
-                <!-- 10. Ветеринарная аптека / корма (аккордеон) -->
+                <!-- Аптека -->
                 <div class="service-card service-card--xray" style="background-image: url('Apteka.webp');">
                     <div class="service-card__content" id="pharmacy-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1465,7 +1486,7 @@
                     </div>
                 </div>
 
-                <!-- 11. Груминг (аккордеон) -->
+                <!-- Груминг -->
                 <div class="service-card service-card--xray" style="background-image: url('Groom.webp');">
                     <div class="service-card__content" id="grooming-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1489,7 +1510,7 @@
                     </div>
                 </div>
 
-                <!-- 12. Экстренная помощь / Выезд на дом -->
+                <!-- Экстренная помощь / Выезд на дом -->
                 <div class="service-card service-card--xray" style="background-image: url('Vyezd.webp');">
                     <div class="service-card__content">
                         <h3 class="service-card__title">Экстренная помощь / Выезд на дом</h3>
@@ -1503,78 +1524,45 @@
         </div>
     </section>
 
-    <!-- Модальное окно с правилами стационара -->
+    <section class="info-links reveal">
+        <div class="container">
+            <div class="info-links__grid">
+                <a href="narcosis.html" target="_blank" class="info-link-card">
+                    <i class="fas fa-syringe"></i>
+                    <h3>Как подготовиться к наркозу</h3>
+                    <p>Памятка для владельцев: что нужно знать перед операцией</p>
+                </a>
+                <a href="station-rules.html" target="_blank" class="info-link-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Правила посещения стационара</h3>
+                    <p>Режим работы, допуск, важные правила для посетителей</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно для правил стационара (контент загружается динамически) -->
     <div class="modal-overlay" id="rulesModal">
         <div class="modal">
             <div class="modal__close" id="closeRulesModal">&times;</div>
-            <div class="modal__title">Правила посещения животных, проходящих стационарное лечение в ОРИТ</div>
-            <div class="modal__content">
-                <p>Клиника оставляет за собой право отказать в приёме животного в ОРИТ:</p>
-                <ul>
-                    <li>при проявлении агрессии по отношению к сотрудникам клиники;</li>
-                    <li>при подозрении/проявлении признаков бешенства, а также не вакцинированным, подобранным животным, с высоко контагиозными заболеваниями лабораторно подтвержденным или с характерными клиническими признаками.</li>
-                </ul>
-                <p>Ветеринарная клиника оставляет за собой право на принудительную вакцинацию от бешенства животных с неизвестным иммунным статусом, а также принудительную обработку от эндо- и эктопаразитов.</p>
-
-                <p><strong>Посещение животных, проходящих стационарное лечение в отделении реанимации и интенсивной терапии Ветеринарной клиники «ВетКэт», разрешается в строго отведенные часы: с 17:00 до 18:00 в вечернее время.</strong></p>
-
-                <p>В течение остального времени информацию о состоянии вашего питомца можно получить по телефонам: <a href="tel:+79203405775">+7 920 340-57-75</a>.</p>
-                <p>О состоянии питомца можно уточнить в переписке в Контакте, Одноклассники; также можно получить фото и видео файлы о содержании питомца. Также работает WhatsApp.</p>
-
-                <p><strong>Допуск в отделение разрешается без верхней одежды, в бахилах.</strong><br>
-                Одновременно для посещения допускаются не более 2-х человек.<br>
-                Длительность посещения – до 15 минут.</p>
-
-                <p>Во время посещения не следует громко разговаривать, общаться с другими животными — это может провоцировать у них стресс.</p>
-                <p>На все вопросы, касающиеся текущего состояния животного и лечебно-диагностического процесса, вам ответит врач интенсивной терапии.</p>
-
-                <p>В отделении реанимации практически всегда находятся пациенты в крайне тяжёлом и критическом состоянии, также регулярно проводятся реанимационные мероприятия, поэтому убедительная просьба учитывать этот факт при планировании посещений. Всегда существует вероятность того, что придется немного подождать. Безусловно, мы ценим ваше время и постараемся проводить вас к питомцу в кратчайшие сроки.</p>
-
-                <p>Животные, находящиеся на стационаре более двух суток, по согласованию с врачом стационара, могут обеспечиваться своими владельцами привычными для пациента предметами ухода и вещами (игрушки, подстилки и т.д.). Ответственность за целостность этих предметов стационар не несёт.</p>
-
-                <p>О состоянии питомца можно уточнить в переписке по WhatsApp, также можно получить фото и видео файлы о содержании питомца.</p>
-
-                <p><strong>Передача смены</strong> – один из важнейших компонентов в работе отделения. В связи с этим выписка пациентов не производится с 11:00 до 12:00.</p>
-
-                <p>Исключения из вышеуказанных правил допускаются для владельцев пациентов, находящихся в критическом состоянии (по предварительному согласованию с врачом текущей смены в ОРИТ).</p>
-
-                <p>С уважением, администрация ветеринарной клиники «ВетКэт».</p>
+            <div class="modal__title">Правила посещения стационара</div>
+            <div class="modal__content" id="rulesModalContent">
+                <!-- Сюда будет подгружаться содержимое из station-rules.html -->
             </div>
         </div>
     </div>
 
-    <!-- Модальное окно с информацией о подготовке к наркозу -->
+    <!-- Модальное окно для подготовки к наркозу (контент загружается динамически) -->
     <div class="modal-overlay" id="narcosisModal">
         <div class="modal">
             <div class="modal__close" id="closeNarcosisModal">&times;</div>
             <div class="modal__title">Как подготовиться к наркозу</div>
-            <div class="modal__content">
-                <p>Прежде всего, не волнуйтесь! Ведь ваше волнение неизбежно будет передаваться вашему любимцу. Постарайтесь успокоиться и в случае необходимости записать свои возможные вопросы на листочек. Перед любой анестезией проводится предварительная консультация. Чаще всего её проводит врач-анестезиолог, однако при необходимости к консультации привлекается ваш оперирующий хирург. Не стесняйтесь задавать все интересующие вас вопросы.</p>
-
-                <p>Если животному назначены препараты, их необходимо применять вплоть до приезда в клинику. Крайне редко возникает необходимость их отмены. Обычно в этом случае доктор отдельно обговаривает их отмену (например, антикоагулянты следует практически всегда отменять перед хирургическим вмешательством. В то же время, антибиотики отменять не следует вплоть до приезда в клинику, чтобы поддержать их постоянную концентрацию в крови и т.д.)</p>
-
-                <p>Если вы хотите дать животному успокоительное, скорее всего оно не причинит вреда, если это сертифицированный препарат, предназначенный для животных. Однако, обязательно сообщите об этом вашему анестезиологу. Также, хотим напомнить вам, что мы проводим бесплатные консультации по телефону с анестезиологом относительно назначения тех или иных успокоительных средств.</p>
-
-                <p>Если у вас уже имеются средства послеоперационной защиты швов (воротники, попоны и т.д.), возьмите их пожалуйста с собой. Также не забудьте при визите в клинику свой паспорт и уже имеющиеся истории болезни, если таковые у вас есть.</p>
-
-                <p>И, наконец, относительно приёма пищи и воды. Воду можно давать свободно до тех пор, пока до предполагаемой операции не останется 2 часа. Учитывайте также дорогу до клиники. Если предполагается гастроскопия, этот интервал лучше увеличить до 3-4 часов.</p>
-
-                <p><strong>Памятка по приёму пищи:</strong></p>
-
-                <p><strong>Грызуны, птицы, щенки и котята до 30-дневного возраста не голодают!</strong> Щенки и котята могут и должны находиться на грудном вскармливании без ограничений. У грызунов и птиц доступ к еде не ограничивается.</p>
-
-                <p><strong>Щенки и котята с 1,5 до 6 месячного возраста</strong> голодают 4 часа. Воду не ограничиваем.</p>
-
-                <p><strong>Щенки и котята с 6 до 10 месяцев</strong> голодают 8 часов.</p>
-
-                <p><strong>Собаки и кошки с возраста 10 месяцев и старше</strong> голодают 12 часов минимум. В некоторых случаях по требованию врача этот срок значительно увеличивается (например, для проведения колоноскопии или резекции пищевода при мегаэзофагусе). Не стоит бояться такой длительной голодовки. Для хищников (для кошек и собак) этот интервал довольно невелик. Гораздо опаснее такое тяжёлое осложнение как аспирация желудочным содержимым при анестезии!</p>
-
-                <p>Соблюдайте рекомендации врачей! Здоровья Вам и вашим любимцам!</p>
+            <div class="modal__content" id="narcosisModalContent">
+                <!-- Сюда будет подгружаться содержимое из narcosis.html -->
             </div>
         </div>
     </div>
 
-    <!-- Отзывы -->
     <section class="reviews reveal" id="reviews">
         <div class="container">
             <div class="reviews__header">
@@ -1623,7 +1611,6 @@
         </div>
     </section>
 
-    <!-- Контакты -->
     <section class="contacts reveal" id="contacts">
         <div class="container">
             <h2 class="section-title">Контакты</h2>
@@ -1679,7 +1666,6 @@
         </div>
     </section>
 
-    <!-- Футер -->
     <footer class="footer">
         <div class="container">
             <div class="footer__inner">
@@ -1693,7 +1679,7 @@
     </footer>
 
     <script>
-        // Бургер-меню
+        // Все предыдущие скрипты остаются, добавляем функции загрузки контента
         const burger = document.getElementById('burger');
         const mobileMenu = document.getElementById('mobileMenu');
         const overlay = document.getElementById('mobileMenuOverlay');
@@ -1733,7 +1719,6 @@
             }
         });
 
-        // Плавная прокрутка для якорей
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1744,7 +1729,6 @@
             });
         });
 
-        // Универсальная функция для аккордеона
         function initAccordion(headerId, contentId, arrowId, triggerId) {
             const header = document.getElementById(headerId);
             const content = document.getElementById(contentId);
@@ -1772,7 +1756,6 @@
             trigger.addEventListener('click', toggle);
         }
 
-        // Инициализация всех аккордеонов
         initAccordion('xray-header', 'xray-content', 'xray-arrow', 'xray-trigger');
         initAccordion('uzi-header', 'uzi-content', 'uzi-arrow', 'uzi-trigger');
         initAccordion('analiz-header', 'analiz-content', 'analiz-arrow', 'analiz-trigger');
@@ -1785,7 +1768,6 @@
         initAccordion('pharmacy-header', 'pharmacy-content', 'pharmacy-arrow', 'pharmacy-trigger');
         initAccordion('grooming-header', 'grooming-content', 'grooming-arrow', 'grooming-trigger');
 
-        // Intersection Observer для плавного появления
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1797,12 +1779,10 @@
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         document.querySelectorAll('.service-card').forEach(el => observer.observe(el));
 
-        // Устанавливаем класс loaded для body
         window.addEventListener('load', () => {
             document.body.classList.add('loaded');
         });
 
-        // Плавающая кнопка
         const floatMenu = document.getElementById('floatMenu');
         const floatTrigger = document.getElementById('floatTrigger');
         const floatButtons = document.getElementById('floatButtons');
@@ -1829,13 +1809,34 @@
             });
         }
 
+        // Функция загрузки контента для модальных окон
+        async function loadModalContent(url, targetElement) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Ошибка загрузки');
+                const html = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const contentBlock = doc.querySelector('.modal-content');
+                if (contentBlock) {
+                    targetElement.innerHTML = contentBlock.innerHTML;
+                } else {
+                    targetElement.innerHTML = '<p>Контент не найден.</p>';
+                }
+            } catch (error) {
+                targetElement.innerHTML = '<p>Не удалось загрузить информацию. Попробуйте позже.</p>';
+            }
+        }
+
         // Модальное окно правил стационара
         const rulesLink = document.getElementById('rulesLink');
         const rulesModal = document.getElementById('rulesModal');
+        const rulesModalContent = document.getElementById('rulesModalContent');
         const closeRulesModal = document.getElementById('closeRulesModal');
 
         if (rulesLink && rulesModal) {
             rulesLink.addEventListener('click', () => {
+                loadModalContent('station-rules.html', rulesModalContent);
                 rulesModal.classList.add('active');
                 document.body.style.overflow = 'hidden';
             });
@@ -1843,6 +1844,8 @@
             function closeRulesModalHandler() {
                 rulesModal.classList.remove('active');
                 document.body.style.overflow = '';
+                // Очищаем контент при закрытии, чтобы при следующем открытии не видеть старый текст
+                rulesModalContent.innerHTML = '';
             }
 
             closeRulesModal.addEventListener('click', closeRulesModalHandler);
@@ -1863,10 +1866,12 @@
         // Модальное окно подготовки к наркозу
         const narcosisLink = document.getElementById('narcosisLink');
         const narcosisModal = document.getElementById('narcosisModal');
+        const narcosisModalContent = document.getElementById('narcosisModalContent');
         const closeNarcosisModal = document.getElementById('closeNarcosisModal');
 
         if (narcosisLink && narcosisModal) {
             narcosisLink.addEventListener('click', () => {
+                loadModalContent('narcosis.html', narcosisModalContent);
                 narcosisModal.classList.add('active');
                 document.body.style.overflow = 'hidden';
             });
@@ -1874,6 +1879,7 @@
             function closeNarcosisModalHandler() {
                 narcosisModal.classList.remove('active');
                 document.body.style.overflow = '';
+                narcosisModalContent.innerHTML = '';
             }
 
             closeNarcosisModal.addEventListener('click', closeNarcosisModalHandler);
