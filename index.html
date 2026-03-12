@@ -507,6 +507,18 @@
             color: var(--primary);
         }
 
+        /* Стиль для ссылок, открывающих модальные окна */
+        .modal-link {
+            color: var(--primary-dark);
+            text-decoration: underline;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .modal-link:hover {
+            color: var(--primary);
+        }
+
         /* Индикатор аккордеона */
         .accordion-hint {
             display: flex;
@@ -881,6 +893,89 @@
             box-shadow: 0 12px 25px rgba(0,0,0,0.2);
         }
 
+        /* Модальное окно (общие стили) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            max-width: 800px;
+            width: 90%;
+            max-height: 85vh;
+            border-radius: 30px;
+            padding: 30px;
+            position: relative;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .modal__close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--gray);
+            transition: color 0.2s;
+        }
+
+        .modal__close:hover {
+            color: var(--primary);
+        }
+
+        .modal__title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            padding-right: 30px;
+        }
+
+        .modal__content {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--black);
+        }
+
+        .modal__content p {
+            margin-bottom: 15px;
+        }
+
+        .modal__content ul {
+            margin: 10px 0 15px 20px;
+        }
+
+        .modal__content li {
+            margin-bottom: 5px;
+        }
+
+        .modal__content strong {
+            color: var(--primary-dark);
+        }
+
+        .modal__content a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .modal__content a:hover {
+            text-decoration: underline;
+        }
+
         /* Увеличение номера телефона для ПК */
         @media (min-width: 993px) {
             .phone {
@@ -958,6 +1053,12 @@
                 width: 50px;
                 height: 50px;
                 font-size: 24px;
+            }
+            .modal {
+                padding: 20px;
+            }
+            .modal__title {
+                font-size: 20px;
             }
         }
     </style>
@@ -1228,6 +1329,7 @@
                             <li>Обработка ран</li>
                             <li>Травматология</li>
                             <li>Анестезия на современном наркозном аппарате</li>
+                            <li><span class="modal-link" id="narcosisLink">Как подготовиться к наркозу</span></li>
                             <li><i class="fas fa-phone-alt"></i> <a href="tel:+79203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
                         </ul>
                     </div>
@@ -1304,6 +1406,7 @@
                             <li>Интенсивная терапия</li>
                             <li>Дневной стационар</li>
                             <li>Уход за животными</li>
+                            <li><span class="modal-link" id="rulesLink">Правила посещения стационара</span></li>
                             <li><i class="fas fa-phone-alt"></i> <a href="tel:+79203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
                         </ul>
                     </div>
@@ -1351,7 +1454,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Обновлённый список для аптеки -->
                     <div class="accordion-content" id="pharmacy-content">
                         <ul>
                             <li>Продажа ветеринарных препаратов</li>
@@ -1400,6 +1502,77 @@
             </div>
         </div>
     </section>
+
+    <!-- Модальное окно с правилами стационара -->
+    <div class="modal-overlay" id="rulesModal">
+        <div class="modal">
+            <div class="modal__close" id="closeRulesModal">&times;</div>
+            <div class="modal__title">Правила посещения животных, проходящих стационарное лечение в ОРИТ</div>
+            <div class="modal__content">
+                <p>Клиника оставляет за собой право отказать в приёме животного в ОРИТ:</p>
+                <ul>
+                    <li>при проявлении агрессии по отношению к сотрудникам клиники;</li>
+                    <li>при подозрении/проявлении признаков бешенства, а также не вакцинированным, подобранным животным, с высоко контагиозными заболеваниями лабораторно подтвержденным или с характерными клиническими признаками.</li>
+                </ul>
+                <p>Ветеринарная клиника оставляет за собой право на принудительную вакцинацию от бешенства животных с неизвестным иммунным статусом, а также принудительную обработку от эндо- и эктопаразитов.</p>
+
+                <p><strong>Посещение животных, проходящих стационарное лечение в отделении реанимации и интенсивной терапии Ветеринарной клиники «ВетКэт», разрешается в строго отведенные часы: с 17:00 до 18:00 в вечернее время.</strong></p>
+
+                <p>В течение остального времени информацию о состоянии вашего питомца можно получить по телефонам: <a href="tel:+79203405775">+7 920 340-57-75</a>.</p>
+                <p>О состоянии питомца можно уточнить в переписке в Контакте, Одноклассники; также можно получить фото и видео файлы о содержании питомца. Также работает WhatsApp.</p>
+
+                <p><strong>Допуск в отделение разрешается без верхней одежды, в бахилах.</strong><br>
+                Одновременно для посещения допускаются не более 2-х человек.<br>
+                Длительность посещения – до 15 минут.</p>
+
+                <p>Во время посещения не следует громко разговаривать, общаться с другими животными — это может провоцировать у них стресс.</p>
+                <p>На все вопросы, касающиеся текущего состояния животного и лечебно-диагностического процесса, вам ответит врач интенсивной терапии.</p>
+
+                <p>В отделении реанимации практически всегда находятся пациенты в крайне тяжёлом и критическом состоянии, также регулярно проводятся реанимационные мероприятия, поэтому убедительная просьба учитывать этот факт при планировании посещений. Всегда существует вероятность того, что придется немного подождать. Безусловно, мы ценим ваше время и постараемся проводить вас к питомцу в кратчайшие сроки.</p>
+
+                <p>Животные, находящиеся на стационаре более двух суток, по согласованию с врачом стационара, могут обеспечиваться своими владельцами привычными для пациента предметами ухода и вещами (игрушки, подстилки и т.д.). Ответственность за целостность этих предметов стационар не несёт.</p>
+
+                <p>О состоянии питомца можно уточнить в переписке по WhatsApp, также можно получить фото и видео файлы о содержании питомца.</p>
+
+                <p><strong>Передача смены</strong> – один из важнейших компонентов в работе отделения. В связи с этим выписка пациентов не производится с 11:00 до 12:00.</p>
+
+                <p>Исключения из вышеуказанных правил допускаются для владельцев пациентов, находящихся в критическом состоянии (по предварительному согласованию с врачом текущей смены в ОРИТ).</p>
+
+                <p>С уважением, администрация ветеринарной клиники «ВетКэт».</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно с информацией о подготовке к наркозу -->
+    <div class="modal-overlay" id="narcosisModal">
+        <div class="modal">
+            <div class="modal__close" id="closeNarcosisModal">&times;</div>
+            <div class="modal__title">Как подготовиться к наркозу</div>
+            <div class="modal__content">
+                <p>Прежде всего, не волнуйтесь! Ведь ваше волнение неизбежно будет передаваться вашему любимцу. Постарайтесь успокоиться и в случае необходимости записать свои возможные вопросы на листочек. Перед любой анестезией проводится предварительная консультация. Чаще всего её проводит врач-анестезиолог, однако при необходимости к консультации привлекается ваш оперирующий хирург. Не стесняйтесь задавать все интересующие вас вопросы.</p>
+
+                <p>Если животному назначены препараты, их необходимо применять вплоть до приезда в клинику. Крайне редко возникает необходимость их отмены. Обычно в этом случае доктор отдельно обговаривает их отмену (например, антикоагулянты следует практически всегда отменять перед хирургическим вмешательством. В то же время, антибиотики отменять не следует вплоть до приезда в клинику, чтобы поддержать их постоянную концентрацию в крови и т.д.)</p>
+
+                <p>Если вы хотите дать животному успокоительное, скорее всего оно не причинит вреда, если это сертифицированный препарат, предназначенный для животных. Однако, обязательно сообщите об этом вашему анестезиологу. Также, хотим напомнить вам, что мы проводим бесплатные консультации по телефону с анестезиологом относительно назначения тех или иных успокоительных средств.</p>
+
+                <p>Если у вас уже имеются средства послеоперационной защиты швов (воротники, попоны и т.д.), возьмите их пожалуйста с собой. Также не забудьте при визите в клинику свой паспорт и уже имеющиеся истории болезни, если таковые у вас есть.</p>
+
+                <p>И, наконец, относительно приёма пищи и воды. Воду можно давать свободно до тех пор, пока до предполагаемой операции не останется 2 часа. Учитывайте также дорогу до клиники. Если предполагается гастроскопия, этот интервал лучше увеличить до 3-4 часов.</p>
+
+                <p><strong>Памятка по приёму пищи:</strong></p>
+
+                <p><strong>Грызуны, птицы, щенки и котята до 30-дневного возраста не голодают!</strong> Щенки и котята могут и должны находиться на грудном вскармливании без ограничений. У грызунов и птиц доступ к еде не ограничивается.</p>
+
+                <p><strong>Щенки и котята с 1,5 до 6 месячного возраста</strong> голодают 4 часа. Воду не ограничиваем.</p>
+
+                <p><strong>Щенки и котята с 6 до 10 месяцев</strong> голодают 8 часов.</p>
+
+                <p><strong>Собаки и кошки с возраста 10 месяцев и старше</strong> голодают 12 часов минимум. В некоторых случаях по требованию врача этот срок значительно увеличивается (например, для проведения колоноскопии или резекции пищевода при мегаэзофагусе). Не стоит бояться такой длительной голодовки. Для хищников (для кошек и собак) этот интервал довольно невелик. Гораздо опаснее такое тяжёлое осложнение как аспирация желудочным содержимым при анестезии!</p>
+
+                <p>Соблюдайте рекомендации врачей! Здоровья Вам и вашим любимцам!</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Отзывы -->
     <section class="reviews reveal" id="reviews">
@@ -1652,6 +1825,68 @@
                     floatButtons.classList.remove('show');
                     floatTrigger.classList.remove('active');
                     floatIcon.className = 'fas fa-paw';
+                }
+            });
+        }
+
+        // Модальное окно правил стационара
+        const rulesLink = document.getElementById('rulesLink');
+        const rulesModal = document.getElementById('rulesModal');
+        const closeRulesModal = document.getElementById('closeRulesModal');
+
+        if (rulesLink && rulesModal) {
+            rulesLink.addEventListener('click', () => {
+                rulesModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            function closeRulesModalHandler() {
+                rulesModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            closeRulesModal.addEventListener('click', closeRulesModalHandler);
+
+            rulesModal.addEventListener('click', (e) => {
+                if (e.target === rulesModal) {
+                    closeRulesModalHandler();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && rulesModal.classList.contains('active')) {
+                    closeRulesModalHandler();
+                }
+            });
+        }
+
+        // Модальное окно подготовки к наркозу
+        const narcosisLink = document.getElementById('narcosisLink');
+        const narcosisModal = document.getElementById('narcosisModal');
+        const closeNarcosisModal = document.getElementById('closeNarcosisModal');
+
+        if (narcosisLink && narcosisModal) {
+            narcosisLink.addEventListener('click', () => {
+                narcosisModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            function closeNarcosisModalHandler() {
+                narcosisModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            closeNarcosisModal.addEventListener('click', closeNarcosisModalHandler);
+
+            narcosisModal.addEventListener('click', (e) => {
+                if (e.target === narcosisModal) {
+                    closeNarcosisModalHandler();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && narcosisModal.classList.contains('active')) {
+                    closeNarcosisModalHandler();
                 }
             });
         }
