@@ -425,29 +425,9 @@
             gap: 8px;
         }
 
-        /* НОВЫЕ СТИЛИ ДЛЯ РАСПОЛОЖЕНИЯ ТЕКСТА И КНОПКИ */
-        .service-card--xray .service-card__content > div {
-            display: flex;
-            align-items: flex-end; /* прижимаем левый и правый блоки к нижнему краю */
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        .service-card--xray .service-card__content > div > div:first-child {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end; /* текст внутри левого блока прижат к низу */
-            flex: 1;
-            margin-right: 10px; /* отступ от кнопки */
-        }
-
-        .service-card--xray .accordion-hint {
-            flex-shrink: 0; /* кнопка не сжимается */
-        }
-
-        /* Общие стили для текстовых элементов внутри карточек */
         .service-card--xray .service-card__title,
         .service-card--xray .service-card__text,
+        .service-card--xray .accordion-hint,
         .service-card--xray .modal-link {
             display: inline-block;
             width: auto;
@@ -1344,10 +1324,10 @@
 
             <h3 class="group-title">Диагностика</h3>
             <div class="services__grid">
-                <!-- 1. Рентген -->
+                <!-- 1. Рентген (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Ren.webp');">
                     <div class="service-card__content" id="xray-header">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-end; width: 100%;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                             <div>
                                 <h3 class="service-card__title">Цифровой рентген-кабинет</h3>
                                 <p class="service-card__text"><span class="highlight">Единственный в городе!</span></p>
@@ -1370,10 +1350,10 @@
                     </div>
                 </div>
 
-                <!-- 2. УЗИ -->
+                <!-- 2. УЗИ-диагностика (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Uzi.webp');">
                     <div class="service-card__content" id="uzi-header">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-end; width: 100%;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                             <div>
                                 <h3 class="service-card__title">УЗИ-диагностика</h3>
                                 <p class="service-card__text">Высокоточное ультразвуковое исследование</p>
@@ -1395,10 +1375,10 @@
                     </div>
                 </div>
 
-                <!-- 3. Экспресс-анализы -->
+                <!-- 3. Экспресс-анализы (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Analiz.webp');">
                     <div class="service-card__content" id="analiz-header">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-end; width: 100%;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                             <div>
                                 <h3 class="service-card__title">Экспресс-анализы</h3>
                                 <p class="service-card__text"><span class="highlight">результат за 15 минут!</span></p>
@@ -1423,10 +1403,10 @@
 
             <h3 class="group-title">Лечение и хирургия</h3>
             <div class="services__grid">
-                <!-- 4. Терапия -->
+                <!-- 4. Терапия (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Ter.webp');">
                     <div class="service-card__content" id="therapy-header">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-end; width: 100%;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                             <div>
                                 <h3 class="service-card__title">Терапия</h3>
                                 <p class="service-card__text">Лечение внутренних заболеваний</p>
@@ -1448,10 +1428,10 @@
                     </div>
                 </div>
 
-                <!-- 5. Хирургия -->
+                <!-- 5. Хирургия (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Hir.webp');">
                     <div class="service-card__content" id="surgery-header">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-end; width: 100%;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                             <div>
                                 <h3 class="service-card__title">Хирургия</h3>
                                 <p class="service-card__text">Проведение хирургических операций</p>
@@ -1475,10 +1455,10 @@
                     </div>
                 </div>
 
-                <!-- 6. Репродуктивная хирургия -->
+                <!-- 6. Репродуктивная хирургия (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Repro.webp');">
                     <div class="service-card__content" id="repro-header">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-end; width: 100%;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                             <div>
                                 <h3 class="service-card__title">Репродуктивная хирургия</h3>
                                 <p class="service-card__text">Плановые операции</p>
@@ -1500,10 +1480,10 @@
                     </div>
                 </div>
 
-                <!-- 7. Специализированная помощь -->
+                <!-- 7. Специализированная помощь (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Spec.webp');">
                     <div class="service-card__content" id="special-header">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-end; width: 100%;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                             <div>
                                 <h3 class="service-card__title">Специализированная помощь</h3>
                                 <p class="service-card__text">Отдельные направления</p>
@@ -1525,10 +1505,10 @@
                     </div>
                 </div>
 
-                <!-- 8. Стационар -->
+                <!-- 8. Стационар (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Stat.webp');">
                     <div class="service-card__content" id="station-header">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-end; width: 100%;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                             <div>
                                 <h3 class="service-card__title">Стационар</h3>
                                 <p class="service-card__text">Только для кошек и котов</p>
@@ -1553,10 +1533,10 @@
 
             <h3 class="group-title">Уход и сервис</h3>
             <div class="services__grid">
-                <!-- 9. Профилактика -->
+                <!-- 9. Профилактика (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Prof.webp');">
                     <div class="service-card__content" id="prevent-header">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-end; width: 100%;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                             <div>
                                 <h3 class="service-card__title">Профилактика</h3>
                                 <p class="service-card__text">Поддержание здоровья</p>
@@ -1578,10 +1558,10 @@
                     </div>
                 </div>
 
-                <!-- 10. Аптека -->
+                <!-- 10. Ветеринарная аптека / корма (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Apteka.webp');">
                     <div class="service-card__content" id="pharmacy-header">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-end; width: 100%;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                             <div>
                                 <h3 class="service-card__title">Ветеринарная аптека / корма</h3>
                                 <p class="service-card__text"></p>
@@ -1603,10 +1583,10 @@
                     </div>
                 </div>
 
-                <!-- 11. Груминг -->
+                <!-- 11. Груминг (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Groom.webp');">
                     <div class="service-card__content" id="grooming-header">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-end; width: 100%;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                             <div>
                                 <h3 class="service-card__title">Груминг</h3>
                                 <p class="service-card__text">Профессиональный уход</p>
@@ -1638,7 +1618,7 @@
         </div>
     </section>
 
-    <!-- Информационные карточки -->
+    <!-- Блок с карточками (blur-подложка под текстом) -->
     <section class="info-links reveal">
         <div class="container">
             <div class="info-links__grid">
@@ -1792,7 +1772,6 @@
     </footer>
 
     <script>
-        // Скрипты без изменений
         const burger = document.getElementById('burger');
         const mobileMenu = document.getElementById('mobileMenu');
         const overlay = document.getElementById('mobileMenuOverlay');
