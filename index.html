@@ -562,7 +562,7 @@
             }
         }
 
-        /* ОБНОВЛЁННЫЙ БЛОК КАРТОЧЕК — текст чёрный, без иконок, светлый оверлей */
+        /* ОБНОВЛЁННЫЙ БЛОК КАРТОЧЕК — текст чёрный, без оверлея, текст внизу */
         .info-links {
             background-color: var(--light-gray);
             padding: 60px 0;
@@ -585,8 +585,8 @@
             color: inherit;
             display: flex;
             flex-direction: column;
+            justify-content: flex-end; /* текст прижимается к низу */
             align-items: center;
-            justify-content: center;
             cursor: pointer;
             background-size: cover;
             background-position: center;
@@ -602,7 +602,7 @@
         .info-link-card:last-child {
             background-image: url('rules-bg.webp'); /* замените на свой файл */
         }
-        /* Светлый полупрозрачный оверлей */
+        /* Оверлей полностью прозрачный */
         .info-link-card::before {
             content: '';
             position: absolute;
@@ -610,12 +610,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.7);
+            background: transparent;
             z-index: -1;
             transition: background 0.3s;
         }
         .info-link-card:hover::before {
-            background: rgba(255, 255, 255, 0.6);
+            background: transparent;
         }
         .info-link-card:hover {
             transform: translateY(-10px) scale(1.02);
@@ -628,16 +628,6 @@
             font-weight: 700;
             margin-bottom: 10px;
             color: #000000;
-            position: relative;
-            z-index: 1;
-        }
-        /* Описание — тёмно-серый */
-        .info-link-card p {
-            color: #222;
-            font-size: 16px;
-            line-height: 1.5;
-            margin-bottom: 15px;
-            max-width: 280px;
             position: relative;
             z-index: 1;
         }
@@ -1156,9 +1146,6 @@
             .info-link-card h3 {
                 font-size: 22px;
             }
-            .info-link-card p {
-                font-size: 14px;
-            }
         }
     </style>
 </head>
@@ -1595,20 +1582,16 @@
         </div>
     </section>
 
-    <!-- Блок с карточками (без иконок, текст чёрный, светлый оверлей) -->
+    <!-- Блок с карточками (текст внизу, чёрный, без оверлея) -->
     <section class="info-links reveal">
         <div class="container">
             <div class="info-links__grid">
                 <div class="info-link-card" id="infoNarcosisLink">
-                    <!-- иконка удалена -->
                     <h3>Как подготовиться к наркозу</h3>
-                    <p>Памятка для владельцев: что нужно знать перед операцией</p>
                     <span class="click-hint">Нажмите, чтобы прочитать</span>
                 </div>
                 <div class="info-link-card" id="infoRulesLink">
-                    <!-- иконка удалена -->
                     <h3>Правила посещения стационара</h3>
-                    <p>Режим работы, допуск, важные правила для посетителей</p>
                     <span class="click-hint">Нажмите, чтобы прочитать</span>
                 </div>
             </div>
@@ -1753,7 +1736,7 @@
     </footer>
 
     <script>
-        // Все скрипты без изменений (бургер, аккордеоны, модальные окна)
+        // Все скрипты без изменений
         const burger = document.getElementById('burger');
         const mobileMenu = document.getElementById('mobileMenu');
         const overlay = document.getElementById('mobileMenuOverlay');
