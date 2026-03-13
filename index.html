@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Все предыдущие стили остаются, изменена только карточка экстренной помощи */
         * {
             margin: 0;
             padding: 0;
@@ -418,90 +417,73 @@
             background-repeat: no-repeat;
         }
 
+        /* Общие стили для текстовых элементов внутри карточек услуг */
         .service-card--xray .service-card__content {
-            position: relative;
-            z-index: 2;
-            color: var(--black);
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(8px);
-            padding: 15px 20px;
-            width: 100%;
-            border-radius: 0 0 30px 30px;
-            transform: translateY(20px);
-            opacity: 0;
-            animation: slideUpContent 0.5s ease forwards;
-            animation-delay: 0.2s;
-            transition: background 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-
-        .service-card--xray:hover .service-card__content {
-            background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
-        }
-
-        @keyframes slideUpContent {
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .service-card--xray .service-card__title {
-            color: var(--black);
-            margin-bottom: 5px;
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        .service-card--xray .service-card__text {
-            color: var(--black);
-            font-weight: 500;
-            font-size: 0.85rem;
-            line-height: 1.4;
-        }
-
-        /* Стили для карточки экстренной помощи (с отдельными подложками) */
-        .service-card--emergency .service-card__content {
             background: none;
             backdrop-filter: none;
             padding: 15px 20px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 10px;
+            gap: 8px;
+            width: 100%;
         }
-        .service-card--emergency .service-card__title,
-        .service-card--emergency .btn {
+
+        .service-card--xray .service-card__title,
+        .service-card--xray .service-card__text,
+        .service-card--xray .accordion-hint,
+        .service-card--xray .modal-link {
             display: inline-block;
             width: auto;
             background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border-radius: 30px;
-            padding: 8px 20px;
+            padding: 6px 15px;
             border: 1px solid rgba(255,255,255,0.5);
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            text-align: center;
+            color: #000000;
             margin: 0;
-        }
-        .service-card--emergency .service-card__title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #000;
-        }
-        .service-card--emergency .btn {
-            background: rgba(255, 255, 255, 0.5);
-            color: #000;
-            font-size: 0.9rem;
-            padding: 6px 16px;
+            text-align: left;
             transition: background 0.3s, color 0.3s;
         }
-        .service-card--emergency .btn:hover {
+
+        .service-card--xray .service-card__title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .service-card--xray .service-card__text {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .service-card--xray .accordion-hint {
+            background: rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .service-card--xray .accordion-hint:hover {
             background: var(--primary);
             color: white;
         }
 
+        .service-card--xray .modal-link {
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .service-card--xray .modal-link:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Стили для аккордеона (выпадающий список) */
         .accordion-content {
             max-height: 0;
             opacity: 0;
@@ -540,39 +522,55 @@
             color: var(--primary);
         }
 
-        .modal-link {
-            color: var(--primary-dark);
-            text-decoration: underline;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .modal-link:hover {
-            color: var(--primary);
-        }
-
-        .accordion-hint {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 0.9rem;
-            background: rgba(255,255,255,0.5);
-            padding: 5px 12px;
-            border-radius: 30px;
-            transition: background 0.3s, transform 0.3s;
-            white-space: nowrap;
-            cursor: pointer;
-        }
-
-        .service-card--xray:hover .accordion-hint {
-            background: rgba(255,255,255,0.9);
+        .accordion-content a {
+            color: inherit;
+            text-decoration: none;
         }
 
         .accordion-arrow {
             transition: transform 0.3s ease;
             font-size: 1rem;
+        }
+
+        /* Стили для карточки экстренной помощи (отдельно) */
+        .service-card--emergency .service-card__content {
+            background: none;
+            backdrop-filter: none;
+            padding: 15px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .service-card--emergency .service-card__title,
+        .service-card--emergency .btn {
+            display: inline-block;
+            width: auto;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 30px;
+            padding: 8px 20px;
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            margin: 0;
+        }
+        .service-card--emergency .service-card__title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #000;
+        }
+        .service-card--emergency .btn {
+            background: rgba(255, 255, 255, 0.5);
+            color: #000;
+            font-size: 0.9rem;
+            padding: 6px 16px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .service-card--emergency .btn:hover {
+            background: var(--primary);
+            color: white;
         }
 
         .highlight {
@@ -1319,7 +1317,7 @@
 
             <h3 class="group-title">Диагностика</h3>
             <div class="services__grid">
-                <!-- Рентген -->
+                <!-- 1. Рентген -->
                 <div class="service-card service-card--xray" style="background-image: url('Ren.webp');">
                     <div class="service-card__content" id="xray-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1345,7 +1343,7 @@
                     </div>
                 </div>
 
-                <!-- УЗИ -->
+                <!-- 2. УЗИ -->
                 <div class="service-card service-card--xray" style="background-image: url('Uzi.webp');">
                     <div class="service-card__content" id="uzi-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1370,7 +1368,7 @@
                     </div>
                 </div>
 
-                <!-- Анализы -->
+                <!-- 3. Экспресс-анализы -->
                 <div class="service-card service-card--xray" style="background-image: url('Analiz.webp');">
                     <div class="service-card__content" id="analiz-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1398,7 +1396,7 @@
 
             <h3 class="group-title">Лечение и хирургия</h3>
             <div class="services__grid">
-                <!-- Терапия -->
+                <!-- 4. Терапия -->
                 <div class="service-card service-card--xray" style="background-image: url('Ter.webp');">
                     <div class="service-card__content" id="therapy-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1423,7 +1421,7 @@
                     </div>
                 </div>
 
-                <!-- Хирургия -->
+                <!-- 5. Хирургия -->
                 <div class="service-card service-card--xray" style="background-image: url('Hir.webp');">
                     <div class="service-card__content" id="surgery-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1450,7 +1448,7 @@
                     </div>
                 </div>
 
-                <!-- Репродуктивная хирургия -->
+                <!-- 6. Репродуктивная хирургия -->
                 <div class="service-card service-card--xray" style="background-image: url('Repro.webp');">
                     <div class="service-card__content" id="repro-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1475,7 +1473,7 @@
                     </div>
                 </div>
 
-                <!-- Специализированная помощь -->
+                <!-- 7. Специализированная помощь -->
                 <div class="service-card service-card--xray" style="background-image: url('Spec.webp');">
                     <div class="service-card__content" id="special-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1500,7 +1498,7 @@
                     </div>
                 </div>
 
-                <!-- Стационар (обновлённый список) -->
+                <!-- 8. Стационар -->
                 <div class="service-card service-card--xray" style="background-image: url('Stat.webp');">
                     <div class="service-card__content" id="station-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1528,7 +1526,7 @@
 
             <h3 class="group-title">Уход и сервис</h3>
             <div class="services__grid">
-                <!-- Профилактика -->
+                <!-- 9. Профилактика -->
                 <div class="service-card service-card--xray" style="background-image: url('Prof.webp');">
                     <div class="service-card__content" id="prevent-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1553,7 +1551,7 @@
                     </div>
                 </div>
 
-                <!-- Аптека -->
+                <!-- 10. Аптека -->
                 <div class="service-card service-card--xray" style="background-image: url('Apteka.webp');">
                     <div class="service-card__content" id="pharmacy-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1578,7 +1576,7 @@
                     </div>
                 </div>
 
-                <!-- Груминг -->
+                <!-- 11. Груминг -->
                 <div class="service-card service-card--xray" style="background-image: url('Groom.webp');">
                     <div class="service-card__content" id="grooming-header">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -1602,11 +1600,11 @@
                     </div>
                 </div>
 
-                <!-- Экстренная помощь / Выезд на дом (обновлённая карточка) -->
+                <!-- 12. Экстренная помощь / Выезд на дом -->
                 <div class="service-card service-card--xray service-card--emergency" style="background-image: url('Vyezd.webp');">
                     <div class="service-card__content">
                         <h3 class="service-card__title">Экстренная помощь / Выезд на дом</h3>
-                        <!-- Текст удалён -->
+                        <!-- Описание удалено -->
                         <a href="tel:+79203405775" class="btn btn--primary btn--small"><i class="fas fa-phone-alt"></i> Позвонить</a>
                     </div>
                 </div>
@@ -1630,7 +1628,7 @@
         </div>
     </section>
 
-    <!-- Модальные окна (без изменений) -->
+    <!-- Модальные окна -->
     <div class="modal-overlay" id="rulesModal">
         <div class="modal">
             <div class="modal__close" id="closeRulesModal">&times;</div>
