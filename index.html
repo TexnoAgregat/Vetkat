@@ -562,7 +562,7 @@
             }
         }
 
-        /* ОБНОВЛЁННЫЙ БЛОК КАРТОЧЕК — с blur-подложкой под текст и текст внизу */
+        /* ОБНОВЛЁННЫЙ БЛОК КАРТОЧЕК — текст ещё ниже, blur только под текстом */
         .info-links {
             background-color: var(--light-gray);
             padding: 60px 0;
@@ -592,8 +592,8 @@
             overflow: hidden;
             z-index: 1;
             border: 2px solid transparent;
-            min-height: 300px; /* чуть больше для лучшего восприятия */
-            padding: 0; /* убираем паддинги, они будут у внутреннего блока */
+            min-height: 300px;
+            padding: 0;
         }
         .info-link-card:first-child {
             background-image: url('narcosis-bg.webp'); /* замените на свой файл */
@@ -614,7 +614,7 @@
             -webkit-backdrop-filter: blur(8px);
             border-radius: 20px;
             padding: 15px 20px;
-            margin: 0 20px 30px 20px; /* отступы от краёв и снизу */
+            margin: 0 20px 10px 20px; /* уменьшил нижний отступ до 10px */
             width: calc(100% - 40px);
             text-align: center;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -1137,7 +1137,7 @@
                 min-height: 250px;
             }
             .info-link-card .card-text {
-                margin: 0 15px 20px 15px;
+                margin: 0 15px 10px 15px;
                 width: calc(100% - 30px);
                 padding: 12px 15px;
             }
