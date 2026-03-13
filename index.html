@@ -45,7 +45,6 @@
             --shadow-hover: 0 25px 45px rgba(54, 178, 176, 0.2);
         }
 
-        /* Hero секция с фоновым изображением WebP */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
                         url('hero-bg.webp') center/cover no-repeat;
@@ -88,7 +87,6 @@
             font-size: 0.95rem;
         }
 
-        /* Анимации при скролле */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -100,7 +98,6 @@
             transform: translateY(0);
         }
 
-        /* Шапка */
         .header {
             background: white;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -183,7 +180,6 @@
             display: inline-block;
         }
 
-        /* Бургер */
         .burger {
             display: none;
             flex-direction: column;
@@ -198,7 +194,6 @@
             transition: 0.3s;
         }
 
-        /* Мобильное меню */
         .mobile-menu {
             position: fixed;
             top: 0;
@@ -287,7 +282,6 @@
             text-decoration: none;
         }
 
-        /* Секции */
         section {
             padding: 80px 0;
         }
@@ -333,7 +327,6 @@
             margin-top: 0;
         }
 
-        /* О клинике */
         .about__content {
             max-width: 800px;
             margin: 0 auto;
@@ -369,7 +362,6 @@
             filter: drop-shadow(0 8px 15px rgba(54, 178, 176, 0.4));
         }
 
-        /* Услуги */
         .services__grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -486,6 +478,82 @@
         .service-card--xray .modal-link:hover {
             background: var(--primary);
             color: white;
+        }
+
+        /* Стили для информационных карточек (такие же, как у обычных, но с другим фоном) */
+        .info-card {
+            background: none;
+            padding: 0;
+            border: none;
+            position: relative;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.4s, box-shadow 0.4s;
+            cursor: pointer;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .info-card .info-card__content {
+            margin-top: auto;
+            padding: 15px 20px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .info-card .info-card__title,
+        .info-card .info-card__hint {
+            display: inline-block;
+            width: auto;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 30px;
+            padding: 8px 20px;
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            color: #000000;
+            margin: 0;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .info-card .info-card__title {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .info-card .info-card__hint {
+            background: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            padding: 4px 15px;
+        }
+
+        .info-card:hover .info-card__hint {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Фоновые изображения для информационных карточек */
+        .info-card--narcosis {
+            background-image: url('narcosis-bg.webp');
+        }
+
+        .info-card--rules {
+            background-image: url('rules-bg.webp');
         }
 
         .accordion-content {
@@ -608,92 +676,6 @@
             }
         }
 
-        /* Информационные карточки */
-        .info-links {
-            background-color: var(--light-gray);
-            padding: 60px 0;
-        }
-
-        .info-links__grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .info-link-card {
-            position: relative;
-            border-radius: 30px;
-            box-shadow: var(--shadow-sm);
-            transition: transform 0.4s, box-shadow 0.4s, border 0.2s;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            overflow: hidden;
-            z-index: 1;
-            border: 2px solid transparent;
-            min-height: 300px;
-            padding: 20px;
-        }
-
-        .info-link-card:first-child {
-            background-image: url('narcosis-bg.webp');
-        }
-
-        .info-link-card:last-child {
-            background-image: url('rules-bg.webp');
-        }
-
-        .info-link-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 30px 50px rgba(54, 178, 176, 0.4);
-            border-color: var(--primary);
-        }
-
-        .info-link-card h3,
-        .info-link-card .click-hint {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-radius: 30px;
-            padding: 8px 20px;
-            border: 1px solid rgba(255,255,255,0.5);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .info-link-card h3 {
-            font-size: 20px;
-            font-weight: 700;
-            color: #000000;
-            margin: 0;
-        }
-
-        .info-link-card .click-hint {
-            font-size: 12px;
-            color: #000;
-            background: rgba(255, 255, 255, 0.5);
-            padding: 5px 15px;
-            transition: background 0.3s, color 0.3s;
-            margin: 0;
-        }
-
-        .info-link-card:hover .click-hint {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* Отзывы */
         .reviews__header {
             display: flex;
             justify-content: space-between;
@@ -783,7 +765,6 @@
             margin-top: 40px;
         }
 
-        /* Контакты */
         .contacts__grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -868,7 +849,6 @@
             border: none;
         }
 
-        /* Футер */
         .footer {
             background: #1a1a1a;
             color: white;
@@ -914,7 +894,6 @@
             color: var(--primary) !important;
         }
 
-        /* Плавающее меню */
         .float-menu {
             position: fixed;
             bottom: 30px;
@@ -1021,7 +1000,6 @@
             box-shadow: 0 12px 25px rgba(0,0,0,0.2);
         }
 
-        /* Модальные окна */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -1104,7 +1082,6 @@
             text-decoration: underline;
         }
 
-        /* Адаптивность */
         @media (min-width: 993px) {
             .phone {
                 font-size: 20px;
@@ -1186,21 +1163,6 @@
             }
             .modal__title {
                 font-size: 20px;
-            }
-            .info-links__grid {
-                grid-template-columns: 1fr;
-            }
-            .info-link-card {
-                min-height: 250px;
-                padding: 15px;
-            }
-            .info-link-card h3 {
-                font-size: 18px;
-                padding: 6px 15px;
-            }
-            .info-link-card .click-hint {
-                font-size: 11px;
-                padding: 4px 12px;
             }
         }
     </style>
@@ -1300,7 +1262,7 @@
                     <i class="fas fa-map-marker-alt"></i>
                     <span>Тейково, пл. Ленина, 3</span>
                 </div>
-                <!-- Новая строка с иконкой и напоминанием о паспорте -->
+                <!-- Напоминание о паспорте -->
                 <div class="hero__info-item">
                     <i class="fas fa-id-card"></i>
                     <span>При первом обращении не забудьте взять паспорт для заключения договора</span>
@@ -1468,6 +1430,14 @@
                     </div>
                 </div>
 
+                <!-- Информационная карточка "Как подготовиться к операции" -->
+                <div class="info-card info-card--narcosis" id="infoNarcosisCard">
+                    <div class="info-card__content">
+                        <span class="info-card__title">Как подготовиться к операции</span>
+                        <span class="info-card__hint">Нажмите, чтобы прочитать</span>
+                    </div>
+                </div>
+
                 <!-- 6. Репродуктивная хирургия -->
                 <div class="service-card service-card--xray" style="background-image: url('Repro.webp');">
                     <div class="service-card__content" id="repro-header">
@@ -1534,6 +1504,14 @@
                             <li><span class="modal-link" id="rulesLink">Правила посещения стационара</span></li>
                             <li><i class="fas fa-phone-alt"></i> <a href="tel:+79203405775" style="color: inherit; text-decoration: none;">Записаться на приём</a></li>
                         </ul>
+                    </div>
+                </div>
+
+                <!-- Информационная карточка "Правила посещения стационара" -->
+                <div class="info-card info-card--rules" id="infoRulesCard">
+                    <div class="info-card__content">
+                        <span class="info-card__title">Правила посещения стационара</span>
+                        <span class="info-card__hint">Нажмите, чтобы прочитать</span>
                     </div>
                 </div>
             </div>
@@ -1614,22 +1592,6 @@
                         <h3 class="service-card__title">Экстренная помощь / Выезд на дом</h3>
                         <a href="tel:+79203405775" class="btn btn--primary btn--small"><i class="fas fa-phone-alt"></i> Позвонить</a>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Информационные карточки -->
-    <section class="info-links reveal">
-        <div class="container">
-            <div class="info-links__grid">
-                <div class="info-link-card" id="infoNarcosisLink">
-                    <h3>Как подготовиться к операции</h3>
-                    <span class="click-hint">Нажмите, чтобы прочитать</span>
-                </div>
-                <div class="info-link-card" id="infoRulesLink">
-                    <h3>Правила посещения стационара</h3>
-                    <span class="click-hint">Нажмите, чтобы прочитать</span>
                 </div>
             </div>
         </div>
@@ -1784,7 +1746,6 @@
     </footer>
 
     <script>
-        // Бургер-меню
         const burger = document.getElementById('burger');
         const mobileMenu = document.getElementById('mobileMenu');
         const overlay = document.getElementById('mobileMenuOverlay');
@@ -1824,7 +1785,6 @@
             }
         });
 
-        // Плавная прокрутка для якорей
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1835,7 +1795,6 @@
             });
         });
 
-        // Универсальная функция для аккордеона
         function initAccordion(headerId, contentId, arrowId, triggerId) {
             const header = document.getElementById(headerId);
             const content = document.getElementById(contentId);
@@ -1875,7 +1834,6 @@
         initAccordion('pharmacy-header', 'pharmacy-content', 'pharmacy-arrow', 'pharmacy-trigger');
         initAccordion('grooming-header', 'grooming-content', 'grooming-arrow', 'grooming-trigger');
 
-        // Intersection Observer для плавного появления
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1891,7 +1849,6 @@
             document.body.classList.add('loaded');
         });
 
-        // Плавающая кнопка
         const floatMenu = document.getElementById('floatMenu');
         const floatTrigger = document.getElementById('floatTrigger');
         const floatButtons = document.getElementById('floatButtons');
@@ -1918,7 +1875,6 @@
             });
         }
 
-        // Загрузка контента для модальных окон
         async function loadModalContent(url, targetElement) {
             try {
                 const response = await fetch(url);
@@ -1937,7 +1893,6 @@
             }
         }
 
-        // Модальное окно правил стационара
         const rulesLink = document.getElementById('rulesLink');
         const rulesModal = document.getElementById('rulesModal');
         const rulesModalContent = document.getElementById('rulesModalContent');
@@ -1965,7 +1920,6 @@
             });
         }
 
-        // Модальное окно подготовки к операции
         const narcosisLink = document.getElementById('narcosisLink');
         const narcosisModal = document.getElementById('narcosisModal');
         const narcosisModalContent = document.getElementById('narcosisModalContent');
@@ -1993,19 +1947,20 @@
             });
         }
 
-        // Клик по информационным карточкам
-        const infoNarcosisLink = document.getElementById('infoNarcosisLink');
-        const infoRulesLink = document.getElementById('infoRulesLink');
+        // Клик по новым информационным карточкам
+        const infoNarcosisCard = document.getElementById('infoNarcosisCard');
+        const infoRulesCard = document.getElementById('infoRulesCard');
 
-        if (infoNarcosisLink) {
-            infoNarcosisLink.addEventListener('click', () => {
+        if (infoNarcosisCard) {
+            infoNarcosisCard.addEventListener('click', () => {
                 loadModalContent('narcosis.html', narcosisModalContent);
                 narcosisModal.classList.add('active');
                 document.body.style.overflow = 'hidden';
             });
         }
-        if (infoRulesLink) {
-            infoRulesLink.addEventListener('click', () => {
+
+        if (infoRulesCard) {
+            infoRulesCard.addEventListener('click', () => {
                 loadModalContent('station-rules.html', rulesModalContent);
                 rulesModal.classList.add('active');
                 document.body.style.overflow = 'hidden';
