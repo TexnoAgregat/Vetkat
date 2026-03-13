@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* Все предыдущие стили остаются без изменений, обновлён только блок .info-links */
         * {
             margin: 0;
             padding: 0;
@@ -561,7 +562,7 @@
             }
         }
 
-        /* Новые стили для карточек с фоновыми изображениями */
+        /* ОБНОВЛЁННЫЙ БЛОК КАРТОЧЕК */
         .info-links {
             background-color: var(--light-gray);
             padding: 60px 0;
@@ -579,7 +580,7 @@
             padding: 30px;
             text-align: center;
             box-shadow: var(--shadow-sm);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.4s, box-shadow 0.4s;
             text-decoration: none;
             color: inherit;
             display: block;
@@ -597,7 +598,7 @@
         .info-link-card:last-child {
             background-image: url('rules-bg.webp'); /* замените на свой файл */
         }
-        /* Полупрозрачный слой для читаемости текста */
+        /* Полупрозрачный оверлей (теперь более прозрачный) */
         .info-link-card::before {
             content: '';
             position: absolute;
@@ -605,24 +606,18 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.2); /* значительно светлее */
             z-index: -1;
             transition: background 0.3s;
         }
         .info-link-card:hover::before {
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.15); /* ещё чуть светлее */
         }
         .info-link-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
+            transform: translateY(-8px) scale(1.02); /* более заметный подъём */
+            box-shadow: 0 30px 50px rgba(54, 178, 176, 0.3);
         }
-        .info-link-card i {
-            font-size: 48px;
-            color: white;
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 1;
-        }
+        /* Заголовок */
         .info-link-card h3 {
             font-size: 20px;
             font-weight: 700;
@@ -630,14 +625,30 @@
             color: white;
             position: relative;
             z-index: 1;
+            display: inline-block; /* чтобы стрелка была рядом */
+        }
+        /* Стрелка, появляющаяся при наведении */
+        .info-link-card h3::after {
+            content: '→';
+            position: absolute;
+            right: -25px;
+            top: 0;
+            opacity: 0;
+            transition: opacity 0.3s, right 0.3s;
+            font-size: 20px;
+        }
+        .info-link-card:hover h3::after {
+            opacity: 1;
+            right: -30px;
         }
         .info-link-card p {
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.95);
             font-size: 14px;
             position: relative;
             z-index: 1;
         }
 
+        /* Далее стили без изменений */
         .reviews__header {
             display: flex;
             justify-content: space-between;
@@ -1131,6 +1142,7 @@
     </style>
 </head>
 <body>
+    <!-- Шапка, мобильное меню, hero, about, services, info-links, модалки, reviews, contacts, footer -->
     <header class="header">
         <div class="container">
             <div class="header__inner">
@@ -1565,17 +1577,17 @@
         </div>
     </section>
 
-    <!-- Блок с карточками, теперь с фоновыми изображениями -->
+    <!-- Блок с карточками (иконки убраны) -->
     <section class="info-links reveal">
         <div class="container">
             <div class="info-links__grid">
                 <div class="info-link-card" id="infoNarcosisLink">
-                    <i class="fas fa-syringe"></i>
+                    <!-- Иконка удалена -->
                     <h3>Как подготовиться к наркозу</h3>
                     <p>Памятка для владельцев: что нужно знать перед операцией</p>
                 </div>
                 <div class="info-link-card" id="infoRulesLink">
-                    <i class="fas fa-file-alt"></i>
+                    <!-- Иконка удалена -->
                     <h3>Правила посещения стационара</h3>
                     <p>Режим работы, допуск, важные правила для посетителей</p>
                 </div>
@@ -1583,7 +1595,7 @@
         </div>
     </section>
 
-    <!-- Модальные окна (контент загружается из файлов) -->
+    <!-- Модальные окна (без изменений) -->
     <div class="modal-overlay" id="rulesModal">
         <div class="modal">
             <div class="modal__close" id="closeRulesModal">&times;</div>
@@ -1721,6 +1733,7 @@
     </footer>
 
     <script>
+        // Весь скрипт остаётся без изменений (как в предыдущей версии)
         const burger = document.getElementById('burger');
         const mobileMenu = document.getElementById('mobileMenu');
         const overlay = document.getElementById('mobileMenuOverlay');
