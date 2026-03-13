@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Все предыдущие стили остаются, изменён только блок .info-links */
+        /* Все предыдущие стили остаются, изменена только карточка экстренной помощи */
         * {
             margin: 0;
             padding: 0;
@@ -461,6 +461,47 @@
             line-height: 1.4;
         }
 
+        /* Стили для карточки экстренной помощи (с отдельными подложками) */
+        .service-card--emergency .service-card__content {
+            background: none;
+            backdrop-filter: none;
+            padding: 15px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .service-card--emergency .service-card__title,
+        .service-card--emergency .btn {
+            display: inline-block;
+            width: auto;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 30px;
+            padding: 8px 20px;
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            margin: 0;
+        }
+        .service-card--emergency .service-card__title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #000;
+        }
+        .service-card--emergency .btn {
+            background: rgba(255, 255, 255, 0.5);
+            color: #000;
+            font-size: 0.9rem;
+            padding: 6px 16px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .service-card--emergency .btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
         .accordion-content {
             max-height: 0;
             opacity: 0;
@@ -562,7 +603,7 @@
             }
         }
 
-        /* ОБНОВЛЁННЫЙ БЛОК КАРТОЧЕК — подложка только под текстом, уменьшенный шрифт */
+        /* Информационные карточки */
         .info-links {
             background-color: var(--light-gray);
             padding: 60px 0;
@@ -597,21 +638,19 @@
             padding: 20px;
         }
         .info-link-card:first-child {
-            background-image: url('narcosis-bg.webp'); /* замените на свой файл */
+            background-image: url('narcosis-bg.webp');
         }
         .info-link-card:last-child {
-            background-image: url('rules-bg.webp'); /* замените на свой файл */
+            background-image: url('rules-bg.webp');
         }
         .info-link-card:hover {
             transform: translateY(-10px) scale(1.02);
             box-shadow: 0 30px 50px rgba(54, 178, 176, 0.4);
             border-color: var(--primary);
         }
-
-        /* Заголовок и подсказка с подложкой */
         .info-link-card h3,
         .info-link-card .click-hint {
-            display: inline-block; /* ширина по содержимому */
+            display: inline-block;
             background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
@@ -621,14 +660,12 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             text-align: center;
         }
-
         .info-link-card h3 {
             font-size: 20px;
             font-weight: 700;
             color: #000000;
             margin: 0;
         }
-
         .info-link-card .click-hint {
             font-size: 12px;
             color: #000;
@@ -637,7 +674,6 @@
             transition: background 0.3s, color 0.3s;
             margin: 0;
         }
-
         .info-link-card:hover .click-hint {
             background: var(--primary);
             color: white;
@@ -1566,21 +1602,19 @@
                     </div>
                 </div>
 
-                <!-- Экстренная помощь / Выезд на дом -->
-                <div class="service-card service-card--xray" style="background-image: url('Vyezd.webp');">
+                <!-- Экстренная помощь / Выезд на дом (обновлённая карточка) -->
+                <div class="service-card service-card--xray service-card--emergency" style="background-image: url('Vyezd.webp');">
                     <div class="service-card__content">
                         <h3 class="service-card__title">Экстренная помощь / Выезд на дом</h3>
-                        <p class="service-card__text">Выезд врача на дом. При невозможности привезти питомца.</p>
-                        <div style="margin-top: 10px;">
-                            <a href="tel:+79203405775" class="btn btn--primary btn--small"><i class="fas fa-phone-alt"></i> Позвонить</a>
-                        </div>
+                        <!-- Текст удалён -->
+                        <a href="tel:+79203405775" class="btn btn--primary btn--small"><i class="fas fa-phone-alt"></i> Позвонить</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Блок с карточками (blur-подложка под текстом) -->
+    <!-- Блок с информационными карточками -->
     <section class="info-links reveal">
         <div class="container">
             <div class="info-links__grid">
@@ -1596,7 +1630,7 @@
         </div>
     </section>
 
-    <!-- Модальные окна (контент загружается из файлов) -->
+    <!-- Модальные окна (без изменений) -->
     <div class="modal-overlay" id="rulesModal">
         <div class="modal">
             <div class="modal__close" id="closeRulesModal">&times;</div>
@@ -1734,7 +1768,7 @@
     </footer>
 
     <script>
-        // Все скрипты без изменений (бургер, аккордеоны, модальные окна)
+        // Скрипты без изменений
         const burger = document.getElementById('burger');
         const mobileMenu = document.getElementById('mobileMenu');
         const overlay = document.getElementById('mobileMenuOverlay');
