@@ -272,14 +272,19 @@
             font-size: 14px;
         }
 
+        .mobile-menu__info-item a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .mobile-menu__info-item a:hover {
+            color: var(--primary-dark);
+        }
+
         .mobile-menu__info-icon {
             font-size: 20px;
             color: var(--primary);
-        }
-
-        .mobile-menu__info-text a {
-            color: var(--primary);
-            text-decoration: none;
         }
 
         section {
@@ -480,7 +485,7 @@
             color: white;
         }
 
-        /* Стили для информационных карточек (такие же, как у обычных, но с другим фоном) */
+        /* Стили для информационных карточек (как подготовиться к операции, правила стационара) */
         .info-card {
             background: none;
             padding: 0;
@@ -547,7 +552,6 @@
             color: white;
         }
 
-        /* Фоновые изображения для информационных карточек */
         .info-card--narcosis {
             background-image: url('narcosis-bg.webp');
         }
@@ -1229,7 +1233,15 @@
             </div>
             <div class="mobile-menu__info-item">
                 <i class="fas fa-envelope mobile-menu__info-icon"></i>
-                <span>vetkat37@gmail.com</span>
+                <a href="mailto:vetkat37@gmail.com">vetkat37@gmail.com</a>
+            </div>
+            <div class="mobile-menu__info-item">
+                <i class="fas fa-file-lines mobile-menu__info-icon"></i>
+                <a href="privacy.html" target="_blank">Политика конфиденциальности</a>
+            </div>
+            <div class="mobile-menu__info-item">
+                <i class="fab fa-telegram mobile-menu__info-icon"></i>
+                <a href="https://t.me/Oo0oOo0oOo0o0o0" target="_blank">Связаться с разработчиком</a>
             </div>
         </div>
     </div>
@@ -1262,7 +1274,6 @@
                     <i class="fas fa-map-marker-alt"></i>
                     <span>Тейково, пл. Ленина, 3</span>
                 </div>
-                <!-- Напоминание о паспорте -->
                 <div class="hero__info-item">
                     <i class="fas fa-id-card"></i>
                     <span>При первом обращении не забудьте взять паспорт для заключения договора</span>
@@ -1947,7 +1958,6 @@
             });
         }
 
-        // Клик по новым информационным карточкам
         const infoNarcosisCard = document.getElementById('infoNarcosisCard');
         const infoRulesCard = document.getElementById('infoRulesCard');
 
