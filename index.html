@@ -867,6 +867,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         .footer__logo {
@@ -1629,7 +1631,7 @@
         </div>
     </div>
 
-    <!-- Отзывы с картинкой "Хорошее место" от Яндекса -->
+    <!-- Отзывы -->
     <section class="reviews reveal" id="reviews">
         <div class="container">
             <div class="reviews__header">
@@ -1637,10 +1639,6 @@
                     <span class="reviews__rating-score">5.0</span>
                     <span class="reviews__rating-stars">★★★★★</span>
                     <span>24 отзыва на Яндекс Картах</span>
-                    <!-- Кликабельная картинка "Хорошее место" -->
-                    <a href="https://yandex.ru/maps/org/vetket/1781348007/" target="_blank" style="margin-left: 10px;">
-                        <img src="Yan.webp" alt="Хорошее место на Яндекс Картах" style="height: 30px; width: auto; vertical-align: middle;">
-                    </a>
                 </div>
                 <a href="https://yandex.ru/maps/org/vetket/1781348007/reviews/" target="_blank" class="btn btn--primary">Все отзывы</a>
             </div>
@@ -1682,6 +1680,12 @@
         </div>
     </section>
 
+    <!-- Картинка "Хорошее место" от Яндекса (отдельно, без ссылки) -->
+    <div class="container" style="text-align: center; margin: 40px auto;">
+        <img src="Yan.webp" alt="Хорошее место на Яндекс Картах" style="max-width: 100%; height: auto;">
+    </div>
+
+    <!-- Контакты -->
     <section class="contacts reveal" id="contacts">
         <div class="container">
             <h2 class="section-title">Контакты</h2>
@@ -1737,11 +1741,16 @@
         </div>
     </section>
 
+    <!-- Футер -->
     <footer class="footer">
         <div class="container">
             <div class="footer__inner">
                 <div class="footer__logo">ВетКэт</div>
                 <div>
+                    <!-- Политика конфиденциальности – над номером -->
+                    <div style="margin-bottom: 5px;">
+                        <a href="privacy.html" style="color: #aaa; text-decoration: none; font-size: 14px;">Политика конфиденциальности</a>
+                    </div>
                     <a href="tel:+79203405775" class="footer__phone">+7-920-340-57-75</a>
                     <div class="footer__address">Тейково, площадь Ленина, 3</div>
                     <div style="margin-top: 10px;">
