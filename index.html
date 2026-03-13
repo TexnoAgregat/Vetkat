@@ -422,7 +422,7 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 4px; /* уменьшили расстояние между элементами */
         }
 
         .service-card--xray .service-card__title,
@@ -435,7 +435,7 @@
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border-radius: 30px;
-            padding: 6px 15px;
+            padding: 4px 10px; /* уменьшили внутренние отступы */
             border: 1px solid rgba(255,255,255,0.5);
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             color: #000000;
@@ -447,7 +447,7 @@
         .service-card--xray .service-card__title {
             font-weight: 700;
             font-size: 1.1rem;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .service-card--xray .service-card__text {
@@ -1327,15 +1327,13 @@
                 <!-- 1. Рентген (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Ren.webp');">
                     <div class="service-card__content" id="xray-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <div>
-                                <h3 class="service-card__title">Цифровой рентген-кабинет</h3>
-                                <p class="service-card__text"><span class="highlight">Единственный в городе!</span></p>
-                            </div>
-                            <div class="accordion-hint" id="xray-trigger">
-                                <span class="accordion-hint-text">Подробнее</span>
-                                <i class="fas fa-chevron-down accordion-arrow" id="xray-arrow"></i>
-                            </div>
+                        <div>
+                            <h3 class="service-card__title">Цифровой рентген-кабинет</h3>
+                            <p class="service-card__text"><span class="highlight">Единственный в городе!</span></p>
+                        </div>
+                        <div class="accordion-hint" id="xray-trigger">
+                            <span class="accordion-hint-text">Подробнее</span>
+                            <i class="fas fa-chevron-down accordion-arrow" id="xray-arrow"></i>
                         </div>
                     </div>
                     <div class="accordion-content" id="xray-content">
@@ -1353,15 +1351,13 @@
                 <!-- 2. УЗИ-диагностика (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Uzi.webp');">
                     <div class="service-card__content" id="uzi-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <div>
-                                <h3 class="service-card__title">УЗИ-диагностика</h3>
-                                <p class="service-card__text">Высокоточное ультразвуковое исследование</p>
-                            </div>
-                            <div class="accordion-hint" id="uzi-trigger">
-                                <span class="accordion-hint-text">Подробнее</span>
-                                <i class="fas fa-chevron-down accordion-arrow" id="uzi-arrow"></i>
-                            </div>
+                        <div>
+                            <h3 class="service-card__title">УЗИ-диагностика</h3>
+                            <p class="service-card__text">Высокоточное ультразвуковое исследование</p>
+                        </div>
+                        <div class="accordion-hint" id="uzi-trigger">
+                            <span class="accordion-hint-text">Подробнее</span>
+                            <i class="fas fa-chevron-down accordion-arrow" id="uzi-arrow"></i>
                         </div>
                     </div>
                     <div class="accordion-content" id="uzi-content">
@@ -1378,15 +1374,13 @@
                 <!-- 3. Экспресс-анализы (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Analiz.webp');">
                     <div class="service-card__content" id="analiz-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <div>
-                                <h3 class="service-card__title">Экспресс-анализы</h3>
-                                <p class="service-card__text"><span class="highlight">результат за 15 минут!</span></p>
-                            </div>
-                            <div class="accordion-hint" id="analiz-trigger">
-                                <span class="accordion-hint-text">Подробнее</span>
-                                <i class="fas fa-chevron-down accordion-arrow" id="analiz-arrow"></i>
-                            </div>
+                        <div>
+                            <h3 class="service-card__title">Экспресс-анализы</h3>
+                            <p class="service-card__text"><span class="highlight">результат за 15 минут!</span></p>
+                        </div>
+                        <div class="accordion-hint" id="analiz-trigger">
+                            <span class="accordion-hint-text">Подробнее</span>
+                            <i class="fas fa-chevron-down accordion-arrow" id="analiz-arrow"></i>
                         </div>
                     </div>
                     <div class="accordion-content" id="analiz-content">
@@ -1406,15 +1400,13 @@
                 <!-- 4. Терапия (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Ter.webp');">
                     <div class="service-card__content" id="therapy-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <div>
-                                <h3 class="service-card__title">Терапия</h3>
-                                <p class="service-card__text">Лечение внутренних заболеваний</p>
-                            </div>
-                            <div class="accordion-hint" id="therapy-trigger">
-                                <span class="accordion-hint-text">Подробнее</span>
-                                <i class="fas fa-chevron-down accordion-arrow" id="therapy-arrow"></i>
-                            </div>
+                        <div>
+                            <h3 class="service-card__title">Терапия</h3>
+                            <p class="service-card__text">Лечение внутренних заболеваний</p>
+                        </div>
+                        <div class="accordion-hint" id="therapy-trigger">
+                            <span class="accordion-hint-text">Подробнее</span>
+                            <i class="fas fa-chevron-down accordion-arrow" id="therapy-arrow"></i>
                         </div>
                     </div>
                     <div class="accordion-content" id="therapy-content">
@@ -1431,15 +1423,13 @@
                 <!-- 5. Хирургия (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Hir.webp');">
                     <div class="service-card__content" id="surgery-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <div>
-                                <h3 class="service-card__title">Хирургия</h3>
-                                <p class="service-card__text">Проведение хирургических операций</p>
-                            </div>
-                            <div class="accordion-hint" id="surgery-trigger">
-                                <span class="accordion-hint-text">Подробнее</span>
-                                <i class="fas fa-chevron-down accordion-arrow" id="surgery-arrow"></i>
-                            </div>
+                        <div>
+                            <h3 class="service-card__title">Хирургия</h3>
+                            <p class="service-card__text">Проведение хирургических операций</p>
+                        </div>
+                        <div class="accordion-hint" id="surgery-trigger">
+                            <span class="accordion-hint-text">Подробнее</span>
+                            <i class="fas fa-chevron-down accordion-arrow" id="surgery-arrow"></i>
                         </div>
                     </div>
                     <div class="accordion-content" id="surgery-content">
@@ -1458,15 +1448,13 @@
                 <!-- 6. Репродуктивная хирургия (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Repro.webp');">
                     <div class="service-card__content" id="repro-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <div>
-                                <h3 class="service-card__title">Репродуктивная хирургия</h3>
-                                <p class="service-card__text">Плановые операции</p>
-                            </div>
-                            <div class="accordion-hint" id="repro-trigger">
-                                <span class="accordion-hint-text">Подробнее</span>
-                                <i class="fas fa-chevron-down accordion-arrow" id="repro-arrow"></i>
-                            </div>
+                        <div>
+                            <h3 class="service-card__title">Репродуктивная хирургия</h3>
+                            <p class="service-card__text">Плановые операции</p>
+                        </div>
+                        <div class="accordion-hint" id="repro-trigger">
+                            <span class="accordion-hint-text">Подробнее</span>
+                            <i class="fas fa-chevron-down accordion-arrow" id="repro-arrow"></i>
                         </div>
                     </div>
                     <div class="accordion-content" id="repro-content">
@@ -1483,15 +1471,13 @@
                 <!-- 7. Специализированная помощь (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Spec.webp');">
                     <div class="service-card__content" id="special-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <div>
-                                <h3 class="service-card__title">Специализированная помощь</h3>
-                                <p class="service-card__text">Отдельные направления</p>
-                            </div>
-                            <div class="accordion-hint" id="special-trigger">
-                                <span class="accordion-hint-text">Подробнее</span>
-                                <i class="fas fa-chevron-down accordion-arrow" id="special-arrow"></i>
-                            </div>
+                        <div>
+                            <h3 class="service-card__title">Специализированная помощь</h3>
+                            <p class="service-card__text">Отдельные направления</p>
+                        </div>
+                        <div class="accordion-hint" id="special-trigger">
+                            <span class="accordion-hint-text">Подробнее</span>
+                            <i class="fas fa-chevron-down accordion-arrow" id="special-arrow"></i>
                         </div>
                     </div>
                     <div class="accordion-content" id="special-content">
@@ -1508,15 +1494,13 @@
                 <!-- 8. Стационар (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Stat.webp');">
                     <div class="service-card__content" id="station-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <div>
-                                <h3 class="service-card__title">Стационар</h3>
-                                <p class="service-card__text">Только для кошек и котов</p>
-                            </div>
-                            <div class="accordion-hint" id="station-trigger">
-                                <span class="accordion-hint-text">Подробнее</span>
-                                <i class="fas fa-chevron-down accordion-arrow" id="station-arrow"></i>
-                            </div>
+                        <div>
+                            <h3 class="service-card__title">Стационар</h3>
+                            <p class="service-card__text">Только для кошек и котов</p>
+                        </div>
+                        <div class="accordion-hint" id="station-trigger">
+                            <span class="accordion-hint-text">Подробнее</span>
+                            <i class="fas fa-chevron-down accordion-arrow" id="station-arrow"></i>
                         </div>
                     </div>
                     <div class="accordion-content" id="station-content">
@@ -1536,15 +1520,13 @@
                 <!-- 9. Профилактика (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Prof.webp');">
                     <div class="service-card__content" id="prevent-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <div>
-                                <h3 class="service-card__title">Профилактика</h3>
-                                <p class="service-card__text">Поддержание здоровья</p>
-                            </div>
-                            <div class="accordion-hint" id="prevent-trigger">
-                                <span class="accordion-hint-text">Подробнее</span>
-                                <i class="fas fa-chevron-down accordion-arrow" id="prevent-arrow"></i>
-                            </div>
+                        <div>
+                            <h3 class="service-card__title">Профилактика</h3>
+                            <p class="service-card__text">Поддержание здоровья</p>
+                        </div>
+                        <div class="accordion-hint" id="prevent-trigger">
+                            <span class="accordion-hint-text">Подробнее</span>
+                            <i class="fas fa-chevron-down accordion-arrow" id="prevent-arrow"></i>
                         </div>
                     </div>
                     <div class="accordion-content" id="prevent-content">
@@ -1561,15 +1543,13 @@
                 <!-- 10. Ветеринарная аптека / корма (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Apteka.webp');">
                     <div class="service-card__content" id="pharmacy-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <div>
-                                <h3 class="service-card__title">Ветеринарная аптека / корма</h3>
-                                <p class="service-card__text"></p>
-                            </div>
-                            <div class="accordion-hint" id="pharmacy-trigger">
-                                <span class="accordion-hint-text">Подробнее</span>
-                                <i class="fas fa-chevron-down accordion-arrow" id="pharmacy-arrow"></i>
-                            </div>
+                        <div>
+                            <h3 class="service-card__title">Ветеринарная аптека / корма</h3>
+                            <p class="service-card__text"></p>
+                        </div>
+                        <div class="accordion-hint" id="pharmacy-trigger">
+                            <span class="accordion-hint-text">Подробнее</span>
+                            <i class="fas fa-chevron-down accordion-arrow" id="pharmacy-arrow"></i>
                         </div>
                     </div>
                     <div class="accordion-content" id="pharmacy-content">
@@ -1586,15 +1566,13 @@
                 <!-- 11. Груминг (аккордеон) -->
                 <div class="service-card service-card--xray" style="background-image: url('Groom.webp');">
                     <div class="service-card__content" id="grooming-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <div>
-                                <h3 class="service-card__title">Груминг</h3>
-                                <p class="service-card__text">Профессиональный уход</p>
-                            </div>
-                            <div class="accordion-hint" id="grooming-trigger">
-                                <span class="accordion-hint-text">Подробнее</span>
-                                <i class="fas fa-chevron-down accordion-arrow" id="grooming-arrow"></i>
-                            </div>
+                        <div>
+                            <h3 class="service-card__title">Груминг</h3>
+                            <p class="service-card__text">Профессиональный уход</p>
+                        </div>
+                        <div class="accordion-hint" id="grooming-trigger">
+                            <span class="accordion-hint-text">Подробнее</span>
+                            <i class="fas fa-chevron-down accordion-arrow" id="grooming-arrow"></i>
                         </div>
                     </div>
                     <div class="accordion-content" id="grooming-content">
@@ -1772,6 +1750,7 @@
     </footer>
 
     <script>
+        // Скрипты без изменений
         const burger = document.getElementById('burger');
         const mobileMenu = document.getElementById('mobileMenu');
         const overlay = document.getElementById('mobileMenuOverlay');
