@@ -45,6 +45,7 @@
             --shadow-hover: 0 25px 45px rgba(54, 178, 176, 0.2);
         }
 
+        /* Hero секция с фоновым изображением WebP */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
                         url('hero-bg.webp') center/cover no-repeat;
@@ -87,6 +88,7 @@
             font-size: 0.95rem;
         }
 
+        /* Анимации при скролле */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -98,6 +100,7 @@
             transform: translateY(0);
         }
 
+        /* Шапка */
         .header {
             background: white;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -180,6 +183,7 @@
             display: inline-block;
         }
 
+        /* Бургер */
         .burger {
             display: none;
             flex-direction: column;
@@ -194,6 +198,7 @@
             transition: 0.3s;
         }
 
+        /* Мобильное меню */
         .mobile-menu {
             position: fixed;
             top: 0;
@@ -282,6 +287,7 @@
             text-decoration: none;
         }
 
+        /* Секции */
         section {
             padding: 80px 0;
         }
@@ -327,6 +333,7 @@
             margin-top: 0;
         }
 
+        /* О клинике */
         .about__content {
             max-width: 800px;
             margin: 0 auto;
@@ -362,6 +369,7 @@
             filter: drop-shadow(0 8px 15px rgba(54, 178, 176, 0.4));
         }
 
+        /* Услуги */
         .services__grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -600,6 +608,7 @@
             }
         }
 
+        /* Информационные карточки */
         .info-links {
             background-color: var(--light-gray);
             padding: 60px 0;
@@ -684,6 +693,7 @@
             color: white;
         }
 
+        /* Отзывы */
         .reviews__header {
             display: flex;
             justify-content: space-between;
@@ -773,6 +783,7 @@
             margin-top: 40px;
         }
 
+        /* Контакты */
         .contacts__grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -857,6 +868,7 @@
             border: none;
         }
 
+        /* Футер */
         .footer {
             background: #1a1a1a;
             color: white;
@@ -902,6 +914,7 @@
             color: var(--primary) !important;
         }
 
+        /* Плавающее меню */
         .float-menu {
             position: fixed;
             bottom: 30px;
@@ -1008,6 +1021,7 @@
             box-shadow: 0 12px 25px rgba(0,0,0,0.2);
         }
 
+        /* Модальные окна */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -1090,6 +1104,7 @@
             text-decoration: underline;
         }
 
+        /* Адаптивность */
         @media (min-width: 993px) {
             .phone {
                 font-size: 20px;
@@ -1267,6 +1282,7 @@
         </div>
     </div>
 
+    <!-- Hero секция с напоминанием о паспорте -->
     <section class="hero">
         <div class="container">
             <h1 class="hero__title">Ветеринарная клиника ВетКэт</h1>
@@ -1283,6 +1299,11 @@
                 <div class="hero__info-item">
                     <i class="fas fa-map-marker-alt"></i>
                     <span>Тейково, пл. Ленина, 3</span>
+                </div>
+                <!-- Новая строка с иконкой и напоминанием о паспорте -->
+                <div class="hero__info-item">
+                    <i class="fas fa-id-card"></i>
+                    <span>При первом обращении не забудьте взять паспорт для заключения договора</span>
                 </div>
             </div>
         </div>
@@ -1741,13 +1762,12 @@
         </div>
     </section>
 
-    <!-- Футер -->
+    <!-- Футер с политикой конфиденциальности над номером -->
     <footer class="footer">
         <div class="container">
             <div class="footer__inner">
                 <div class="footer__logo">ВетКэт</div>
                 <div>
-                    <!-- Политика конфиденциальности – над номером -->
                     <div style="margin-bottom: 5px;">
                         <a href="privacy.html" style="color: #aaa; text-decoration: none; font-size: 14px;">Политика конфиденциальности</a>
                     </div>
@@ -1764,7 +1784,7 @@
     </footer>
 
     <script>
-        // Скрипты без изменений
+        // Бургер-меню
         const burger = document.getElementById('burger');
         const mobileMenu = document.getElementById('mobileMenu');
         const overlay = document.getElementById('mobileMenuOverlay');
@@ -1804,6 +1824,7 @@
             }
         });
 
+        // Плавная прокрутка для якорей
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1814,6 +1835,7 @@
             });
         });
 
+        // Универсальная функция для аккордеона
         function initAccordion(headerId, contentId, arrowId, triggerId) {
             const header = document.getElementById(headerId);
             const content = document.getElementById(contentId);
@@ -1853,6 +1875,7 @@
         initAccordion('pharmacy-header', 'pharmacy-content', 'pharmacy-arrow', 'pharmacy-trigger');
         initAccordion('grooming-header', 'grooming-content', 'grooming-arrow', 'grooming-trigger');
 
+        // Intersection Observer для плавного появления
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1868,6 +1891,7 @@
             document.body.classList.add('loaded');
         });
 
+        // Плавающая кнопка
         const floatMenu = document.getElementById('floatMenu');
         const floatTrigger = document.getElementById('floatTrigger');
         const floatButtons = document.getElementById('floatButtons');
@@ -1894,6 +1918,7 @@
             });
         }
 
+        // Загрузка контента для модальных окон
         async function loadModalContent(url, targetElement) {
             try {
                 const response = await fetch(url);
@@ -1912,6 +1937,7 @@
             }
         }
 
+        // Модальное окно правил стационара
         const rulesLink = document.getElementById('rulesLink');
         const rulesModal = document.getElementById('rulesModal');
         const rulesModalContent = document.getElementById('rulesModalContent');
@@ -1939,6 +1965,7 @@
             });
         }
 
+        // Модальное окно подготовки к операции
         const narcosisLink = document.getElementById('narcosisLink');
         const narcosisModal = document.getElementById('narcosisModal');
         const narcosisModalContent = document.getElementById('narcosisModalContent');
@@ -1966,6 +1993,7 @@
             });
         }
 
+        // Клик по информационным карточкам
         const infoNarcosisLink = document.getElementById('infoNarcosisLink');
         const infoRulesLink = document.getElementById('infoRulesLink');
 
