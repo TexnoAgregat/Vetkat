@@ -180,6 +180,12 @@
             display: inline-block;
         }
 
+        .btn--large {
+            font-size: 1.1rem;
+            padding: 12px 30px;
+            margin-top: 20px;
+        }
+
         .burger {
             display: none;
             flex-direction: column;
@@ -680,6 +686,103 @@
             }
         }
 
+        /* Блок симптомов */
+        .symptoms {
+            background-color: var(--light-gray);
+            padding: 60px 0;
+        }
+
+        .symptoms__intro {
+            text-align: center;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--gray);
+        }
+
+        .symptoms__call {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .symptoms__grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+
+        .symptom-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .symptom-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .symptom-icon {
+            font-size: 28px;
+            color: var(--primary);
+            flex-shrink: 0;
+            background: rgba(54, 178, 176, 0.1);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .symptom-text {
+            flex: 1;
+        }
+
+        .symptom-text strong {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: var(--black);
+        }
+
+        .symptom-text span {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.4;
+        }
+
+        .symptoms__conclusion {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .symptoms__quote {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .symptoms__conclusion p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+
         .reviews__header {
             display: flex;
             justify-content: space-between;
@@ -853,13 +956,12 @@
             border: none;
         }
 
-        /* Контейнер для картинки "Хорошее место" рядом с картой */
         .contacts__badge {
             text-align: center;
             margin-top: 20px;
         }
         .contacts__badge img {
-            max-width: 150px; /* уменьшено примерно вдвое от исходного (было 100% ширины, теперь фиксированная ширина) */
+            max-width: 150px;
             height: auto;
             border-radius: 10px;
             box-shadow: var(--shadow-sm);
@@ -1148,6 +1250,9 @@
             .services__grid {
                 grid-template-columns: 1fr;
             }
+            .symptoms__grid {
+                grid-template-columns: 1fr;
+            }
             .contacts__map {
                 height: 300px;
             }
@@ -1202,6 +1307,7 @@
                     <ul class="nav__list">
                         <li><a href="#about" class="nav__link">О клинике</a></li>
                         <li><a href="#services" class="nav__link">Услуги</a></li>
+                        <li><a href="#symptoms" class="nav__link">Симптомы</a></li>
                         <li><a href="#reviews" class="nav__link">Отзывы</a></li>
                         <li><a href="#contacts" class="nav__link">Контакты</a></li>
                     </ul>
@@ -1224,6 +1330,7 @@
         <ul class="mobile-menu__list">
             <li class="mobile-menu__item"><a href="#about" class="mobile-menu__link">О клинике</a></li>
             <li class="mobile-menu__item"><a href="#services" class="mobile-menu__link">Услуги</a></li>
+            <li class="mobile-menu__item"><a href="#symptoms" class="mobile-menu__link">Симптомы</a></li>
             <li class="mobile-menu__item"><a href="#reviews" class="mobile-menu__link">Отзывы</a></li>
             <li class="mobile-menu__item"><a href="narcosis.html" target="_blank" class="mobile-menu__link">Как подготовиться к операции</a></li>
             <li class="mobile-menu__item"><a href="station-rules.html" target="_blank" class="mobile-menu__link">Правила посещения стационара</a></li>
@@ -1623,6 +1730,80 @@
         </div>
     </section>
 
+    <!-- Новый блок: Симптомы, при которых нельзя откладывать визит -->
+    <section class="symptoms reveal" id="symptoms">
+        <div class="container">
+            <h2 class="section-title">Когда нельзя откладывать визит к ветеринару</h2>
+            <p class="symptoms__intro">Иногда питомцы не могут сказать, что им плохо. Но есть симптомы, при которых важно показать животное врачу как можно быстрее.</p>
+            <p class="symptoms__call">Обратитесь к ветеринару, если у питомца:</p>
+            
+            <div class="symptoms__grid">
+                <div class="symptom-item">
+                    <i class="fas fa-utensils symptom-icon"></i>
+                    <div class="symptom-text">
+                        <strong>Потеря аппетита более 24 часов</strong>
+                        <span>Если кошка или собака не ест — это может быть признаком инфекции, боли или проблем с внутренними органами.</span>
+                    </div>
+                </div>
+                <div class="symptom-item">
+                    <i class="fas fa-bed symptom-icon"></i>
+                    <div class="symptom-text">
+                        <strong>Вялость и апатия</strong>
+                        <span>Питомец много лежит, не играет, не реагирует как обычно.</span>
+                    </div>
+                </div>
+                <div class="symptom-item">
+                    <i class="fas fa-vomit symptom-icon"></i>
+                    <div class="symptom-text">
+                        <strong>Рвота или понос</strong>
+                        <span>Особенно если это происходит несколько раз или сопровождается слабостью.</span>
+                    </div>
+                </div>
+                <div class="symptom-item">
+                    <i class="fas fa-lungs symptom-icon"></i>
+                    <div class="symptom-text">
+                        <strong>Трудности с дыханием</strong>
+                        <span>Одышка, дыхание с открытым ртом, свисты — повод срочно обратиться к врачу.</span>
+                    </div>
+                </div>
+                <div class="symptom-item">
+                    <i class="fas fa-bone symptom-icon"></i>
+                    <div class="symptom-text">
+                        <strong>Хромота или боль</strong>
+                        <span>Животное не опирается на лапу, скулит при движении или избегает прикосновений.</span>
+                    </div>
+                </div>
+                <div class="symptom-item">
+                    <i class="fas fa-eye symptom-icon"></i>
+                    <div class="symptom-text">
+                        <strong>Выделения из глаз или носа</strong>
+                        <span>Гной, сильное слезотечение или покраснение.</span>
+                    </div>
+                </div>
+                <div class="symptom-item">
+                    <i class="fas fa-toilet symptom-icon"></i>
+                    <div class="symptom-text">
+                        <strong>Проблемы с мочеиспусканием</strong>
+                        <span>Частые попытки сходить в туалет, кровь в моче или питомец не может помочиться.</span>
+                    </div>
+                </div>
+                <div class="symptom-item">
+                    <i class="fas fa-paw symptom-icon"></i>
+                    <div class="symptom-text">
+                        <strong>Резкое изменение поведения</strong>
+                        <span>Агрессия, прятание, беспокойство — часто это признак боли.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="symptoms__conclusion">
+                <p class="symptoms__quote">Лучше проверить, чем пропустить проблему</p>
+                <p>Многие заболевания легче и дешевле лечить на ранней стадии. Даже если симптом кажется незначительным, консультация ветеринара поможет убедиться, что с питомцем всё в порядке.</p>
+                <a href="tel:+79203405775" class="btn btn--primary btn--large">Записаться на осмотр</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Модальные окна -->
     <div class="modal-overlay" id="rulesModal">
         <div class="modal">
@@ -1740,7 +1921,6 @@
                 </div>
                 <div class="contacts__map">
                     <iframe src="https://yandex.ru/map-widget/v1/?ll=40.534410%2C56.853734&z=18&mode=search&text=Тейково%20площадь%20Ленина%203" width="100%" height="100%" frameborder="0"></iframe>
-                    <!-- Картинка "Хорошее место" под картой (или можно вынести в отдельный блок) -->
                     <div class="contacts__badge">
                         <img src="Yan.webp" alt="Хорошее место на Яндекс Картах">
                     </div>
