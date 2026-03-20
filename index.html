@@ -853,6 +853,18 @@
             border: none;
         }
 
+        /* Контейнер для картинки "Хорошее место" рядом с картой */
+        .contacts__badge {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .contacts__badge img {
+            max-width: 150px; /* уменьшено примерно вдвое от исходного (было 100% ширины, теперь фиксированная ширина) */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: var(--shadow-sm);
+        }
+
         .footer {
             background: #1a1a1a;
             color: white;
@@ -1105,6 +1117,9 @@
             }
             .header__contacts {
                 margin-left: auto;
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 5px;
             }
             .about__features {
                 grid-template-columns: 1fr;
@@ -1674,12 +1689,7 @@
         </div>
     </section>
 
-    <!-- Картинка "Хорошее место" от Яндекса (отдельно, без ссылки) -->
-    <div class="container" style="text-align: center; margin: 40px auto;">
-        <img src="Yan.webp" alt="Хорошее место на Яндекс Картах" style="max-width: 100%; height: auto;">
-    </div>
-
-    <!-- Контакты -->
+    <!-- Контакты + картинка "Хорошее место" -->
     <section class="contacts reveal" id="contacts">
         <div class="container">
             <h2 class="section-title">Контакты</h2>
@@ -1730,6 +1740,10 @@
                 </div>
                 <div class="contacts__map">
                     <iframe src="https://yandex.ru/map-widget/v1/?ll=40.534410%2C56.853734&z=18&mode=search&text=Тейково%20площадь%20Ленина%203" width="100%" height="100%" frameborder="0"></iframe>
+                    <!-- Картинка "Хорошее место" под картой (или можно вынести в отдельный блок) -->
+                    <div class="contacts__badge">
+                        <img src="Yan.webp" alt="Хорошее место на Яндекс Картах">
+                    </div>
                 </div>
             </div>
         </div>
